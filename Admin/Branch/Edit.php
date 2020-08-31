@@ -59,6 +59,36 @@
         </div>
     </nav>
 
+    <?php
+    
+        $servername="localhost:3308";
+        $username="root";
+        $password="";
+        $db="vceterp";
+        $con = new mysqli($servername,$username,$password,$db);
+        if(!$con)
+        {
+            die('could not connect'.mysql_error());
+        }
+        else
+        {
+            #echo "<h1>database connected</h1>";
+        }
+        
+        $BranchId = $_GET['BranchId'];
+
+        $sql = "SELECT Branch_Id,Branch_Name,Branch_Code,Branch_Status FROM branch_master WHERE Branch_Id = " . $_GET['BranchId'];
+        $result = $con->query($sql);
+
+        while($row = mysqli_fetch_array($result))
+        {
+            $BranchName =  $row['Branch_Name'];
+            $BranchCode =  $row['Branch_Code'];
+            $BranchStatus =  $row['Branch_Status'];
+        } 
+
+    ?>
+
     <div class="container" id="main-container">
         <form action="" method="POST">
 
@@ -70,14 +100,12 @@
             <div class="form-row mt-5">
                 <div class="form-group col-md-4">
                     <label for="txt_BranchName">Branch Name</label>
-                    <input type="text" id="txt_BranchName" name="txt_BranchName" class="form-control"
-                        required="required" />
+                    <input type="text" id="txt_BranchName" name="txt_BranchName" class="form-control" required="required" />
 
                 </div>
                 <div class="form-group col-md-4">
                     <label for="txt_BranchCode">Branch Code</label>
-                    <input type="text" id="txt_BranchCode" name="txt_BranchCode" class="form-control"
-                        required="required" />
+                    <input type="text" id="txt_BranchCode" name="txt_BranchCode" class="form-control" required="required" />
                 </div>
                 <div class="form-group col-md-4">
                     <label for="select_BranchStatus">Branch Status</label>
@@ -114,6 +142,28 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
+
+    
+
+    <script>
+
+        var BranchName = "<?php echo $BranchName ?>";
+        var BranchCode = "<?php echo $BranchCode ?>";
+        var BranchStatus = "<?php echo $BranchStatus ?>";
+        
+        $("#txt_BranchName").val(BranchName);
+        $("#txt_BranchCode").val(BranchCode);
+
+        var select_BranchStatus = document.getElementById("#txt_BranchStatus");
+        var options_BranchStatus = select_BranchStatus.options;
+        for(var j=0,option; option=options_BranchStatus[j]; j++){            
+            if(option.value == BranchStatus){
+                $("#txt_BranchStatus").selectedIndex = j;
+            }
+        }
+
+    </script>
+
 </body>
 
 </html>
