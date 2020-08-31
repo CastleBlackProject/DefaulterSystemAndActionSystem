@@ -85,7 +85,7 @@
                     </table> 
                 </div> -->
                 <?php
-            $servername="localhost:3308";
+            $servername="localhost";
             $username="root";
             $password="";
             $db="vceterp";
