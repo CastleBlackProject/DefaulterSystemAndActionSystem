@@ -88,7 +88,7 @@
                                 $result = $con->query($sql);
                                 while($row = $result->fetch_array())
                                 {
-                                    echo "<option value ='".$row[Branch_Id]."'>".$row[Branch_Name]."</option>";
+                                    echo "<option value ='".$row['Branch_Id']."'>".$row['Branch_Name']."</option>";
                                 }
                             ?>
                         <!-- <option value='1'>Computer Engineering</option>
