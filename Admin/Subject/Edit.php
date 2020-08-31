@@ -88,7 +88,7 @@
                                 $result = $con->query($sql);
                                 while($row = $result->fetch_array())
                                 {
-                                    echo "<option value ='".$row[Branch_Id]."'>".$row[Branch_Name]."</option>";
+                                    echo "<option value ='".$row['Branch_Id']."'>".$row['Branch_Name']."</option>";
                                 }
                             ?>
                         <!-- <option value='1'>Computer Engineering</option>
@@ -290,7 +290,22 @@
             }
         }
 
-
+        var select_Year = document.getElementById("select_Year");
+        var options_Year = select_Year.options;
+        for (var j = 0, option; option = options_Year[j]; j++) {
+            if(SemesterId == 1 || SemesterId == 2){
+                select_Year.selectedIndex = 1;
+            }
+            else if(SemesterId == 3 || SemesterId == 4){
+                select_Year.selectedIndex = 2;
+            }
+            else if(SemesterId == 5 || SemesterId == 6){
+                select_Year.selectedIndex = 3;
+            }
+            else if(SemesterId == 7 || SemesterId == 8){
+                select_Year.selectedIndex = 4;
+            }
+        }
 
     </script>
 
