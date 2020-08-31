@@ -161,7 +161,7 @@
             $SubId=$row['id']+1;
             echo "<br> given id is : ".$SubId;
 
-            $sql="INSERT INTO subject_master(Subject_Id,Subject_Name,Subject_Code,Subject_Status,Branch_Id,Semester_Id) VALUES('$SubId',$SubjectName','$SubjectCode','$SubjectStatus','$BranchId,'$SemesterId')";
+            $sql="INSERT INTO subject_master(Subject_Id,Subject_Name,Subject_Code,Subject_Status,Branch_Id,Semester_Id) VALUES('$SubId','$SubjectName','$SubjectCode','$SubjectStatus','$BranchId','$SemesterId')";
             
             if($con->query($sql) === TRUE ){
               echo "<br>new record added successfully";
