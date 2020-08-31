@@ -58,37 +58,6 @@
             </form>
         </div>
     </nav>
-
-    <?php
-    
-        $servername="localhost";
-        $username="root";
-        $password="";
-        $db="vceterp";
-        $con = new mysqli($servername,$username,$password,$db);
-        if(!$con)
-        {
-            die('could not connect'.mysql_error());
-        }
-        else
-        {
-            #echo "<h1>database connected</h1>";
-        }
-        
-        $BranchId = $_GET['BranchId'];
-
-        $sql = "SELECT Branch_Id,Branch_Name,Branch_Code,Branch_Status FROM branch_master WHERE Branch_Id = " . $_GET['BranchId'];
-        $result = $con->query($sql);
-
-        while($row = mysqli_fetch_array($result))
-        {
-            $BranchName =  $row['Branch_Name'];
-            $BranchCode =  $row['Branch_Code'];
-            $BranchStatus =  $row['Branch_Status'];
-        } 
-
-    ?>
-
     <div class="container" id="main-container">
         <form action="" method="POST">
 
@@ -124,6 +93,51 @@
                     <button type="reset" class="btn btn-success">Reset</button>
                 </center>
             </div>
+            <?php
+    
+    $servername="localhost";
+    $username="root";
+    $password="";
+    $db="vceterp";
+    $con = new mysqli($servername,$username,$password,$db);
+    if(!$con)
+    {
+        die('could not connect'.mysql_error());
+    }
+    else
+    {
+        #echo "<h1>database connected</h1>";
+    }
+    
+    $BranchId = $_GET['BranchId'];
+
+    $sql = "SELECT Branch_Id,Branch_Name,Branch_Code,Branch_Status FROM branch_master WHERE Branch_Id = " . $_GET['BranchId'];
+    $result = $con->query($sql);
+
+    while($row = mysqli_fetch_array($result))
+    {
+        $BranchName =  $row['Branch_Name'];
+        $BranchCode =  $row['Branch_Code'];
+        $BranchStatus =  $row['Branch_Status'];
+    } 
+
+    if(isset($_POST['submit'])) {
+        $BranchName = $_POST['txt_BranchName'];
+        $BranchCode = $_POST['txt_BranchCode'];
+        $BranchStatus = $_POST['select_BranchStatus'];
+        //$BranchId = $_POST['txt_BranchId'];
+        echo "<br>record will be updated at Subject id ";
+        echo $BranchId;
+        
+        $sql="UPDATE branch_master SET Branch_Name='$BranchName',Branch_Code='$BranchCode',Branch_Status='$BranchStatus' WHERE Branch_Id='$BranchId'";
+        
+        if($con->query($sql) === TRUE ){
+          echo "<br> record updated successfully";
+      }else{
+          echo "<br>error: ".$sql."<br>".$con->error;
+      }
+        }
+?>
 
             <input type="button" value="Back To List" onclick="window.location.href='Index.php'"
                 class="btn btn-primary" />
