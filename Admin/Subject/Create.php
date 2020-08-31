@@ -84,11 +84,11 @@
                                 //  {
                                 //     echo "<script>alert(<h1>database connected</h1>);</script>";
                                 //  }  
-                                $sql = "SELECT * FROM subject_master";
+                                $sql = "SELECT * FROM branch_master";
                                 $result = $con->query($sql);
                                 while($row = $result->fetch_array())
                                 {
-                                    echo "<option value ='".$row[Subject_Name]."'>".$row[Subject_Name]."</option>";
+                                    echo "<option value ='".$row[Branch_Id]."'>".$row[Branch_Name]."</option>";
                                 }
                             ?>
                         <!-- <option value='1'>Computer Engineering</option>
