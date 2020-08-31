@@ -126,8 +126,8 @@
         $BranchCode = $_POST['txt_BranchCode'];
         $BranchStatus = $_POST['select_BranchStatus'];
         //$BranchId = $_POST['txt_BranchId'];
-        echo "<br>record will be updated at Subject id ";
-        echo $BranchId;
+        //echo "<br>record will be updated at Subject id ";
+        //echo $BranchId;
         
         $sql="UPDATE branch_master SET Branch_Name='$BranchName',Branch_Code='$BranchCode',Branch_Status='$BranchStatus' WHERE Branch_Id='$BranchId'";
         
@@ -136,6 +136,7 @@
       }else{
           echo "<br>error: ".$sql."<br>".$con->error;
       }
+      
         }
 ?>
 
