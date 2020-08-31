@@ -69,12 +69,14 @@
             <div class="form-row mt-5">
                 <div class="form-group col-md-4">
                     <label for="txt_BranchName">Branch Name</label>
-                    <input type="text" id="txt_BranchName" name="txt_BranchName" class="form-control" required="required" />
+                    <input type="text" id="txt_BranchName" name="txt_BranchName" class="form-control"
+                        required="required" />
 
                 </div>
                 <div class="form-group col-md-4">
                     <label for="txt_BranchCode">Branch Code</label>
-                    <input type="text" id="txt_BranchCode" name="txt_BranchCode" class="form-control" required="required" />
+                    <input type="text" id="txt_BranchCode" name="txt_BranchCode" class="form-control"
+                        required="required" />
                 </div>
                 <div class="form-group col-md-4">
                     <label for="select_BranchStatus">Branch Status</label>
@@ -132,13 +134,15 @@
         $sql="UPDATE branch_master SET Branch_Name='$BranchName',Branch_Code='$BranchCode',Branch_Status='$BranchStatus' WHERE Branch_Id='$BranchId'";
         
         if($con->query($sql) === TRUE ){
-          echo "<br> record updated successfully";
-      }else{
+          #echo "<br> record updated successfully";
+          echo "<script> location.href='Index.php'; </script>";
+        }else
+        {
           echo "<br>error: ".$sql."<br>".$con->error;
-      }
-      
         }
-?>
+      
+    }
+    ?>
 
             <input type="button" value="Back To List" onclick="window.location.href='Index.php'"
                 class="btn btn-primary" />
@@ -158,14 +162,14 @@
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
 
-    
+
 
     <script>
 
         var BranchName = "<?php echo $BranchName ?>";
         var BranchCode = "<?php echo $BranchCode ?>";
         var BranchStatus = "<?php echo $BranchStatus ?>";
-        
+
         console.log(BranchStatus);
 
         $("#txt_BranchName").val(BranchName);
@@ -173,9 +177,9 @@
 
         var select_BranchStatus = document.getElementById("select_BranchStatus");
         var options_BranchStatus = select_BranchStatus.options;
-        for(var j=0,option; option=options_BranchStatus[j]; j++){   
-            
-            if(option.value == BranchStatus){
+        for (var j = 0, option; option = options_BranchStatus[j]; j++) {
+
+            if (option.value == BranchStatus) {
                 select_BranchStatus.selectedIndex = j;
             }
         }

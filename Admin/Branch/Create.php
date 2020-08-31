@@ -124,7 +124,7 @@
             $sql="INSERT INTO branch_master(Branch_Id,Branch_Name,Branch_Code,Branch_Status) VALUES('$BranId','$BranName','$BranCode','$BranStatus')";
             
             if($con->query($sql) === TRUE ){
-              echo "<br>new record added successfully";
+                echo "<script> location.href='Index.php'; </script>";
           }else{
               echo "<br>error: ".$sql."<br>".$con->error;
           }
