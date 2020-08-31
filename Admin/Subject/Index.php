@@ -159,9 +159,9 @@
 
             function edit(btn){
 
-                var BranchId = btn.parentNode.parentNode.childNodes[0].innerHTML;
+                var SubjectId = btn.parentNode.parentNode.childNodes[0].innerHTML;
 
-                window.location.href='Edit.php?BranchId=' + BranchId;
+                window.location.href='Edit.php?SubjectId=' + SubjectId;
             }
 
         </script>

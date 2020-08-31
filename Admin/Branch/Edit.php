@@ -170,8 +170,6 @@
         var BranchCode = "<?php echo $BranchCode ?>";
         var BranchStatus = "<?php echo $BranchStatus ?>";
 
-        console.log(BranchStatus);
-
         $("#txt_BranchName").val(BranchName);
         $("#txt_BranchCode").val(BranchCode);
 
