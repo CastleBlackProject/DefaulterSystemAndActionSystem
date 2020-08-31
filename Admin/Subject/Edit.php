@@ -176,9 +176,9 @@
     } 
 
     if(isset($_POST['submit'])) {
-        $BranchName = $_POST['txt_BranchName'];
-        $BranchCode = $_POST['txt_BranchCode'];
-        $BranchStatus = $_POST['select_BranchStatus'];
+        $SubjectName = $_POST['txt_SubjectName'];
+        $SubjectCode = $_POST['txt_SubjectCode'];
+        $SubjectStatus = $_POST['select_SubjectStatus'];
         $BranchId = $_POST['select_BranchId'];
         $SemesterId = $_POST['select_Semester'];
         //echo "<br>record will be updated at Subject id ";
@@ -285,10 +285,12 @@
         var select_Semester = document.getElementById("select_Semester");
         var options_Semester = select_Semester.options;
         for (var j = 0, option; option = options_Semester[j]; j++) {
-            if (option.value == Semester) {
+            if (option.value == SemesterId) {
                 select_Semester.selectedIndex = j;
             }
         }
+
+
 
     </script>
 
