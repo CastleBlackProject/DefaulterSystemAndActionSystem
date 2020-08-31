@@ -154,7 +154,14 @@
             $BranchId = $_POST['select_BranchId'];
             $SemesterId = $_POST['select_Semester'];
 
-            $sql="INSERT INTO subject_master(Subject_Name,Subject_Code,Subject_Status,Branch_Id,Semester_Id) VALUES('$SubjectName','$SubjectCode','$SubjectStatus','$BranchId,'$SemesterId')";
+            $sql1="SELECT max(Subject_Id) as id from subject_master";
+            $result = $con->query($sql1);
+            $row = $result->fetch_assoc();
+            echo "<br> last id is : ".$row['id'];
+            $SubId=$row['id']+1;
+            echo "<br> given id is : ".$SubId;
+
+            $sql="INSERT INTO subject_master(Subject_Id,Subject_Name,Subject_Code,Subject_Status,Branch_Id,Semester_Id) VALUES('$SubId',$SubjectName','$SubjectCode','$SubjectStatus','$BranchId,'$SemesterId')";
             
             if($con->query($sql) === TRUE ){
               echo "<br>new record added successfully";

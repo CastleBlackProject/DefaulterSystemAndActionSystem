@@ -134,7 +134,7 @@
                     echo "<td>" . $row['Semester_Id'] . "</td>";
                     echo "<td>" . $row['Subject_Name'] . "</td>";
                     echo "<td>" . $row['Subject_Code'] . "</td>";
-                    echo "<td>" . $row['SubjectStatus'] . "</td>";
+                    echo "<td>" . $row['Subject_Status'] . "</td>";
                     echo "<td><button type='button' class='btn btn-success' onclick='edit(this)'>Edit</button></td>";
                     echo "</tr>";
                 }
