@@ -117,11 +117,8 @@
             $sql1="SELECT max(Branch_Id) as id from branch_master";
             $result = $con->query($sql1);
             $row = $result->fetch_assoc();
-            echo "<br> last id is : ".$row['id'];
-            $BranId=$row['id']+1;
-            echo "<br> given id is : ".$BranId;
             
-            $sql="INSERT INTO branch_master(Branch_Id,Branch_Name,Branch_Code,Branch_Status) VALUES('$BranId','$BranName','$BranCode','$BranStatus')";
+            $sql="INSERT INTO branch_master(Branch_Name,Branch_Code,Branch_Status) VALUES('$BranName','$BranCode','$BranStatus')";
             
             if($con->query($sql) === TRUE ){
                 echo "<script> location.href='Index.php'; </script>";
