@@ -161,7 +161,7 @@
             $sql="INSERT INTO subject_master(Subject_Name,Subject_Code,Subject_Status,Branch_Id,Semester_Id) VALUES('$SubjectName','$SubjectCode','$SubjectStatus','$BranchId','$SemesterId')";
             
             if($con->query($sql) === TRUE ){
-              echo "<br>new record added successfully";
+                echo "<script> location.href='Index.php'; </script>";
           }else{
               echo "<br>error: ".$sql."<br>".$con->error;
           }
