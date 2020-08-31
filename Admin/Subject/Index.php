@@ -62,7 +62,7 @@
     <div class="container-fluid">
         <div>
             <div class="my-4" style="color:#0041b3">
-                <h4>Branch Master</h4>
+                <h4>Subject Master</h4>
             </div>
 
             <div class="my-5">
