@@ -61,7 +61,7 @@
 
     <?php
     
-        $servername="localhost:3308";
+        $servername="localhost";
         $username="root";
         $password="";
         $db="vceterp";
@@ -151,14 +151,17 @@
         var BranchCode = "<?php echo $BranchCode ?>";
         var BranchStatus = "<?php echo $BranchStatus ?>";
         
+        console.log(BranchStatus);
+
         $("#txt_BranchName").val(BranchName);
         $("#txt_BranchCode").val(BranchCode);
 
-        var select_BranchStatus = document.getElementById("#txt_BranchStatus");
+        var select_BranchStatus = document.getElementById("select_BranchStatus");
         var options_BranchStatus = select_BranchStatus.options;
-        for(var j=0,option; option=options_BranchStatus[j]; j++){            
+        for(var j=0,option; option=options_BranchStatus[j]; j++){   
+            
             if(option.value == BranchStatus){
-                $("#txt_BranchStatus").selectedIndex = j;
+                select_BranchStatus.selectedIndex = j;
             }
         }
 
