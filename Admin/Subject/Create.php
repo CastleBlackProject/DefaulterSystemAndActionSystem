@@ -70,8 +70,29 @@
                 <div class="form-group col-md-4">
                     <label for="select_BranchId">Branch</label>
                     <select id="select_BranchId" name="select_BranchId" class="form-control">
-                        <option value='1'>Computer Engineering</option>
-                        <option value='2'>Information Technology</option>
+                    <?php
+                                 $servername="localhost";
+                                 $username="root";
+                                 $password="";
+                                 $db="vceterp";
+                                 $con = new mysqli($servername,$username,$password,$db);
+                                //  if(!$con)
+                                //  {
+                                //      die('could not connect'.mysql_error());
+                                //  }
+                                //  else
+                                //  {
+                                //     echo "<script>alert(<h1>database connected</h1>);</script>";
+                                //  }  
+                                $sql = "SELECT * FROM subject_master";
+                                $result = $con->query($sql);
+                                while($row = $result->fetch_array())
+                                {
+                                    echo "<option value ='".$row[Subject_Name]."'>".$row[Subject_Name]."</option>";
+                                }
+                            ?>
+                        <!-- <option value='1'>Computer Engineering</option>
+                        <option value='2'>Information Technology</option> -->
                     </select>
                 </div>
                 <div class="form-group col-md-4">
@@ -125,19 +146,7 @@
                 </center>
             </div>
             <?php
-            $servername="localhost";
-            $username="root";
-            $password="";
-            $db="vceterp";
-            $con = new mysqli($servername,$username,$password,$db);
-            if(!$con)
-            {
-                die('could not connect'.mysql_error());
-            }
-            else
-            {
-                #echo "<h1>database connected</h1>";
-            }  
+           
             if(isset($_POST['submit'])) {
             $SubjectName = $_POST['txt_SubjectName'];
             $SubjectCode = $_POST['txt_SubjectCode'];
