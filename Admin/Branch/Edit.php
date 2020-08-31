@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">VCET</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +32,7 @@
                         Institute Management
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Branch Master</a>
+                        <a class="dropdown-item" href="../Branch/Index.php">Branch Master</a>
                         <a class="dropdown-item" href="#">Academic Session</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Student Master</a>
@@ -48,7 +48,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <!-- <div class="dropdown-divider"></div> -->
                         <a class="dropdown-item" href="#">Staff Master</a>
-                        <a class="dropdown-item" href="#">Subject Master</a>
+                        <a class="dropdown-item" href="../Subject/Index.php">Subject Master</a>
                     </div>
                 </li>
             </ul>
