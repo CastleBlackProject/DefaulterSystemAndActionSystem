@@ -65,6 +65,10 @@
             <div class="my-4" style="color:#0041b3">
                 <h4>Student Master</h4>
             </div>
+            <hr color="grey">
+            <div class="my-4" style="color:#0041b3">
+                <h5>Personal Details</h5>
+            </div>
 
 
             <div class="form-row mt-5">
@@ -124,7 +128,38 @@
                         required="required" />
                 </div>
             </div>
-
+            <hr color="grey">
+            <div class="my-4" style="color:#0041b3">
+                <h5>Academic Details </h5>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                        <label for="select_Branch">Branch</label>
+                        <select id="select_Branch" name="select_Branch" class="form-control">
+                    <?php
+                        $servername="localhost";
+                        $username="root";
+                        $password="";
+                        $db="vceterp";
+                        $con = new mysqli($servername,$username,$password,$db);
+                        // if(!$con)
+                        // {
+                        //     die('could not connect'.mysql_error());
+                        // }
+                        // else
+                        // {
+                        //     echo "<script>alert(<h1>database connected</h1>);</script>";
+                        // }
+                        $sql = "SELECT * FROM branch_master";
+                        $result = $con->query($sql);
+                        while($row = $result->fetch_array())
+                        {
+                            echo "<option value ='".$row['Branch_Id']."'>".$row['Branch_Name']."</option>";
+                        }  
+                    ?>
+                        </select>
+                </div>
+            </div>
             <div class="my-4">
                 <center>
                     <button type="submit" name="submit" value="submit" class="btn btn-success">Submit</button>
@@ -244,6 +279,14 @@
             }
         }
 
+        var select_Branch = document.getElementById("select_Branch");
+        var options_Branch = select_Branch.options;
+        for (var j = 0, option; option = options_Branch[j]; j++) {
+
+            if (option.value == Branch) {
+                select_Branch.selectedIndex = j;
+            }
+        }
     </script>
 
 </body>
