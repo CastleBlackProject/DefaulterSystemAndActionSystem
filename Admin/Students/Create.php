@@ -203,9 +203,22 @@
                 $StudentStatus =  $_POST['select_StudentStatus'];
                 $BranchId = $_POST['select_Branch'];
                 $YearId = $_POST['select_Year'];
-                echo $YearId;
+                $StudentBranchStatus= "Active";
+                            
+            $sql="INSERT INTO student_master(First_Name,Middle_Name,Last_Name,Date_Of_Birth,Gender,Contact,Email_Id,Address,Student_Status) VALUES('$FirstName','$MiddleName','$LastName','$DateOfBirth','$Gender','$Contact','$Email','$Address','$StudentStatus')";
             
-            $sql="INSERT INTO student_master(First_Name,Middle_Name,Last_Name,Date_Of_Birth,Gender,Contact,Email_Id,Address,Student_Status,Branch_Id,Year_Id) VALUES('$FirstName','$MiddleName','$LastName','$DateOfBirth','$Gender','$Contact','$Email','$Address','$StudentStatus','$BranchId','$YearId')";
+            $sql2="SELECT max(Student_Id) as id from student_master";
+            $result2 = $con->query($sql2);
+            $row = $result2->fetch_assoc();
+            //echo "<br> last id is : ".$row['id'];
+            $Stud_Id=$row['id'];
+            //echo "<br> given id is : ".$gotid;
+            
+            $sql1="INSERT INTO student_branch_link(Student_Id,Branch_Id,Student_Branch_Status) VALUES('$Stud_Id','$BranchId','$StudentBranchStatus')";
+            if($con->query($sql1) === TRUE && $con->query($sql2) === TRUE){
+                echo "inserted into branch link";
+                echo $Stud_Id;
+            }
             
             if($con->query($sql) === TRUE ){
                 //echo $YearId;
