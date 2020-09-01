@@ -183,6 +183,32 @@
                     ?>
                         </select>
                 </div>
+                <div class="form-group col-md-3">
+                        <label for="select_Academic_Session_Id">Academic Session</label>
+                        <select id="select_Academic_Session_Id" name="select_Academic_Session_Id" class="form-control">
+                    <?php
+                        // $servername="localhost";
+                        // $username="root";
+                        // $password="";
+                        // $db="vceterp";
+                        // $con = new mysqli($servername,$username,$password,$db);
+                        // // if(!$con)
+                        // {
+                        //     die('could not connect'.mysql_error());
+                        // }
+                        // else
+                        // {
+                        //     echo "<script>alert(<h1>database connected</h1>);</script>";
+                        // }
+                        $sql = "SELECT * FROM academic_session_master";
+                        $result = $con->query($sql);
+                        while($row = $result->fetch_array())
+                        {
+                            echo "<option value ='".$row['Academic_Session_Id']."'>".$row['Academic_Session_Name']."</option>";
+                        }  
+                    ?>
+                        </select>
+                </div>
             </div>
             <div class="my-4">
                 <center>
@@ -204,6 +230,7 @@
                 $BranchId = $_POST['select_Branch'];
                 $YearId = $_POST['select_Year'];
                 $StudentBranchStatus= "Active";
+                $acdsesid = $_POST['select_Academic_Session_Id'];
                             
             $sql="INSERT INTO student_master(First_Name,Middle_Name,Last_Name,Date_Of_Birth,Gender,Contact,Email_Id,Address,Student_Status) VALUES('$FirstName','$MiddleName','$LastName','$DateOfBirth','$Gender','$Contact','$Email','$Address','$StudentStatus')";
             
@@ -214,13 +241,16 @@
             $Stud_Id=$row['id'];
             //echo "<br> given id is : ".$gotid;
             
+            $sql3="INSERT INTO student_branch_year_link(Student_Id,Branch_Id,Year_Id,Academic_Session_Id) VALUES('$Stud_Id','$BranchId','$YearId','$acdsesid') ";
+
             $sql1="INSERT INTO student_branch_link(Student_Id,Branch_Id,Student_Branch_Status) VALUES('$Stud_Id','$BranchId','$StudentBranchStatus')";
-            if($con->query($sql1) === TRUE && $con->query($sql2) === TRUE){
-                echo "inserted into branch link";
-                echo $Stud_Id;
+            if($con->query($sql1) === TRUE && $con->query($sql2) === TRUE ){
+                echo "inserted into stud branch link and stud branch year link ";
+    
+                //echo $Stud_Id;
             }
             
-            if($con->query($sql) === TRUE ){
+            if($con->query($sql) === TRUE && $con->query($sql3)===TRUE ){
                 //echo $YearId;
                 echo "<script> location.href='Index.php'; </script>";
           }else{

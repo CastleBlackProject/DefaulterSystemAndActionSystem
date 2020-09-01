@@ -224,8 +224,8 @@
         $Email =  $row['Email_Id'];
         $Address =  $row['Address'];
         $StudentStatus =  $row['Student_Status'];
-        $BranchId = $row['Branch_Id'];
-        $YearId = $row['Year_Id'];
+        //$BranchId = $row['Branch_Id'];
+        //$YearId = $row['Year_Id'];
     } 
 
     if(isset($_POST['submit'])) {
@@ -242,6 +242,7 @@
         $YearId = $_POST['select_Year'];
         $sql="UPDATE student_master SET First_Name='$FirstName',Middle_Name='$MiddleName',Last_Name='$LastName',Date_Of_Birth='$DateOfBirth',Gender='$Gender',Contact='$Contact',Email_Id='$Email',Address='$Address',Student_Status='$StudentStatus' WHERE Student_Id='$StudentId'";
         
+
         if($con->query($sql) === TRUE ){
           #echo "<br> record updated successfully";
           echo "<script> location.href='Index.php'; </script>";
