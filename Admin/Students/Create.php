@@ -232,28 +232,35 @@
                 $StudentBranchStatus= "Active";
                 $acdsesid = $_POST['select_Academic_Session_Id'];
                             
-            $sql="INSERT INTO student_master(First_Name,Middle_Name,Last_Name,Date_Of_Birth,Gender,Contact,Email_Id,Address,Student_Status) VALUES('$FirstName','$MiddleName','$LastName','$DateOfBirth','$Gender','$Contact','$Email','$Address','$StudentStatus')";
-            
             $sql2="SELECT max(Student_Id) as id from student_master";
             $result2 = $con->query($sql2);
             $row = $result2->fetch_assoc();
             //echo "<br> last id is : ".$row['id'];
-            $Stud_Id=$row['id'];
+            if($row['id'] == 0)
+            {
+                $Stud_Id=1;
+            }
+            else{
+                $Student_Id=$row['id'];
+            }
             //echo "<br> given id is : ".$gotid;
             
-            $sql3="INSERT INTO student_branch_year_link(Student_Id,Branch_Id,Year_Id,Academic_Session_Id) VALUES('$Stud_Id','$BranchId','$YearId','$acdsesid') ";
-
-            $sql1="INSERT INTO student_branch_link(Student_Id,Branch_Id,Student_Branch_Status) VALUES('$Stud_Id','$BranchId','$StudentBranchStatus')";
-            if($con->query($sql1) === TRUE && $con->query($sql2) === TRUE ){
-                echo "inserted into stud branch link and stud branch year link ";
+            $sql="INSERT INTO student_master(First_Name,Middle_Name,Last_Name,Date_Of_Birth,Gender,Contact,Email_Id,Address,Student_Status) VALUES('$FirstName','$MiddleName','$LastName','$DateOfBirth','$Gender','$Contact','$Email','$Address','$StudentStatus')";
+            //$con->query($sql);
+            $sql3="INSERT INTO student_branch_year_link(Student_Id,Branch_Id,Year_Id,Academic_Session_Id) VALUES('$Student_Id','$BranchId','$YearId','$acdsesid') ";
+            //$con->query($sql3);
+            $sql1="INSERT INTO student_branch_link(Student_Id,Branch_Id,Student_Branch_Status) VALUES('$Student_Id','$BranchId','$StudentBranchStatus')";
+            //$con->query($sql1);
+            // if($con->query($sql1) === TRUE && $con->query($sql2) === TRUE ){
+            //     echo "inserted into stud branch link and stud branch year link ";
     
-                //echo $Stud_Id;
-            }
+            //     //echo $Stud_Id;
+            // }&& $con->query($sql3)===TRUE 
             
-            if($con->query($sql) === TRUE && $con->query($sql3)===TRUE ){
+            if($con->query($sql) === TRUE && $con->query($sql3) === TRUE && $con->query($sql1) === TRUE){
                 //echo $YearId;
                 echo "<script> location.href='Index.php'; </script>";
-          }else{
+            }else{
               echo "<br>error: ".$sql."<br>".$con->error;
           }
             }
