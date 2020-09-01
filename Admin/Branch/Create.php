@@ -33,9 +33,9 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="../Branch/Index.php">Branch Master</a>
-                        <a class="dropdown-item" href="#">Academic Session</a>
+                        <a class="dropdown-item" href="../AcademicSession/Index.php">Academic Session</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Student Master</a>
+                        <a class="dropdown-item" href="../Students/Index.php">Student Master</a>
                         <a class="dropdown-item" href="#">Assign Staff</a>
                         <a class="dropdown-item" href="#">Assign Student</a>
                     </div>
@@ -47,7 +47,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <!-- <div class="dropdown-divider"></div> -->
-                        <a class="dropdown-item" href="#">Staff Master</a>
+                        <a class="dropdown-item" href="../Staff/Index.php">Staff Master</a>
                         <a class="dropdown-item" href="../Subject/Index.php">Subject Master</a>
                     </div>
                 </li>
@@ -114,9 +114,6 @@
             $BranName = $_POST['txt_BranchName'];
             $BranCode = $_POST['txt_BranchCode'];
             $BranStatus = $_POST['select_BranchStatus'];
-            $sql1="SELECT max(Branch_Id) as id from branch_master";
-            $result = $con->query($sql1);
-            $row = $result->fetch_assoc();
             
             $sql="INSERT INTO branch_master(Branch_Name,Branch_Code,Branch_Status) VALUES('$BranName','$BranCode','$BranStatus')";
             
