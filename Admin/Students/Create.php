@@ -202,11 +202,13 @@
                 $Address =  $_POST['txt_Address'];
                 $StudentStatus =  $_POST['select_StudentStatus'];
                 $BranchId = $_POST['select_Branch'];
-                $YearId = $_Post['select_Year'];
+                $YearId = $_POST['select_Year'];
+                echo $YearId;
             
             $sql="INSERT INTO student_master(First_Name,Middle_Name,Last_Name,Date_Of_Birth,Gender,Contact,Email_Id,Address,Student_Status,Branch_Id,Year_Id) VALUES('$FirstName','$MiddleName','$LastName','$DateOfBirth','$Gender','$Contact','$Email','$Address','$StudentStatus','$BranchId','$YearId')";
             
             if($con->query($sql) === TRUE ){
+                //echo $YearId;
                 echo "<script> location.href='Index.php'; </script>";
           }else{
               echo "<br>error: ".$sql."<br>".$con->error;
