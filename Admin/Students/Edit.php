@@ -159,6 +159,32 @@
                     ?>
                         </select>
                 </div>
+                <div class="form-group col-md-3">
+                        <label for="select_Year">Year</label>
+                        <select id="select_Year" name="select_Year" class="form-control">
+                    <?php
+                        // $servername="localhost";
+                        // $username="root";
+                        // $password="";
+                        // $db="vceterp";
+                        // $con = new mysqli($servername,$username,$password,$db);
+                        // // if(!$con)
+                        // {
+                        //     die('could not connect'.mysql_error());
+                        // }
+                        // else
+                        // {
+                        //     echo "<script>alert(<h1>database connected</h1>);</script>";
+                        // }
+                        $sql = "SELECT * FROM year_master";
+                        $result = $con->query($sql);
+                        while($row = $result->fetch_array())
+                        {
+                            echo "<option value ='".$row['Year_Id']."'>".$row['Year_Name']."</option>";
+                        }  
+                    ?>
+                        </select>
+                </div>
             </div>
             <div class="my-4">
                 <center>
@@ -199,6 +225,7 @@
         $Address =  $row['Address'];
         $StudentStatus =  $row['Student_Status'];
         $BranchId = $row['Branch_Id'];
+        $YearId = $row['Year_Id'];
     } 
 
     if(isset($_POST['submit'])) {
@@ -212,7 +239,8 @@
         $Address =  $_POST['txt_Address'];
         $StudentStatus =  $_POST['select_StudentStatus'];
         $BranchId = $_POST['select_Branch'];
-        $sql="UPDATE student_master SET First_Name='$FirstName',Middle_Name='$MiddleName',Last_Name='$LastName',Date_Of_Birth='$DateOfBirth',Gender='$Gender',Contact='$Contact',Email_Id='$Email',Address='$Address',Student_Status='$StudentStatus',Branch_Id='$BranchId' WHERE Student_Id='$StudentId'";
+        $YearId = $_POST['select_Year'];
+        $sql="UPDATE student_master SET First_Name='$FirstName',Middle_Name='$MiddleName',Last_Name='$LastName',Date_Of_Birth='$DateOfBirth',Gender='$Gender',Contact='$Contact',Email_Id='$Email',Address='$Address',Student_Status='$StudentStatus',Branch_Id='$BranchId',Year_Id='$YearId' WHERE Student_Id='$StudentId'";
         
         if($con->query($sql) === TRUE ){
           #echo "<br> record updated successfully";

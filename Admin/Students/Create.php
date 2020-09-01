@@ -157,6 +157,32 @@
                     ?>
                         </select>
                 </div>
+                <div class="form-group col-md-3">
+                        <label for="select_Year">Year</label>
+                        <select id="select_Year" name="select_Year" class="form-control">
+                    <?php
+                        // $servername="localhost";
+                        // $username="root";
+                        // $password="";
+                        // $db="vceterp";
+                        // $con = new mysqli($servername,$username,$password,$db);
+                        // // if(!$con)
+                        // {
+                        //     die('could not connect'.mysql_error());
+                        // }
+                        // else
+                        // {
+                        //     echo "<script>alert(<h1>database connected</h1>);</script>";
+                        // }
+                        $sql = "SELECT * FROM year_master";
+                        $result = $con->query($sql);
+                        while($row = $result->fetch_array())
+                        {
+                            echo "<option value ='".$row['Year_Id']."'>".$row['Year_Name']."</option>";
+                        }  
+                    ?>
+                        </select>
+                </div>
             </div>
             <div class="my-4">
                 <center>
@@ -175,9 +201,10 @@
                 $Email =  $_POST['txt_Email'];
                 $Address =  $_POST['txt_Address'];
                 $StudentStatus =  $_POST['select_StudentStatus'];
-                $BranchID = $_POST["select_Branch"];
+                $BranchId = $_POST['select_Branch'];
+                $YearId = $_Post['select_Year'];
             
-            $sql="INSERT INTO student_master(First_Name,Middle_Name,Last_Name,Date_Of_Birth,Gender,Contact,Email_Id,Address,Student_Status,Branch_Id) VALUES('$FirstName','$MiddleName','$LastName','$DateOfBirth','$Gender','$Contact','$Email','$Address','$StudentStatus','$BranchID')";
+            $sql="INSERT INTO student_master(First_Name,Middle_Name,Last_Name,Date_Of_Birth,Gender,Contact,Email_Id,Address,Student_Status,Branch_Id,Year_Id) VALUES('$FirstName','$MiddleName','$LastName','$DateOfBirth','$Gender','$Contact','$Email','$Address','$StudentStatus','$BranchId','$YearId')";
             
             if($con->query($sql) === TRUE ){
                 echo "<script> location.href='Index.php'; </script>";
