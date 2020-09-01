@@ -148,23 +148,26 @@
             <?php
            
             if(isset($_POST['submit'])) {
-            $SubjectName = $_POST['txt_SubjectName'];
-            $SubjectCode = $_POST['txt_SubjectCode'];
-            $SubjectStatus = $_POST['select_SubjectStatus'];
-            $BranchId = $_POST['select_BranchId'];
-            $SemesterId = $_POST['select_Semester'];
+                $SubjectName = $_POST['txt_SubjectName'];
+                $SubjectCode = $_POST['txt_SubjectCode'];
+                $SubjectStatus = $_POST['select_SubjectStatus'];
+                $BranchId = $_POST['select_BranchId'];
+                $SemesterId = $_POST['select_Semester'];
 
-            $sql1="SELECT max(Subject_Id) as id from subject_master";
-            $result = $con->query($sql1);
-            $row = $result->fetch_assoc();
+                $sql1="SELECT max(Subject_Id) as id from subject_master";
+                $result = $con->query($sql1);
+                $row = $result->fetch_assoc();
 
-            $sql="INSERT INTO subject_master(Subject_Name,Subject_Code,Subject_Status,Branch_Id,Semester_Id) VALUES('$SubjectName','$SubjectCode','$SubjectStatus','$BranchId','$SemesterId')";
+                $sql="INSERT INTO subject_master(Subject_Name,Subject_Code,Subject_Status,Branch_Id,Semester_Id) VALUES('$SubjectName','$SubjectCode','$SubjectStatus','$BranchId','$SemesterId')";
             
-            if($con->query($sql) === TRUE ){
-                echo "<script> location.href='Index.php'; </script>";
-          }else{
-              echo "<br>error: ".$sql."<br>".$con->error;
-          }
+                if($con->query($sql) === TRUE )
+                {
+                    echo "<script> location.href='Index.php'; </script>";
+                }
+                else
+                {
+                    echo "<br>error: ".$sql."<br>".$con->error;
+                }
             }
            ?>
             <input type="button" value="Back To List" onclick="window.location.href='Index.php'"

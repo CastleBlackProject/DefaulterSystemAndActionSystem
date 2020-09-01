@@ -97,32 +97,36 @@
                 </center>
             </div>
             <?php
-            $servername="localhost";
-            $username="root";
-            $password="";
-            $db="vceterp";
-            $con = new mysqli($servername,$username,$password,$db);
-            if(!$con)
-            {
-                die('could not connect'.mysql_error());
-            }
-            else
-            {
-                #echo "<h1>database connected</h1>";
-            }  
-            if(isset($_POST['submit'])) {
-            $BranName = $_POST['txt_BranchName'];
-            $BranCode = $_POST['txt_BranchCode'];
-            $BranStatus = $_POST['select_BranchStatus'];
-            
-            $sql="INSERT INTO branch_master(Branch_Name,Branch_Code,Branch_Status) VALUES('$BranName','$BranCode','$BranStatus')";
-            
-            if($con->query($sql) === TRUE ){
-                echo "<script> location.href='Index.php'; </script>";
-          }else{
-              echo "<br>error: ".$sql."<br>".$con->error;
-          }
-            }
+                $servername="localhost";
+                $username="root";
+                $password="";
+                $db="vceterp";
+                $con = new mysqli($servername,$username,$password,$db);
+                if(!$con)
+                {
+                    die('could not connect'.mysql_error());
+                }
+                else
+                {
+                    #echo "<h1>database connected</h1>";
+                }  
+                if(isset($_POST['submit'])) 
+                {
+                    $BranName = $_POST['txt_BranchName'];
+                    $BranCode = $_POST['txt_BranchCode'];
+                    $BranStatus = $_POST['select_BranchStatus'];
+                    
+                    $sql="INSERT INTO branch_master(Branch_Name,Branch_Code,Branch_Status) VALUES('$BranName','$BranCode','$BranStatus')";
+                    
+                    if($con->query($sql) === TRUE )
+                    {
+                        echo "<script> location.href='Index.php'; </script>";
+                    }
+                    else
+                    {
+                        echo "<br>error: ".$sql."<br>".$con->error;
+                    }
+                }
            ?>
             <input type="button" value="Back To List" onclick="window.location.href='Index.php'"
                 class="btn btn-primary" />
