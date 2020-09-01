@@ -198,6 +198,7 @@
         $Email =  $row['Email_Id'];
         $Address =  $row['Address'];
         $StudentStatus =  $row['Student_Status'];
+        $BranchId = $row['Branch_Id'];
     } 
 
     if(isset($_POST['submit'])) {
@@ -210,8 +211,8 @@
         $Email =  $_POST['txt_Email'];
         $Address =  $_POST['txt_Address'];
         $StudentStatus =  $_POST['select_StudentStatus'];
-        
-        $sql="UPDATE student_master SET First_Name='$FirstName',Middle_Name='$MiddleName',Last_Name='$LastName',Date_Of_Birth='$DateOfBirth',Gender='$Gender',Contact='$Contact',Email_Id='$Email',Address='$Address',Student_Status='$StudentStatus' WHERE Student_Id='$StudentId'";
+        $BranchId = $_POST['select_Branch'];
+        $sql="UPDATE student_master SET First_Name='$FirstName',Middle_Name='$MiddleName',Last_Name='$LastName',Date_Of_Birth='$DateOfBirth',Gender='$Gender',Contact='$Contact',Email_Id='$Email',Address='$Address',Student_Status='$StudentStatus',Branch_Id='$BranchId' WHERE Student_Id='$StudentId'";
         
         if($con->query($sql) === TRUE ){
           #echo "<br> record updated successfully";

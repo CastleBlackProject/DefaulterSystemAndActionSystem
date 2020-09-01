@@ -175,8 +175,9 @@
                 $Email =  $_POST['txt_Email'];
                 $Address =  $_POST['txt_Address'];
                 $StudentStatus =  $_POST['select_StudentStatus'];
+                $BranchID = $_POST["select_Branch"];
             
-            $sql="INSERT INTO student_master(First_Name,Middle_Name,Last_Name,Date_Of_Birth,Gender,Contact,Email_Id,Address,Student_Status) VALUES('$FirstName','$MiddleName','$LastName','$DateOfBirth','$Gender','$Contact','$Email','$Address','$StudentStatus')";
+            $sql="INSERT INTO student_master(First_Name,Middle_Name,Last_Name,Date_Of_Birth,Gender,Contact,Email_Id,Address,Student_Status,Branch_Id) VALUES('$FirstName','$MiddleName','$LastName','$DateOfBirth','$Gender','$Contact','$Email','$Address','$StudentStatus','$BranchID')";
             
             if($con->query($sql) === TRUE ){
                 echo "<script> location.href='Index.php'; </script>";
