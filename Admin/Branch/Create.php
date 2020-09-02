@@ -35,7 +35,6 @@
                         <a class="dropdown-item" href="../Branch/Index.php">Branch Master</a>
                         <a class="dropdown-item" href="../AcademicSession/Index.php">Academic Session</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="../Students/Index.php">Student Master</a>
                         <a class="dropdown-item" href="#">Assign Staff</a>
                         <a class="dropdown-item" href="#">Assign Student</a>
                     </div>
@@ -49,6 +48,7 @@
                         <!-- <div class="dropdown-divider"></div> -->
                         <a class="dropdown-item" href="../Staff/Index.php">Staff Master</a>
                         <a class="dropdown-item" href="../Subject/Index.php">Subject Master</a>
+                        <a class="dropdown-item" href="../Students/Index.php">Student Master</a>
                     </div>
                 </li>
             </ul>
