@@ -140,14 +140,6 @@
                         $password="";
                         $db="vceterp";
                         $con = new mysqli($servername,$username,$password,$db);
-                        // if(!$con)
-                        // {
-                        //     die('could not connect'.mysql_error());
-                        // }
-                        // else
-                        // {
-                        //     echo "<script>alert(<h1>database connected</h1>);</script>";
-                        // }
                         $sql = "SELECT * FROM branch_master";
                         $result = $con->query($sql);
                         while($row = $result->fetch_array())
@@ -161,19 +153,6 @@
                         <label for="select_Year">Year</label>
                         <select id="select_Year" name="select_Year" class="form-control">
                     <?php
-                        // $servername="localhost";
-                        // $username="root";
-                        // $password="";
-                        // $db="vceterp";
-                        // $con = new mysqli($servername,$username,$password,$db);
-                        // // if(!$con)
-                        // {
-                        //     die('could not connect'.mysql_error());
-                        // }
-                        // else
-                        // {
-                        //     echo "<script>alert(<h1>database connected</h1>);</script>";
-                        // }
                         $sql = "SELECT * FROM year_master";
                         $result = $con->query($sql);
                         while($row = $result->fetch_array())
@@ -187,19 +166,6 @@
                         <label for="select_Academic_Session_Id">Academic Session</label>
                         <select id="select_Academic_Session_Id" name="select_Academic_Session_Id" class="form-control">
                     <?php
-                        // $servername="localhost";
-                        // $username="root";
-                        // $password="";
-                        // $db="vceterp";
-                        // $con = new mysqli($servername,$username,$password,$db);
-                        // // if(!$con)
-                        // {
-                        //     die('could not connect'.mysql_error());
-                        // }
-                        // else
-                        // {
-                        //     echo "<script>alert(<h1>database connected</h1>);</script>";
-                        // }
                         $sql = "SELECT * FROM academic_session_master";
                         $result = $con->query($sql);
                         while($row = $result->fetch_array())
@@ -231,10 +197,7 @@
                 $YearId = $_POST['select_Year'];
                 $StudentBranchStatus= "Active";
                 $acdsesid = $_POST['select_Academic_Session_Id'];
-                            
-           
-            //echo "<br> given id is : ".$gotid;
-            
+                                       
             $sql="INSERT INTO student_master(First_Name,Middle_Name,Last_Name,Date_Of_Birth,Gender,Contact,Email_Id,Address,Student_Status) VALUES('$FirstName','$MiddleName','$LastName','$DateOfBirth','$Gender','$Contact','$Email','$Address','$StudentStatus')";
             //$con->query($sql);
             $con->query($sql);
