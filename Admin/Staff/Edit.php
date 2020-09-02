@@ -160,6 +160,22 @@
 
                 $StaffId = $_GET['StaffId'];
 
+                $sql = "SELECT * FROM staff_master WHERE Staff_Id = " . $StaffId;
+                $result = $con->query($sql);
+            
+                while($row = mysqli_fetch_array($result))
+                {
+                    $FirstName =  $row['First_Name'];        
+                    $MiddleName =  $row['Middle_Name'];        
+                    $LastName =  $row['Last_Name']; 
+                    $DateOfBirth =  $row['Date_Of_Birth'];               
+                    $Gender=  $row['Gender'];
+                    $Contact =  $row['Contact'];
+                    $Email =  $row['Email_Id'];
+                    $Address =  $row['Address'];
+                    $StudentStatus =  $row['Student_Status'];
+                }
+
                 if(isset($_POST['submit'])) {
                     $FirstName =  $_POST['txt_FirstName'];        
                     $MiddleName =  $_POST['txt_MiddleName'];       
@@ -208,6 +224,55 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
+
+    <script>
+
+        var FirstName = "<?php echo $FirstName ?>";
+        var MiddleName = "<?php echo $MiddleName ?>";
+        var LastName = "<?php echo $LastName ?>";
+        var DateOfBirth = "<?php echo $DateOfBirth ?>";
+        var Gender = "<?php echo $Gender ?>";
+        var Contact = "<?php echo $Contact ?>";
+        var Email = "<?php echo $Email ?>";
+        var Address = "<?php echo $Address ?>";
+        var StudentStatus = "<?php echo $StudentStatus ?>";
+
+        $("#txt_FirstName").val(FirstName);
+        $("#txt_MiddleName").val(MiddleName);
+        $("#txt_LastName").val(LastName);
+        $("#txt_DateOfBirth").val(DateOfBirth);            
+        $("#txt_Contact").val(Contact);
+        $("#txt_Email").val(Email);
+        $("#txt_Address").val(Address);
+
+        var select_Gender = document.getElementById("select_Gender");
+        var options_Gender = select_Gender.options;
+        for (var j = 0, option; option = options_Gender[j]; j++) {
+
+            if (option.value == Gender) {
+                select_Gender.selectedIndex = j;
+            }
+        }
+
+        var select_StudentStatus = document.getElementById("select_StudentStatus");
+        var options_StudentStatus = select_StudentStatus.options;
+        for (var j = 0, option; option = options_StudentStatus[j]; j++) {
+
+            if (option.value == StudentStatus) {
+                select_StudentStatus.selectedIndex = j;
+            }
+        }
+
+        var select_Branch = document.getElementById("select_Branch");
+        var options_Branch = select_Branch.options;
+        for (var j = 0, option; option = options_Branch[j]; j++) {
+
+            if (option.value == Branch) {
+                select_Branch.selectedIndex = j;
+            }
+        }
+    </script>
+
 </body>
 
 </html>
