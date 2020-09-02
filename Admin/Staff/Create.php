@@ -100,8 +100,8 @@
                     </select>
                 </div>
                 <div class="form-group col-md-3">
-                    <label for="select_StudentStatus">Staff Status</label>
-                    <select id="select_StudentStatus" name="select_StudentStatus" class="form-control">
+                    <label for="select_StaffStatus">Staff Status</label>
+                    <select id="select_StaffStatus" name="select_StaffStatus" class="form-control">
                         <option value="Active">Active</option>
                         <option value="De-Active">De-Active</option>
                     </select>
