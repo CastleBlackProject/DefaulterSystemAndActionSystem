@@ -157,6 +157,9 @@
                 </center>
             </div>
             <?php  
+
+                $StaffId = $_GET['StaffId'];
+
                 if(isset($_POST['submit'])) {
                     $FirstName =  $_POST['txt_FirstName'];        
                     $MiddleName =  $_POST['txt_MiddleName'];       
@@ -170,18 +173,13 @@
                     $BranchId = $_POST['select_Branch'];
                     $StaffBranchStatus= "Active";
                                 
-                    $sql1="INSERT INTO staff_master(First_Name,Middle_Name,Last_Name,Date_Of_Birth,Gender,Contact,Email_Id,Address,Staff_Status) VALUES('$FirstName','$MiddleName','$LastName','$DateOfBirth','$Gender','$Contact','$Email','$Address','$StaffStatus')";
+                    $sql1="UPDATE staff_master SET First_Name='$FirstName',Middle_Name='$MiddleName',Last_Name='$LastName',Date_Of_Birth='$DateOfBirth',Gender='$Gender',Contact='$Contact',Email_Id='$Email',Address='$Address',Staff_Status='$StaffStatus' WHERE Staff_Id='$StaffId'";
                     
                     if($con->query($sql1) === TRUE ){
-                        $sql2="SELECT max(Staff_Id) as id from staff_master";
-                        $result2 = $con->query($sql2);
-                        $row = $result2->fetch_assoc();
-
-                        $StaffId=$row['id'];
-
-                        $sql3="INSERT INTO staff_branch_link(Staff_Id,Branch_Id,Staff_Branch_Status) VALUES('$StaffId','$BranchId','$StaffBranchStatus')";
                     
-                        if($con->query($sql3) === TRUE){
+                        $sql2="UPDATE staff_branch_link SET Branch_Id='$BranchId' WHERE Staff_Id='$StaffId' && Staff_Branch_Status='$StaffBranchStatus'";
+                    
+                        if($con->query($sql2) === TRUE){
                             echo "<script> location.href='Index.php'; </script>";
                         }
                         else{
