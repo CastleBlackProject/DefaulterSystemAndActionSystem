@@ -47,7 +47,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <!-- <div class="dropdown-divider"></div> -->
-                        <a class="dropdown-item" href="#">Staff Master</a>
+                        <a class="dropdown-item" href="../Staff/Index.php">Staff Master</a>
                         <a class="dropdown-item" href="../Subject/Index.php">Subject Master</a>
                         <a class="dropdown-item" href="../Students/Index.php">Student Master</a>
                     </div>
