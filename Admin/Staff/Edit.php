@@ -173,7 +173,7 @@
                     $Contact =  $row['Contact'];
                     $Email =  $row['Email_Id'];
                     $Address =  $row['Address'];
-                    $StudentStatus =  $row['Student_Status'];
+                    $StudentStatus =  $row['Staff_Status'];
                 }
 
                 if(isset($_POST['submit'])) {
