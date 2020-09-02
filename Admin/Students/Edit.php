@@ -185,6 +185,19 @@
                     ?>
                         </select>
                 </div>
+                <div class="form-group col-md-3">
+                        <label for="select_Academic_Session_Id">Academic Session</label>
+                        <select id="select_Academic_Session_Id" name="select_Academic_Session_Id" class="form-control">
+                    <?php
+                        $sql = "SELECT * FROM academic_session_master";
+                        $result = $con->query($sql);
+                        while($row = $result->fetch_array())
+                        {
+                            echo "<option value ='".$row['Academic_Session_Id']."'>".$row['Academic_Session_Name']."</option>";
+                        }  
+                    ?>
+                        </select>
+                </div>
             </div>
             <div class="my-4">
                 <center>
@@ -194,20 +207,22 @@
             </div>
             <?php
     
-    $servername="localhost";
-    $username="root";
-    $password="";
-    $db="vceterp";
-    $con = new mysqli($servername,$username,$password,$db);
-    if(!$con)
-    {
-        die('could not connect'.mysql_error());
-    }
-    else
-    {
-        #echo "<h1>database connected</h1>";
-    }
-    
+    // $servername="localhost";
+    // $username="root";
+    // $password="";
+    // $db="vceterp";
+    // $con = new mysqli($servername,$username,$password,$db);
+    // if(!$con)
+    // {
+    //     die('could not connect'.mysql_error());
+    // }
+    // else
+    // {
+    //     #echo "<h1>database connected</h1>";
+    // }
+    // $sql2="SELECT Student_Id as id from student_master ";
+    //         $result2 = $con->query($sql2);
+    //         $row = $result2->fetch_assoc();
     $StudentId = $_GET['StudentId'];
 
     $sql = "SELECT * FROM student_master WHERE Student_Id = " . $StudentId;
@@ -240,10 +255,13 @@
         $StudentStatus =  $_POST['select_StudentStatus'];
         $BranchId = $_POST['select_Branch'];
         $YearId = $_POST['select_Year'];
+        $StudentBranchStatus= "Active";
+        $acdsesid = $_POST['select_Academic_Session_Id'];
         $sql="UPDATE student_master SET First_Name='$FirstName',Middle_Name='$MiddleName',Last_Name='$LastName',Date_Of_Birth='$DateOfBirth',Gender='$Gender',Contact='$Contact',Email_Id='$Email',Address='$Address',Student_Status='$StudentStatus' WHERE Student_Id='$StudentId'";
-        
-
-        if($con->query($sql) === TRUE ){
+        $sql1="UPDATE student_branch_link SET Branch_Id='$BranchId',Student_Branch_Status='$StudentBranchStatus' WHERE Student_Id='$StudentId'";
+                
+        $sql2="UPDATE student_branch_year_link SET Branch_Id='$BranchId',Year_Id='$YearId',Academic_Session_Id='$acdsesid' WHERE Student_Id='$StudentId' ";
+        if($con->query($sql) === TRUE && $con->query($sql1) === TRUE && $con->query($sql2) === TRUE){
           #echo "<br> record updated successfully";
           echo "<script> location.href='Index.php'; </script>";
         }else
