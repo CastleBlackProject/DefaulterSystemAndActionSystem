@@ -258,7 +258,7 @@
         $StudentBranchStatus= "Active";
         $acdsesid = $_POST['select_Academic_Session_Id'];
         $sql="UPDATE student_master SET First_Name='$FirstName',Middle_Name='$MiddleName',Last_Name='$LastName',Date_Of_Birth='$DateOfBirth',Gender='$Gender',Contact='$Contact',Email_Id='$Email',Address='$Address',Student_Status='$StudentStatus' WHERE Student_Id='$StudentId'";
-        $sql1="UPDATE student_branch_link SET Branch_Id='$BranchId',Student_Branch_Status='$StudentBranchStatus' WHERE Student_Id='$StudentId'";
+        $sql1="UPDATE student_branch_link SET Branch_Id='$BranchId',Student_Branch_Status='$StudentBranchStatus' WHERE Student_Id='$StudentId' AND Student_Branch_Status='$StudentBranchStatus'";
                 
         $sql2="UPDATE student_branch_year_link SET Branch_Id='$BranchId',Year_Id='$YearId',Academic_Session_Id='$acdsesid' WHERE Student_Id='$StudentId' ";
         if($con->query($sql) === TRUE && $con->query($sql1) === TRUE && $con->query($sql2) === TRUE){
