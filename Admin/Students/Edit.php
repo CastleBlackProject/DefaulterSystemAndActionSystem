@@ -163,27 +163,10 @@
                 <div class="form-group col-md-3">
                         <label for="select_Year">Year</label>
                         <select id="select_Year" name="select_Year" class="form-control">
-                    <?php
-                        // $servername="localhost";
-                        // $username="root";
-                        // $password="";
-                        // $db="vceterp";
-                        // $con = new mysqli($servername,$username,$password,$db);
-                        // // if(!$con)
-                        // {
-                        //     die('could not connect'.mysql_error());
-                        // }
-                        // else
-                        // {
-                        //     echo "<script>alert(<h1>database connected</h1>);</script>";
-                        // }
-                        $sql = "SELECT * FROM year_master";
-                        $result = $con->query($sql);
-                        while($row = $result->fetch_array())
-                        {
-                            echo "<option value ='".$row['Year_Id']."'>".$row['Year_Name']."</option>";
-                        }  
-                    ?>
+                            <option value='1'>FE</option>
+                            <option value='2'>SE</option>
+                            <option value='3'>TE</option>
+                            <option value='4'>BE</option>
                         </select>
                 </div>
                 <div class="form-group col-md-3">
