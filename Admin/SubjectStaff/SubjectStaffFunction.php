@@ -12,7 +12,7 @@
             $con = new mysqli($servername,$username,$password,$db);
 
             # where Branch_Id=".$BranchId.", Semester_Id=".$SemesterId;
-            $sql = "SELECT * FROM branch_master";
+            $sql = "SELECT * FROM subject_master WHERE Branch_Id=".$BranchId." AND Semester_Id=".$SemesterId;
             $result = $con->query($sql);
 
             $DynamicElement = "";
@@ -22,7 +22,7 @@
                 $DynamicElement .= "<fieldset class='my-2'>
                 <div class='form-row'>
                     <div class='form-group col-md-2'>
-                        <label>".$row['Branch_Name']."</label>
+                        <label>".$row['Subject_Name']."</label>
                     </div>
                     <div class='form-group col-md-9'>
                         <div class='form-row'>                                
