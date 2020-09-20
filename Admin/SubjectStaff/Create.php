@@ -95,7 +95,7 @@
                     </div>
                     <div class="form-group col-md-3">
                         <label>Branch</label>
-                        <select id="select_Semester" class="form-control">
+                        <select id="select_Branch" class="form-control">
                         <?php
                         $servername="localhost";
                         $username="root";
@@ -111,6 +111,9 @@
                     ?>
                         </select>
                     </div>
+                    <div class="form-group col-md-3">
+                        <button>Search</button>
+                    </div>
                 </div>            
             </div>
 
@@ -120,7 +123,27 @@
                 <fieldset class="my-2">
                     <div class="form-row">
                         <div class="form-group col-md-2">
-                            <label>Subject 1</label>
+                            <label>
+                            <?php
+                $sql = "SELECT * FROM subject_master";
+                $result = $con->query($sql);
+                //if ($result->num_rows > 0)
+
+                while($row = mysqli_fetch_array($result))
+                {
+                    $BranchId = $row['Branch_Id']; 
+                    $sql1 = "SELECT Subject_Name FROM subject_master WHERE Branch_Id = " . $BranchId;
+                    $result1 = $con->query($sql1);
+
+                    $BranchName = "";
+
+                    while($row1 = mysqli_fetch_array($result1)){
+                        $SubjectName = $row1['Subject_Name'];
+                    }
+                    echo  "abc"; 
+                ?>
+               
+                            </label>
                         </div>
                         <div class="form-group col-md-9">
                             <div class="form-row">                                
