@@ -55,95 +55,80 @@
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="button">Search</button>
             </form>
         </div>
     </nav>
 
     <div class="container-fluid" id="main-container">
-        <form action="" method="POST">
-
-            <div class="my-4" style="color:#0041b3">
-                <h4>Subject Staff</h4>
-            </div>
-
-            <hr />
-
+        <div>
             <div>
-                <div class="form-row">
-                    <div class="form-group col-md-2">
-                        <label>Year</label>
-                        <select id="select_Year" class="form-control">
-                            <option value="1">FE</option>
-                            <option value="2">SE</option>
-                            <option value="3">TE</option>
-                            <option value="4">BE</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label>Semester</label>
-                        <select id="select_Semester" class="form-control">
-                            <option value="1">Semester 1</option>
-                            <option value="2">Semester 2</option>
-                            <option value="3">Semester 3</option>
-                            <option value="4">Semester 4</option>
-                            <option value="5">Semester 5</option>
-                            <option value="6">Semester 6</option>
-                            <option value="7">Semester 7</option>
-                            <option value="8">Semester 8</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label>Branch</label>
-                        <select id="select_Branch" class="form-control">
-                        <?php
-                        $servername="localhost";
-                        $username="root";
-                        $password="";
-                        $db="vceterp";
-                        $con = new mysqli($servername,$username,$password,$db);
-                        $sql = "SELECT * FROM branch_master";
-                        $result = $con->query($sql);
-                        while($row = $result->fetch_array())
-                        {
-                            echo "<option value ='".$row['Branch_Id']."'>".$row['Branch_Name']."</option>";
-                        }  
-                    ?>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-3">
-                        <button>Search</button>
-                    </div>
-                </div>            
-            </div>
 
-            <hr />
+                <div class="my-4" style="color:#0041b3">
+                    <h4>Subject Staff</h4>
+                </div>
 
-            <div>
-                <fieldset class="my-2">
+                <hr />
+
+                <div>
                     <div class="form-row">
                         <div class="form-group col-md-2">
-                            <label>
+                            <label>Year</label>
+                            <select id="select_Year" class="form-control">
+                                <option value="1">FE</option>
+                                <option value="2">SE</option>
+                                <option value="3">TE</option>
+                                <option value="4">BE</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label>Semester</label>
+                            <select id="select_Semester" name="select_Semester" class="form-control">
+                                <option value="1">Semester 1</option>
+                                <option value="2">Semester 2</option>
+                                <option value="3">Semester 3</option>
+                                <option value="4">Semester 4</option>
+                                <option value="5">Semester 5</option>
+                                <option value="6">Semester 6</option>
+                                <option value="7">Semester 7</option>
+                                <option value="8">Semester 8</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Branch</label>
+                            <select id="select_Branch" name="select_Branch" class="form-control">
                             <?php
-                $sql = "SELECT * FROM subject_master";
-                $result = $con->query($sql);
-                //if ($result->num_rows > 0)
+                                $servername="localhost";
+                                $username="root";
+                                $password="";
+                                $db="vceterp";
+                                $con = new mysqli($servername,$username,$password,$db);
+                                $sql = "SELECT * FROM branch_master";
+                                $result = $con->query($sql);
+                                while($row = $result->fetch_array())
+                                {
+                                    echo "<option value ='".$row['Branch_Id']."'>".$row['Branch_Name']."</option>";
+                                }  
+                            ?>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label></label>
+                            <button id="btn_Search" class="btn btn-success">Search</button>
+                        </div>
+                    </div>            
+                </div>
 
-                while($row = mysqli_fetch_array($result))
-                {
-                    $BranchId = $row['Branch_Id']; 
-                    $sql1 = "SELECT Subject_Name FROM subject_master WHERE Branch_Id = " . $BranchId;
-                    $result1 = $con->query($sql1);
+            </div>
+            
 
-                    $BranchName = "";
+            <hr />
 
-                    while($row1 = mysqli_fetch_array($result1)){
-                        $SubjectName = $row1['Subject_Name'];
-                    }
-                    echo  "abc"; 
-                ?>
-               
-                            </label>
+            <div id="container_fieldset">
+                <!-- <fieldset class="my-2">
+                    <div class="form-row">
+                        <div class="form-group col-md-2">
+                            <label></label>
                         </div>
                         <div class="form-group col-md-9">
                             <div class="form-row">                                
@@ -169,7 +154,7 @@
                         </div>
                     </div>
                     <hr />
-                </fieldset>       
+                </fieldset>        -->
             </div>
 
             <div class="my-4">
@@ -181,7 +166,7 @@
             
             <input type="button" value="Back To List" onclick="window.location.href='Index.php'" class="btn btn-primary" />
 
-        </form>
+        </div>
     </div>
 
     <!-- Optional JavaScript -->
@@ -195,6 +180,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
     <script>
 
@@ -225,8 +211,57 @@
             //$(container).remove();
         });
 
+        $("#btn_Search").click(function(){
+            
+            console.log("test");
+            var SemesterId = $("#select_Semester").val();
+            var BranchId = $("#select_Branch").val();
+            console.log(SemesterId);
+            console.log(BranchId);
+
+            $.ajax({
+                type: "GET",
+                url: 'SubjectStaffFunction.php',
+                contentType: "application/json; charset=utf-8",
+                datatype: "Json",
+                data: { SemesterId: SemesterId, BranchId: BranchId },
+                success: function (data) {
+                    //console.log(data);
+                    
+
+
+                    
+                    var obj = JSON.parse(data);
+                    
+
+                    $("#container_fieldset").append(obj.success);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                },
+                error: function(){
+                    console.log("error");
+                }
+            });
+
+        });
+
     </script>
 
 </body>
 
 </html>
+
