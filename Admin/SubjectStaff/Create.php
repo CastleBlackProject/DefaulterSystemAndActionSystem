@@ -96,12 +96,19 @@
                     <div class="form-group col-md-3">
                         <label>Branch</label>
                         <select id="select_Semester" class="form-control">
-                            <option value="1">Computer Engineering</option>
-                            <option value="2">Information Technology</option>
-                            <option value="3">Electronics and Telecommuication</option>
-                            <option value="4">Mechanical Engineering</option>
-                            <option value="5">Civil Engineering</option>
-                            <option value="6">Instrumentation Engineering</option>
+                        <?php
+                        $servername="localhost";
+                        $username="root";
+                        $password="";
+                        $db="vceterp";
+                        $con = new mysqli($servername,$username,$password,$db);
+                        $sql = "SELECT * FROM branch_master";
+                        $result = $con->query($sql);
+                        while($row = $result->fetch_array())
+                        {
+                            echo "<option value ='".$row['Branch_Id']."'>".$row['Branch_Name']."</option>";
+                        }  
+                    ?>
                         </select>
                     </div>
                 </div>            
