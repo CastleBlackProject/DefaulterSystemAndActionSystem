@@ -213,12 +213,10 @@
 
         $("#btn_Search").click(function(){
             
-            console.log("test");
+            $("#container_fieldset").empty();
             var SemesterId = $("#select_Semester").val();
             var BranchId = $("#select_Branch").val();
-            console.log(SemesterId);
-            console.log(BranchId);
-
+            
             $.ajax({
                 type: "GET",
                 url: 'SubjectStaffFunction.php',
@@ -226,31 +224,9 @@
                 datatype: "Json",
                 data: { SemesterId: SemesterId, BranchId: BranchId },
                 success: function (data) {
-                    //console.log(data);
-                    
-
-
-                    
+                    console.log(data);
                      var obj = JSON.parse(data);
-                    
-
                      $("#container_fieldset").append(obj.success);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 },
                 error: function(){
                     console.log("error");
