@@ -61,9 +61,8 @@
     </nav>
 
     <div class="container-fluid" id="main-container">
-        <div>
+        <form method="POST" action="">
             <div>
-
                 <div class="my-4" style="color:#0041b3">
                     <h4>Subject Staff</h4>
                 </div>
@@ -159,14 +158,14 @@
 
             <div class="my-4">
                 <center>
-                    <!-- <button type="submit" name="submit" value="submit" class="btn btn-success">Submit</button> -->
+                    <button type="submit" name="submit" value="submit" class="btn btn-success">Submit</button>
                     <button type="reset" class="btn btn-success">Reset</button>
                 </center>
             </div>
             
             <input type="button" value="Back To List" onclick="window.location.href='Index.php'" class="btn btn-primary" />
 
-        </div>
+        </form>
     </div>
 
     <!-- Optional JavaScript -->
