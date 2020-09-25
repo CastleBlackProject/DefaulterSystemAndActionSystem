@@ -74,6 +74,7 @@
                         <div class="form-group col-md-2">
                             <label>Year</label>
                             <select id="select_Year" class="form-control">
+                                <option value='0'>--Select--</option>
                                 <option value="1">FE</option>
                                 <option value="2">SE</option>
                                 <option value="3">TE</option>
@@ -270,6 +271,43 @@
                 }
             });
 
+        });
+
+        $("#select_Year").change(function(){
+            var year = parseInt($("#select_Year").val());
+            $("#select_Semester").empty();
+
+            if(year == 0){
+                html = "<option value='0'>--Select--</option>" +
+                "<option value='1'>Semester 1</option>" +
+                "<option value='2'>Semester 2</option>" +
+                "<option value='3'>Semester 3</option>" +
+                "<option value='4'>Semester 4</option>" +
+                " <option value='5'>Semester 5</option>" +
+                "<option value='6'>Semester 6</option>" +
+                "<option value='7'>Semester 7</option>" +
+                "<option value='8'>Semester 8</option>";
+                $("#select_Semester").append(html);
+            }
+            else{
+                var html = "";
+                switch(year){
+                    case 1:
+                        html = "<option value='1'>Semester 1</option><option value='2'>Semester 2</option>"
+                        break;
+                    case 2:
+                        html = "<option value='3'>Semester 3</option><option value='4'>Semester 4</option>"
+                        break;
+                    case 3:
+                        html = "<option value='5'>Semester 5</option><option value='6'>Semester 6</option>"
+                        break;
+                    case 4:
+                        html = "<option value='7'>Semester 7</option><option value='8'>Semester 8</option>"
+                        break;
+                }
+
+                $("#select_Semester").append(html);
+            }
         });
 
     </script>
