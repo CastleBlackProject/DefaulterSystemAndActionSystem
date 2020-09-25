@@ -184,10 +184,11 @@
 
     <script>
 
-        $(".btn_AddStaff").click(function(){
-            var container = this.parentNode.parentNode.childNodes[3].childNodes[1];                        
-            
-            var html = '<div class="form-group col-md-3">' +
+        function addStaff(row){
+            console.log("Hello World");
+            var container = row.parentNode.parentNode.childNodes[3].childNodes[1];                        
+            //console.log(container);
+            var html = '<div class="form-group col-md-4">' +
                             '<div class="form-row">' +
                                 '<div class="form-group col-md-10">' +
                                     '<select name="select_Staff" class="form-control">' +
@@ -203,7 +204,29 @@
                             '</div>' +                                
                         '</div>';
             $(html).appendTo(container);
-        });
+        }
+
+        // $(".btn_AddStaff").click(function(){
+        //     console.log("Hello World");
+        //     var container = this.parentNode.parentNode.childNodes[3].childNodes[1];                        
+        //     console.log(container);
+        //     var html = '<div class="form-group col-md-4">' +
+        //                     '<div class="form-row">' +
+        //                         '<div class="form-group col-md-10">' +
+        //                             '<select name="select_Staff" class="form-control">' +
+        //                                 '<option value="1">Staff 1</option>' +
+        //                                 '<option value="2">Staff 2</option>' +
+        //                                 '<option value="3">Staff 3</option>' +
+        //                                 '<option value="4">Staff 4</option>' +                                
+        //                             '</select>' +
+        //                         '</div>' +
+        //                         '<div class="form-group col-md-2">' +
+        //                             '<button type="button" class="btn btn-danger btn_RemoveStaff" >-</button>' +
+        //                         '</div>' +                                      
+        //                     '</div>' +                                
+        //                 '</div>';
+        //     $(html).appendTo(container);
+        // });
 
         $(".btn_RemoveStaff").click(function(){
             var container = this.parentNode.parentNode.parentNode;
@@ -224,7 +247,7 @@
                 datatype: "Json",
                 data: { SemesterId: SemesterId, BranchId: BranchId },
                 success: function (data) {
-                    console.log(data);
+                    //console.log(data);
                      var obj = JSON.parse(data);
                      $("#container_fieldset").append(obj.success);
                 },

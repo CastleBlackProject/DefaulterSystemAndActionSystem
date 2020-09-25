@@ -73,7 +73,7 @@
                         </div>                            
                     </div>
                     <div class='form-group col-md-1'>
-                        <button type='button' class='btn btn-success btn_AddStaff'>+</button>                            
+                        <button type='button' class='btn btn-success' onclick='addStaff(this)'>+</button>                            
                     </div>
                 </div>
                 <hr />
