@@ -48,13 +48,14 @@
                 <div class='form-row'>
                     <div class='form-group col-md-2'>
                         <label>".$row['Subject_Name']."</label>
+                        <input type='text' name='SubjectId[]' value='" .$row['Subject_Id']. "' hidden />
                     </div>
                     <div class='form-group col-md-9'>
                         <div class='form-row'>                                
                             <div class='form-group col-md-4'>
                                 <div class='form-row'>
                                     <div class='form-group col-md-10'>
-                                        <select name='SubjectStaff".$counter."' class='form-control'>";
+                                        <select name='select_Staff".$counter."[]' class='form-control'>";
                                         
                                         $result1 = $con->query($sql1);
                                         while($row1 = $result1->fetch_array())

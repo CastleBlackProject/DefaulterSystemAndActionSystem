@@ -95,7 +95,7 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label>Branch</label>
-                            <select id="select_Branch" name="select_Branch" class="form-control">
+                            <select id="select_Branch" name="select_Branch[]" class="form-control">
                             <?php
                                 $servername="localhost";
                                 $username="root";
@@ -138,33 +138,35 @@
            
             if(isset($_POST['submit'])) {
 
-                $arr[] = $_POST['SubjectStaff1'];
-                
-                for($i=0; $i < count($arr); $i++)
+                $AcademicSessionId = 2;
+                $SubjectStaffStatus = "Active";
+                $Subject = $_POST['SubjectId'];
+
+                $counter = 0;
+                for($i=0; $i < count($Subject); $i++)
                 {
-                    echo $arr[$i];
+                    $counter++;
+                    $SubjectId = $Subject[$i];
+
+                    $DropdownName = "select_Staff" . $counter;
+
+                    $Staffs = $_POST[$DropdownName];
+                    
+                    for($j=0; $j < count($Staffs); $j++)
+                    {
+                        $StaffId = $Staffs[$j];
+                        $sql="INSERT INTO subject_staff_link(Subject_Id,Staff_Id,Academic_Session_Id,Subject_Staff_Status) VALUES('$SubjectId','$StaffId',$AcademicSessionId,'$SubjectStaffStatus')";
+                        
+                        if($con->query($sql) === TRUE )
+                        {
+                            echo "<script> alert('success') </script>";
+                        }
+                        else
+                        {
+                            echo "<br>error: ".$sql."<br>".$con->error;
+                        }
+                    }
                 }
-
-                // $SubjectName = $_POST['txt_SubjectName'];
-                // $SubjectCode = $_POST['txt_SubjectCode'];
-                // $SubjectStatus = $_POST['select_SubjectStatus'];
-                // $BranchId = $_POST['select_BranchId'];
-                // $SemesterId = $_POST['select_Semester'];
-
-                // $sql1="SELECT max(Subject_Id) as id from subject_master";
-                // $result = $con->query($sql1);
-                // $row = $result->fetch_assoc();
-
-                // $sql="INSERT INTO subject_master(Subject_Name,Subject_Code,Subject_Status,Branch_Id,Semester_Id) VALUES('$SubjectName','$SubjectCode','$SubjectStatus','$BranchId','$SemesterId')";
-            
-                // if($con->query($sql) === TRUE )
-                // {
-                //     echo "<script> location.href='Index.php'; </script>";
-                // }
-                // else
-                // {
-                //     echo "<br>error: ".$sql."<br>".$con->error;
-                // }
             }
            ?>
             
@@ -205,7 +207,7 @@
 
             var FieldsetId = document.getElementById("current").parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.id;
             var SubjectRowId = FieldsetId.substring(15);
-            document.getElementById("current").name = "SubjectStaff" + SubjectRowId;
+            document.getElementById("current").name = "select_Staff" + SubjectRowId + "[]";
 
             var BranchId = $("#select_Branch").val();
 
