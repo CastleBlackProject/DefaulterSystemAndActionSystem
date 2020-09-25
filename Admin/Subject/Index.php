@@ -70,6 +70,52 @@
 
                 <input type="button" value="Create" onclick="window.location.href='Create.php'"
                     class="btn btn-primary" />
+                <div class="form-group col-md-4">
+                    <label >Filter by using :</label>
+                    <label for="select_BranchId">Branch</label>
+                    <select id="select_BranchId" name="select_BranchId" class="form-control">
+                        <option value="-1">--ALL--</option>
+                    <?php
+                                 $servername="localhost";
+                                 $username="root";
+                                 $password="";
+                                 $db="vceterp";
+                                 $con = new mysqli($servername,$username,$password,$db);
+                                //  if(!$con)
+                                //  {
+                                //      die('could not connect'.mysql_error());
+                                //  }
+                                //  else
+                                //  {
+                                //     echo "<script>alert(<h1>database connected</h1>);</script>";
+                                //  }  
+                                $sql = "SELECT * FROM branch_master";
+                                $result = $con->query($sql);
+                                while($row = $result->fetch_array())
+                                {
+                                    echo "<option value ='".$row['Branch_Id']."'>".$row['Branch_Name']."</option>";
+                                }
+                            ?>
+                        <!-- <option value='1'>Computer Engineering</option>
+                        <option value='2'>Information Technology</option> -->
+                    </select>
+                    <label for="select_BranchId">Semester</label>
+                    <select id="select_Semester" name="select_Semester" class="form-control">
+                        <option value='-1'>--ALL--</option>
+                        <option value='1'>Semester 1</option>
+                        <option value='2'>Semester 2</option>
+                        <option value='3'>Semester 3</option>
+                        <option value='4'>Semester 4</option>
+                        <option value='5'>Semester 5</option>
+                        <option value='6'>Semester 6</option>
+                        <option value='7'>Semester 7</option>
+                        <option value='8'>Semester 8</option>
+                    </select>
+                    <div class="form-group col-md-3">
+                            <label></label>
+                            <button type="button" id="btn_Search" class="btn btn-success">Search</button>
+                        </div>
+                </div>
                 <!-- <div class="p-4">
                      <table class="table table-hover">
                         <thead>
@@ -155,6 +201,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
             integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
             crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
         <script>
 
@@ -164,7 +211,28 @@
 
                 window.location.href='Edit.php?SubjectId=' + SubjectId;
             }
-
+            
+            
+            $("#btn_Search").click(function(){
+                $("#container_fieldset").empty();
+                var SemesterId = $("#select_Semester").val();
+                var BranchId = $("#select_BranchId").val();
+            
+            $.ajax({
+                type: "GET",
+                url: 'SubjectSearchFunction.php',
+                contentType: "application/json; charset=utf-8",
+                datatype: "Json",
+                data: { SemesterId: SemesterId, BranchId: BranchId },
+                success: function (data) {
+                     var obj = JSON.parse(data);
+                     $("#container_fieldset").append(obj.success);
+                },
+                error: function(){
+                    console.log("error");
+                }
+            });
+        });
         </script>
 
 </body>
