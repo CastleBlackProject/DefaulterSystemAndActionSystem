@@ -17,7 +17,7 @@
             $sql = "SELECT * FROM subject_master WHERE Branch_Id=".$BranchId." AND Semester_Id=".$SemesterId;
             $result = $con->query($sql);
 
-            $sql1 = "SELECT * FROM staff_master JOIN staff_branch_link where staff_branch_link.Branch_Id=".$BranchId;            
+            $sql1 = "SELECT * FROM staff_master NATURAL JOIN staff_branch_link where staff_branch_link.Branch_Id=".$BranchId;            
             
             // $sql2 = "SELECT * FROM staff_branch_link WHERE Branch_Id=".$BranchId;
             // $result2 = $con->query($sql2);
