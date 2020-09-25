@@ -66,7 +66,7 @@
                 $DynamicElement .= "</select>
                                     </div>
                                     <div class='form-group col-md-2'>
-                                        <button type='button' class='btn btn-danger btn_RemoveStaff' >-</button>
+                                        
                                     </div>                                        
                                 </div>                                    
                             </div>     

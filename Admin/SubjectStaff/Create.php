@@ -185,7 +185,7 @@
     <script>
 
         function addStaff(row){
-            console.log("Hello World");
+            //console.log("Hello World");
             var container = row.parentNode.parentNode.childNodes[3].childNodes[1];                        
             //console.log(container);
             var html = '<div class="form-group col-md-4">' +
@@ -199,7 +199,7 @@
                                     '</select>' +
                                 '</div>' +
                                 '<div class="form-group col-md-2">' +
-                                    '<button type="button" class="btn btn-danger btn_RemoveStaff" >-</button>' +
+                                    '<button type="button" class="btn btn-danger btn_RemoveStaff" onclick="removeStaff(this)">-</button>' +
                                 '</div>' +                                      
                             '</div>' +                                
                         '</div>';
@@ -228,11 +228,12 @@
         //     $(html).appendTo(container);
         // });
 
-        $(".btn_RemoveStaff").click(function(){
-            var container = this.parentNode.parentNode.parentNode;
+        function removeStaff(row){
+            var container = row.parentNode.parentNode.parentNode;
             console.log(container);
-            //$(container).remove();
-        });
+            $(container).remove();
+        }
+
 
         $("#btn_Search").click(function(){
             
