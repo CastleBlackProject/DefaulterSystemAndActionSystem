@@ -118,8 +118,23 @@
                     </div>            
                 </div>
 
+            </div>            
+
+            <hr />
+
+            <div class="form-group col-md-2 my-2">
+                <label for="select_Academic_Session_Id">Academic Session</label>
+                <select id="select_Academic_Session_Id" name="select_Academic_Session_Id" class="form-control">
+                <?php
+                    $sql = "SELECT * FROM academic_session_master";
+                    $result = $con->query($sql);
+                    while($row = $result->fetch_array())
+                    {
+                        echo "<option value ='".$row['Academic_Session_Id']."'>".$row['Academic_Session_Name']."</option>";
+                    }  
+                ?>
+                </select>
             </div>
-            
 
             <hr />
 
@@ -138,7 +153,7 @@
            
             if(isset($_POST['submit'])) {
 
-                $AcademicSessionId = 2;
+                $AcademicSessionId = $_POST['select_Academic_Session_Id'];
                 $SubjectStaffStatus = "Active";
                 $Subject = $_POST['SubjectId'];
 
@@ -159,7 +174,7 @@
                         
                         if($con->query($sql) === TRUE )
                         {
-                            echo "<script> alert('success') </script>";
+                            //echo "<script> alert('success') </script>";
                         }
                         else
                         {
