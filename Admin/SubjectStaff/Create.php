@@ -113,7 +113,7 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label></label>
-                            <button id="btn_Search" class="btn btn-success">Search</button>
+                            <button type="button" id="btn_Search" class="btn btn-success">Search</button>
                         </div>
                     </div>            
                 </div>
