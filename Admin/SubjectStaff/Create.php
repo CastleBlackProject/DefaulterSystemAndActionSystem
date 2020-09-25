@@ -137,26 +137,34 @@
             <?php
            
             if(isset($_POST['submit'])) {
-                $SubjectName = $_POST['txt_SubjectName'];
-                $SubjectCode = $_POST['txt_SubjectCode'];
-                $SubjectStatus = $_POST['select_SubjectStatus'];
-                $BranchId = $_POST['select_BranchId'];
-                $SemesterId = $_POST['select_Semester'];
 
-                $sql1="SELECT max(Subject_Id) as id from subject_master";
-                $result = $con->query($sql1);
-                $row = $result->fetch_assoc();
+                $arr[] = $_POST['SubjectStaff1'];
+                
+                for($i=0; $i < count($arr); $i++)
+                {
+                    echo $arr[$i];
+                }
 
-                $sql="INSERT INTO subject_master(Subject_Name,Subject_Code,Subject_Status,Branch_Id,Semester_Id) VALUES('$SubjectName','$SubjectCode','$SubjectStatus','$BranchId','$SemesterId')";
+                // $SubjectName = $_POST['txt_SubjectName'];
+                // $SubjectCode = $_POST['txt_SubjectCode'];
+                // $SubjectStatus = $_POST['select_SubjectStatus'];
+                // $BranchId = $_POST['select_BranchId'];
+                // $SemesterId = $_POST['select_Semester'];
+
+                // $sql1="SELECT max(Subject_Id) as id from subject_master";
+                // $result = $con->query($sql1);
+                // $row = $result->fetch_assoc();
+
+                // $sql="INSERT INTO subject_master(Subject_Name,Subject_Code,Subject_Status,Branch_Id,Semester_Id) VALUES('$SubjectName','$SubjectCode','$SubjectStatus','$BranchId','$SemesterId')";
             
-                if($con->query($sql) === TRUE )
-                {
-                    echo "<script> location.href='Index.php'; </script>";
-                }
-                else
-                {
-                    echo "<br>error: ".$sql."<br>".$con->error;
-                }
+                // if($con->query($sql) === TRUE )
+                // {
+                //     echo "<script> location.href='Index.php'; </script>";
+                // }
+                // else
+                // {
+                //     echo "<br>error: ".$sql."<br>".$con->error;
+                // }
             }
            ?>
             
@@ -181,7 +189,7 @@
     <script>
 
         function addStaff(row){
-            var container = row.parentNode.parentNode.childNodes[3].childNodes[1];                        
+            var container = row.parentNode.parentNode.childNodes[3].childNodes[1];                 
             var html = '<div class="form-group col-md-4">' +
                             '<div class="form-row">' +
                                 '<div class="form-group col-md-10">' +
@@ -194,6 +202,10 @@
                             '</div>' +                                
                         '</div>';
             $(html).appendTo(container);
+
+            var FieldsetId = document.getElementById("current").parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.id;
+            var SubjectRowId = FieldsetId.substring(15);
+            document.getElementById("current").name = "SubjectStaff" + SubjectRowId;
 
             var BranchId = $("#select_Branch").val();
 
