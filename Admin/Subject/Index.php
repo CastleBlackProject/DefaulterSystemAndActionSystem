@@ -68,37 +68,38 @@
 
             <div class="my-5">
 
-                <input type="button" value="Create" onclick="window.location.href='Create.php'"
-                    class="btn btn-primary" />
-                <div class="form-group col-md-4">
-                    <label >Filter by using :</label>
+                <input type="button" value="Create" onclick="window.location.href='Create.php'" class="btn btn-primary" />
+                <div class="form-row mt-4">
+                <div class="form-group col-md-3">                    
                     <label for="select_BranchId">Branch</label>
                     <select id="select_BranchId" name="select_BranchId" class="form-control">
                         <option value="-1">--ALL--</option>
-                    <?php
-                                 $servername="localhost";
-                                 $username="root";
-                                 $password="";
-                                 $db="vceterp";
-                                 $con = new mysqli($servername,$username,$password,$db);
-                                //  if(!$con)
-                                //  {
-                                //      die('could not connect'.mysql_error());
-                                //  }
-                                //  else
-                                //  {
-                                //     echo "<script>alert(<h1>database connected</h1>);</script>";
-                                //  }  
-                                $sql = "SELECT * FROM branch_master";
-                                $result = $con->query($sql);
-                                while($row = $result->fetch_array())
-                                {
-                                    echo "<option value ='".$row['Branch_Id']."'>".$row['Branch_Name']."</option>";
-                                }
-                            ?>
-                        <!-- <option value='1'>Computer Engineering</option>
-                        <option value='2'>Information Technology</option> -->
-                    </select>
+                    
+                        <?php
+                                $servername="localhost";
+                                $username="root";
+                                $password="";
+                                $db="vceterp";
+                                $con = new mysqli($servername,$username,$password,$db);
+                            //  if(!$con)
+                            //  {
+                            //      die('could not connect'.mysql_error());
+                            //  }
+                            //  else
+                            //  {
+                            //     echo "<script>alert(<h1>database connected</h1>);</script>";
+                            //  }  
+                            $sql = "SELECT * FROM branch_master";
+                            $result = $con->query($sql);
+                            while($row = $result->fetch_array())
+                            {
+                                echo "<option value ='".$row['Branch_Id']."'>".$row['Branch_Name']."</option>";
+                            }
+                        ?>
+
+                    </select>                    
+                </div>
+                <div class="form-group col-md-3">
                     <label for="select_BranchId">Semester</label>
                     <select id="select_Semester" name="select_Semester" class="form-control">
                         <option value='-1'>--ALL--</option>
@@ -110,27 +111,14 @@
                         <option value='6'>Semester 6</option>
                         <option value='7'>Semester 7</option>
                         <option value='8'>Semester 8</option>
-                    </select>
-                    <div class="form-group col-md-3">
-                            <label></label>
-                            <button type="button" id="btn_Search" class="btn btn-success">Search</button>
-                        </div>
+                    </select>                    
                 </div>
-                <!-- <div class="p-4">
-                     <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col" hidden>Subject ID</th>
-                                <th scope="col">Subject Name</th>
-                                <th scope="col">Subject Code</th>
-                                <th scope="col">Subject Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                        </tbody>
-                    </table> 
-                </div> -->
+                <div class="form-group col-md-3">
+                    <label class="mt-3 mb-4"></label>
+                    <button type="button" id="btn_Search" class="btn btn-success mt-4">Search</button>
+                </div>
+                </div>
+                                
                 <?php
             $servername="localhost";
             $username="root";
@@ -146,7 +134,7 @@
                 #echo "<h1>database connected</h1>";
             }  
             
-            echo '<div class="p-4">
+            echo '<div class="p-4" id="container_Table">
               <table class="table table-hover">
                 <thead>
                   <tr>
@@ -163,8 +151,11 @@
                 $result = $con->query($sql);
                 //if ($result->num_rows > 0)
 
+                $counter = 1;
                 while($row = mysqli_fetch_array($result))
                 {
+                    
+
                     $BranchId = $row['Branch_Id']; 
                     $sql1 = "SELECT Branch_Name FROM branch_master WHERE Branch_Id = " . $BranchId;
                     $result1 = $con->query($sql1);
@@ -183,7 +174,11 @@
                     echo "<td>" . $row['Subject_Code'] . "</td>";
                     echo "<td>" . $row['Subject_Status'] . "</td>";
                     echo "<td><button type='button' class='btn btn-success' onclick='edit(this)'>Edit</button></td>";
-                    echo "</tr>";
+                    echo "</tr>";                    
+
+                    // if($counter === count(mysqli_fetch_array($result))){
+                    //     echo "</tbody></table>";
+                    // }
                 }
 
               ?>
@@ -214,7 +209,7 @@
             
             
             $("#btn_Search").click(function(){
-                $("#container_fieldset").empty();
+                $("#container_Table").empty();
                 var SemesterId = $("#select_Semester").val();
                 var BranchId = $("#select_BranchId").val();
             
@@ -226,7 +221,7 @@
                 data: { SemesterId: SemesterId, BranchId: BranchId },
                 success: function (data) {
                      var obj = JSON.parse(data);
-                     $("#container_fieldset").append(obj.success);
+                     $("#container_Table").append(obj.success);
                 },
                 error: function(){
                     console.log("error");
