@@ -17,8 +17,7 @@
             $sql = "SELECT * FROM subject_master WHERE Branch_Id=".$BranchId." AND Semester_Id=".$SemesterId;
             $result = $con->query($sql);
 
-            $sql1 = "SELECT * FROM staff_master JOIN staff_branch_link where staff_branch_link.Branch_Id=".$BranchId;
-            $result1 = $con->query($sql1);
+            $sql1 = "SELECT * FROM staff_master JOIN staff_branch_link where staff_branch_link.Branch_Id=".$BranchId;            
             
             // $sql2 = "SELECT * FROM staff_branch_link WHERE Branch_Id=".$BranchId;
             // $result2 = $con->query($sql2);
@@ -56,7 +55,7 @@
                                     <div class='form-group col-md-10'>
                                         <select name='select_Staff' class='form-control'>";
 
-
+                                        $result1 = $con->query($sql1);
                                         while($row1 = $result1->fetch_array())
                                         {
                                             $StaffName = $row1['First_Name'] ." ". $row1['Middle_Name']." ".$row1['Last_Name'];  
