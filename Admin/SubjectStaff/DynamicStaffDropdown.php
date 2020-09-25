@@ -10,7 +10,7 @@
         $db="vceterp";
         $con = new mysqli($servername,$username,$password,$db);
 
-        $sql1 = "SELECT * FROM staff_master JOIN staff_branch_link where staff_branch_link.Branch_Id=".$BranchId;
+        $sql1 = "SELECT * FROM staff_master NATURAL JOIN staff_branch_link where staff_branch_link.Branch_Id=".$BranchId;
 
         $DynamicElement = "";
 
