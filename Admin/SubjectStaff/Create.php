@@ -185,17 +185,11 @@
     <script>
 
         function addStaff(row){
-            //console.log("Hello World");
             var container = row.parentNode.parentNode.childNodes[3].childNodes[1];                        
-            //console.log(container);
             var html = '<div class="form-group col-md-4">' +
                             '<div class="form-row">' +
                                 '<div class="form-group col-md-10">' +
-                                    '<select name="select_Staff" class="form-control">' +
-                                        '<option value="1">Staff 1</option>' +
-                                        '<option value="2">Staff 2</option>' +
-                                        '<option value="3">Staff 3</option>' +
-                                        '<option value="4">Staff 4</option>' +                                
+                                    '<select id="current" name="select_Staff" class="form-control">' +                                                                      
                                     '</select>' +
                                 '</div>' +
                                 '<div class="form-group col-md-2">' +
@@ -204,36 +198,31 @@
                             '</div>' +                                
                         '</div>';
             $(html).appendTo(container);
-        }
 
-        // $(".btn_AddStaff").click(function(){
-        //     console.log("Hello World");
-        //     var container = this.parentNode.parentNode.childNodes[3].childNodes[1];                        
-        //     console.log(container);
-        //     var html = '<div class="form-group col-md-4">' +
-        //                     '<div class="form-row">' +
-        //                         '<div class="form-group col-md-10">' +
-        //                             '<select name="select_Staff" class="form-control">' +
-        //                                 '<option value="1">Staff 1</option>' +
-        //                                 '<option value="2">Staff 2</option>' +
-        //                                 '<option value="3">Staff 3</option>' +
-        //                                 '<option value="4">Staff 4</option>' +                                
-        //                             '</select>' +
-        //                         '</div>' +
-        //                         '<div class="form-group col-md-2">' +
-        //                             '<button type="button" class="btn btn-danger btn_RemoveStaff" >-</button>' +
-        //                         '</div>' +                                      
-        //                     '</div>' +                                
-        //                 '</div>';
-        //     $(html).appendTo(container);
-        // });
+            var BranchId = $("#select_Branch").val();
+
+            $.ajax({
+                type: "GET",
+                url: 'DynamicStaffDropdown.php',
+                contentType: "application/json; charset=utf-8",
+                datatype: "Json",
+                data: { BranchId: BranchId },
+                success: function (data) {                    
+                    var obj = JSON.parse(data);
+                    $("#current").append(obj.success);
+                    document.getElementById("current").id = "btn";
+                },
+                error: function(){
+                    console.log("error");
+                }
+            });
+        }
 
         function removeStaff(row){
             var container = row.parentNode.parentNode.parentNode;
             console.log(container);
             $(container).remove();
         }
-
 
         $("#btn_Search").click(function(){
             
@@ -248,7 +237,6 @@
                 datatype: "Json",
                 data: { SemesterId: SemesterId, BranchId: BranchId },
                 success: function (data) {
-                    //console.log(data);
                      var obj = JSON.parse(data);
                      $("#container_fieldset").append(obj.success);
                 },
@@ -264,4 +252,3 @@
 </body>
 
 </html>
-
