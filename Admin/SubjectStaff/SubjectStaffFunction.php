@@ -40,10 +40,11 @@
 
 
             $DynamicElement = "";
-
+            
+            $counter = 1;
             while($row = mysqli_fetch_array($result))
             {
-                $DynamicElement .= "<fieldset class='my-2'>
+                $DynamicElement .= "<fieldset id='SubjectStaffRow".$counter."' class='my-2'>
                 <div class='form-row'>
                     <div class='form-group col-md-2'>
                         <label>".$row['Subject_Name']."</label>
@@ -53,8 +54,8 @@
                             <div class='form-group col-md-4'>
                                 <div class='form-row'>
                                     <div class='form-group col-md-10'>
-                                        <select name='select_Staff' class='form-control'>";
-
+                                        <select name='SubjectStaff".$counter."' class='form-control'>";
+                                        
                                         $result1 = $con->query($sql1);
                                         while($row1 = $result1->fetch_array())
                                         {
@@ -78,6 +79,8 @@
                 </div>
                 <hr />
             </fieldset>";
+
+                $counter++;
             }
 
 
