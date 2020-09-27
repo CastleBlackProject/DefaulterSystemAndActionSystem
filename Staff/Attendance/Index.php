@@ -4,6 +4,22 @@
     $SubjectId = $_COOKIE["SubjectId"];
     $AcademicSessionId = $_COOKIE["AcademicSessionId"];
 
+    $servername="localhost";
+    $username="root";
+    $password="";
+    $db="vceterp";
+    $con = new mysqli($servername,$username,$password,$db);
+    if(!$con)
+    {
+        die('could not connect'.mysql_error());
+    }
+    else
+    {
+        //echo "<h1>database connected</h1>";
+    }
+
+    $sql = "SELECT * FROM student_master NATURAL JOIN subject_master NATURAL JOIN student_branch_year_link WHERE Subject_Id = ".$SubjectId." AND Academic_Session_Id = ".$AcademicSessionId;
+    $result = $con->query($sql);
 ?>
 
 
@@ -106,12 +122,26 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td hidden>Student ID</td>
-                            <td style="width: 150px;">1</td>
-                            <td>Yash Hitesh Jobalia</td>
-                            <td><input type="checkbox" /></td>
-                        </tr>
+                        <?php
+                            while($row = mysqli_fetch_array($result))
+                            {
+                                $StudentName = "";
+
+                                if($row['Middle_Name'] != ""){
+                                    $StudentName = $row['First_Name'] . " " . $row['Middle_Name'] . " " . $row['Last_Name'];
+                                }
+                                else{
+                                    $StudentName = $row['First_Name'] . " " . $row['Last_Name'];
+                                }
+
+                                echo'<tr>'.
+                                    '<td hidden>'.$row['Student_Id'].'</td>'.
+                                    '<td style="width: 150px;">'.$row['Roll_Number'].'</td>'.
+                                    '<td>'.$StudentName.'</td>'.
+                                    '<td><input type="checkbox" /></td>'.
+                                '</tr>';
+                            }                            
+                        ?>
                     </tbody>
                 </table>
             </div>            

@@ -94,27 +94,27 @@
                         <label for="select_Academic_Session_Id">Academic Session</label>
                         <select id="select_Academic_Session_Id" name="select_Academic_Session_Id" class="form-control">
                             <?php
-                            $servername="localhost";
-                            $username="root";
-                            $password="";
-                            $db="vceterp";
-                            $con = new mysqli($servername,$username,$password,$db);
-                            if(!$con)
-                            {
-                                die('could not connect'.mysql_error());
-                            }
-                            else
-                            {
-                                //echo "<h1>database connected</h1>";
-                            }
+                                $servername="localhost";
+                                $username="root";
+                                $password="";
+                                $db="vceterp";
+                                $con = new mysqli($servername,$username,$password,$db);
+                                if(!$con)
+                                {
+                                    die('could not connect'.mysql_error());
+                                }
+                                else
+                                {
+                                    //echo "<h1>database connected</h1>";
+                                }
 
-                            $sql = "SELECT * FROM academic_session_master";
-                            $result = $con->query($sql);
-                            while($row = $result->fetch_array())
-                            {
-                                echo "<option value ='".$row['Academic_Session_Id']."'>".$row['Academic_Session_Name']."</option>";
-                            }  
-                        ?>
+                                $sql = "SELECT * FROM academic_session_master";
+                                $result = $con->query($sql);
+                                while($row = $result->fetch_array())
+                                {
+                                    echo "<option value ='".$row['Academic_Session_Id']."'>".$row['Academic_Session_Name']."</option>";
+                                }  
+                            ?>
                         </select>
                     </div>
 
