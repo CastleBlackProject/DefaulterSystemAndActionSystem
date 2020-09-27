@@ -349,6 +349,15 @@
             }
         }
 
+        var select_Academic_Session_Id = document.getElementById("select_Academic_Session_Id");
+        var options_Academic_Session_Id = select_Academic_Session_Id.options;
+        for (var j = 0, option; option = options_Academic_Session_Id[j]; j++) {
+
+            if (option.value == AcademicSessionId) {
+                select_Academic_Session_Id.selectedIndex = j;
+           }
+         }
+
         var select_Branch = document.getElementById("select_Branch");
         var options_Branch = select_Branch.options;
         for (var j = 0, option; option = options_Branch[j]; j++) {
