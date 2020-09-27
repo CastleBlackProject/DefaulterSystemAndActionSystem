@@ -132,7 +132,7 @@
                 <h5>Academic Details </h5>
             </div>
             <div class="form-row">
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-4">
                         <label for="select_Branch">Branch</label>
                         <select id="select_Branch" name="select_Branch" class="form-control">
                     <?php
@@ -149,7 +149,12 @@
                         }  
                     ?>
                         </select>
-                </div>                
+                </div>   
+                <div class="form-group col-md-4">
+                    <label for="txt_Staff_College_Id">College Id Number</label>
+                    <input type="text" id="txt_Staff_College_Id" name="txt_Staff_College_Id" class="form-control">
+                    </input>
+                </div>             
             </div>
             <div class="my-4">
                 <center>
@@ -170,8 +175,8 @@
                     $StaffStatus =  $_POST['select_StaffStatus'];
                     $BranchId = $_POST['select_Branch'];
                     $StaffBranchStatus= "Active";
-                                
-                    $sql1="INSERT INTO staff_master(First_Name,Middle_Name,Last_Name,Date_Of_Birth,Gender,Contact,Email_Id,Address,Staff_Status) VALUES('$FirstName','$MiddleName','$LastName','$DateOfBirth','$Gender','$Contact','$Email','$Address','$StaffStatus')";
+                    $staffcollegeid = $_POST['txt_Staff_College_Id'];            
+                    $sql1="INSERT INTO staff_master(Staff_College_Id,First_Name,Middle_Name,Last_Name,Date_Of_Birth,Gender,Contact,Email_Id,Address,Staff_Status) VALUES('$staffcollegeid','$FirstName','$MiddleName','$LastName','$DateOfBirth','$Gender','$Contact','$Email','$Address','$StaffStatus')";
                     
                     if($con->query($sql1) === TRUE ){
                         $sql2="SELECT max(Staff_Id) as id from staff_master";

@@ -149,7 +149,12 @@
                         }  
                     ?>
                         </select>
-                </div>                
+                </div>     
+                <div class="form-group col-md-4">
+                    <label for="txt_Staff_College_Id">College Id Number</label>
+                    <input type="text" id="txt_Staff_College_Id" name="txt_Staff_College_Id" class="form-control">
+                    </input>
+                </div>           
             </div>
             <div class="my-4">
                 <center>
@@ -163,6 +168,9 @@
 
                 $sql = "SELECT * FROM staff_master WHERE Staff_Id = " . $StaffId;
                 $result = $con->query($sql);
+                $sql5 = "SELECT * FROM staff_branch_link WHERE Staff_Id = " . $StaffId;
+                $result5 = $con->query($sql5);
+
             
                 while($row = mysqli_fetch_array($result))
                 {
@@ -174,7 +182,12 @@
                     $Contact =  $row['Contact'];
                     $Email =  $row['Email_Id'];
                     $Address =  $row['Address'];
-                    $StudentStatus =  $row['Staff_Status'];
+                    $StaffBranchStatus =  $row['Staff_Status'];
+                    $StaffCollegeId = $row['Staff_College_Id'];
+                }
+                while($row5 = mysqli_fetch_array($result5))
+                {
+                    $BranchId = $row5['Branch_Id'];
                 }
 
                 if(isset($_POST['submit'])) {
@@ -186,12 +199,15 @@
                     $Contact =  $_POST['txt_Contact'];
                     $Email =  $_POST['txt_Email'];
                     $Address =  $_POST['txt_Address'];
-                    $StaffStatus =  $_POST['select_StaffStatus'];
+                    //$StaffBranchStatus =  $_POST['select_StaffStatus'];
                     $BranchId = $_POST['select_Branch'];
                     $StaffBranchStatus= "Active";
+                    $StaffCollegeId = $row['txt_Staff_College_Id'];
+                    $BranchId = $_POST['select_Branch'];
                                 
-                    $sql1="UPDATE staff_master SET First_Name='$FirstName',Middle_Name='$MiddleName',Last_Name='$LastName',Date_Of_Birth='$DateOfBirth',Gender='$Gender',Contact='$Contact',Email_Id='$Email',Address='$Address',Staff_Status='$StaffStatus' WHERE Staff_Id='$StaffId'";
+                    $sql1="UPDATE staff_master SET Staff_College_Id='$StaffCollegeId',First_Name='$FirstName',Middle_Name='$MiddleName',Last_Name='$LastName',Date_Of_Birth='$DateOfBirth',Gender='$Gender',Contact='$Contact',Email_Id='$Email',Address='$Address',Staff_Status='$StaffBranchStatus' WHERE Staff_Id='$StaffId'";
                     
+
                     if($con->query($sql1) === TRUE ){
                     
                         $sql2="UPDATE staff_branch_link SET Branch_Id='$BranchId' WHERE Staff_Id='$StaffId' && Staff_Branch_Status='$StaffBranchStatus'";
@@ -236,8 +252,9 @@
         var Contact = "<?php echo $Contact ?>";
         var Email = "<?php echo $Email ?>";
         var Address = "<?php echo $Address ?>";
-        var StudentStatus = "<?php echo $StudentStatus ?>";
-
+        var StaffBranchStatus = "<?php echo $StaffBranchStatus ?>";
+        var StaffCollegeId = "<?php echo $StaffCollegeId ?>";
+        var BranchId = "<?php echo $BranchId ?>";
         $("#txt_FirstName").val(FirstName);
         $("#txt_MiddleName").val(MiddleName);
         $("#txt_LastName").val(LastName);
@@ -245,6 +262,7 @@
         $("#txt_Contact").val(Contact);
         $("#txt_Email").val(Email);
         $("#txt_Address").val(Address);
+        $("#txt_Staff_College_Id").val(StaffCollegeId);
 
         var select_Gender = document.getElementById("select_Gender");
         var options_Gender = select_Gender.options;
@@ -255,12 +273,12 @@
             }
         }
 
-        var select_StudentStatus = document.getElementById("select_StudentStatus");
-        var options_StudentStatus = select_StudentStatus.options;
-        for (var j = 0, option; option = options_StudentStatus[j]; j++) {
+        var select_StaffStatus = document.getElementById("select_StaffStatus");
+        var options_StaffStatus = select_StaffStatus.options;
+        for (var j = 0, option; option = options_StaffStatus[j]; j++) {
 
-            if (option.value == StudentStatus) {
-                select_StudentStatus.selectedIndex = j;
+            if (option.value == StaffBranchStatus) {
+                select_StaffStatus.selectedIndex = j;
             }
         }
 
@@ -268,7 +286,7 @@
         var options_Branch = select_Branch.options;
         for (var j = 0, option; option = options_Branch[j]; j++) {
 
-            if (option.value == Branch) {
+            if (option.value == BranchId) {
                 select_Branch.selectedIndex = j;
             }
         }
