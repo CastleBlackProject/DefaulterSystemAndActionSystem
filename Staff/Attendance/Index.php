@@ -98,11 +98,11 @@
                     <div class="form-row">
                         <div class="form-group col-md-3">
                             <label>Lecture No.</label>
-                            <input type="text" class="form-control" />
+                            <input type="number" id="txt_LectureNo" name="txt_LectureNo" class="form-control" />
                         </div>
                         <div class="form-group col-md-3">
                             <label>Date</label>
-                            <input type="date" class="form-control" />
+                            <input type="date" id="txt_LectureDate" name="txt_LectureDate" class="form-control" />
                         </div>                                              
                     </div>            
                 </div>
@@ -112,7 +112,7 @@
             <hr />            
 
             <div id="container_fieldset">
-                <table class="table table-bordered">
+                <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
                             <th hidden>Student ID</th>
@@ -135,10 +135,10 @@
                                 }
 
                                 echo'<tr>'.
-                                    '<td hidden>'.$row['Student_Id'].'</td>'.
+                                    '<td hidden><input type="text" name="StudentId[]" value="'.$row['Student_Id'].'" /></td>'.
                                     '<td style="width: 150px;">'.$row['Roll_Number'].'</td>'.
                                     '<td>'.$StudentName.'</td>'.
-                                    '<td><input type="checkbox" /></td>'.
+                                    '<td><input type="checkbox" name="chkbox_Attendance[]" value="'.$row['Student_Id'].'" /></td>'.
                                 '</tr>';
                             }                            
                         ?>
@@ -146,6 +146,93 @@
                 </table>
             </div>            
             
+            <div class="my-4">
+                <center>
+                    <button type="submit" name="submit" value="submit" class="btn btn-success">Submit</button>
+                    <button type="reset" class="btn btn-success">Reset</button>
+                </center>
+            </div>
+
+            <?php
+            
+                if(isset($_POST['submit'])) 
+                {
+                    $StaffId = $_COOKIE["StaffId"];
+                    $SubjectId = $_COOKIE["SubjectId"];
+                    $AcademicSessionId = $_COOKIE["AcademicSessionId"];
+
+                    $LectureNo = $_POST['txt_LectureNo'];
+                    $LectureDate = $_POST['txt_LectureDate'];
+                    $Students = $_POST['StudentId'];
+                    $StudentsPresent = $_POST['chkbox_Attendance'];
+
+                    $sql1 = "INSERT INTO lecture_master(Academic_Session_Id,Subject_Id,Staff_Id,Lecture_Number,Lecture_Date) VALUES($AcademicSessionId,$SubjectId,$StaffId,'$LectureNo','$LectureDate')";
+
+                    if($con->query($sql1) === TRUE )
+                    {
+                        //echo "<script> alert('success') </script>";
+                    }
+                    else
+                    {
+                        echo "<br>error: ".$sql1."<br>".$con->error;
+                    }
+
+                    $LectureId = 0;
+
+                    $sql2="SELECT max(Lecture_Id) as id from lecture_master";
+                    $result2 = $con->query($sql2);
+                    $row = $result2->fetch_assoc();
+                    //echo "<br> last id is : ".$row['id'];
+                    if($row['id'] == 0)
+                    {
+                        $LectureId=1;
+                    }
+                    else{
+                        $LectureId=$row['id'];
+                    }
+
+                    for($i=0; $i < count($Students); $i++)
+                    {
+                        $isPresent = false;
+                        for($j=0; $j < count($StudentsPresent); $j++)
+                        {
+                            if($Students[$i] == $StudentsPresent[$j])
+                            {
+                                $sql3 = "INSERT INTO attendance_master(Lecture_Id,Student_Id,Is_Present) VALUES($LectureId,$Students[$i],1)";
+                                $isPresent = true;
+                            }                            
+                        }
+
+                        if(!$isPresent){
+                            $sql3 = "INSERT INTO attendance_master(Lecture_Id,Student_Id,Is_Present) VALUES($LectureId,$Students[$i],0)";
+                        }
+
+                        if($con->query($sql3) === TRUE )
+                        {
+                            //echo "<script> alert('success') </script>";
+                        }
+                        else
+                        {
+                            echo "<br>error: ".$sql3."<br>".$con->error;
+                        }
+                    }
+
+                    
+
+                    //$sql="INSERT INTO branch_master(Branch_Name,Branch_Code,Branch_Status) VALUES('$BranName','$BranCode','$BranStatus')";
+                    
+                    // if($con->query($sql) === TRUE )
+                    // {
+                    //     echo "<script> location.href='Index.php'; </script>";
+                    // }
+                    // else
+                    // {
+                    //     echo "<br>error: ".$sql."<br>".$con->error;
+                    // }
+                }
+            
+            ?>
+
             <input type="button" value="Back To List" onclick="window.location.href='../Dashboard/Index.html'" class="btn btn-primary" />
 
         </form>
