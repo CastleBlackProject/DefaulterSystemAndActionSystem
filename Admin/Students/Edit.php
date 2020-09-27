@@ -274,10 +274,10 @@
         $StudentBranchStatus= "Active";
         $RollNo = $_POST['select_Roll_Number'];
 
-        $sql="UPDATE student_master SET First_Name='$FirstName',Middle_Name='$MiddleName',Last_Name='$LastName',Date_Of_Birth='$DateOfBirth',Gender='$Gender',Contact='$Contact',Email_Id='$Email',Address='$Address',Student_Status='$StudentStatus' WHERE Student_Id='$StudentId'";
+        $sql="UPDATE student_master SET Student_College_Id='$StudentCollegeId',First_Name='$FirstName',Middle_Name='$MiddleName',Last_Name='$LastName',Date_Of_Birth='$DateOfBirth',Gender='$Gender',Contact='$Contact',Email_Id='$Email',Address='$Address',Student_Status='$StudentStatus' WHERE Student_Id='$StudentId'";
         $sql1="UPDATE student_branch_link SET Branch_Id='$BranchId',Student_Branch_Status='$StudentBranchStatus' WHERE Student_Id='$StudentId' AND Student_Branch_Status='$StudentBranchStatus'";
                 
-        $sql2="UPDATE student_branch_year_link SET Branch_Id='$BranchId',Year_Id='$YearId',Academic_Session_Id='$acdsesid' WHERE Student_Id='$StudentId' ";
+        $sql2="UPDATE student_branch_year_link SET Academic_Session_Id='$AcademicSessionId',Branch_Id='$BranchId',Semester_Id='$semesterid',Year_Id='$YearId',Roll_Number='$RollNo' WHERE Student_Id='$StudentId' ";
         if($con->query($sql) === TRUE && $con->query($sql1) === TRUE && $con->query($sql2) === TRUE){
           #echo "<br> record updated successfully";
           echo "<script> location.href='Index.php'; </script>";
@@ -388,7 +388,46 @@
          $("#txt_Student_College_Id").val(StudentCollegeId);
          $("#select_Roll_Number").val(RollNo);
     </script>
+    <script>
 
+$("#select_Year").change(function(){
+    var year = parseInt($("#select_Year").val());
+    $("#select_Semester").empty();
+
+    if(year == 0){
+        html = "<option value='0'>--Select--</option>" +
+        "<option value='1'>Semester 1</option>" +
+        "<option value='2'>Semester 2</option>" +
+        "<option value='3'>Semester 3</option>" +
+        "<option value='4'>Semester 4</option>" +
+        " <option value='5'>Semester 5</option>" +
+        "<option value='6'>Semester 6</option>" +
+        "<option value='7'>Semester 7</option>" +
+        "<option value='8'>Semester 8</option>";
+        $("#select_Semester").append(html);
+    }
+    else{
+        var html = "";
+        switch(year){
+            case 1:
+                html = "<option value='1'>Semester 1</option><option value='2'>Semester 2</option>"
+                break;
+            case 2:
+                html = "<option value='3'>Semester 3</option><option value='4'>Semester 4</option>"
+                break;
+            case 3:
+                html = "<option value='5'>Semester 5</option><option value='6'>Semester 6</option>"
+                break;
+            case 4:
+                html = "<option value='7'>Semester 7</option><option value='8'>Semester 8</option>"
+                break;
+        }
+
+        $("#select_Semester").append(html);
+    }
+});
+
+</script>
 </body>
 
 </html>
