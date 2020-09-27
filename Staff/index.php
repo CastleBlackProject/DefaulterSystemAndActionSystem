@@ -64,11 +64,17 @@
 
 <form class="box" action="index.html" method="post">
   <h1>Login</h1>
-  <input type="text" name="" placeholder="Username">
-  <input type="password" name="" placeholder="Password">
+  <input type="text" name="txt_Username" placeholder="Username">
+  <input type="password" name="txt_Password" placeholder="Password">
   <input type="submit" name="" value="Login">
 </form>
 
+<?php 
+
+    $StaffId = 1;
+    setcookie("Staff_Id",$StaffId, 86400, "/");
+
+?>
 
   </body>
 </html>
