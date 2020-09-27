@@ -202,7 +202,7 @@
                     //$StaffBranchStatus =  $_POST['select_StaffStatus'];
                     $BranchId = $_POST['select_Branch'];
                     $StaffBranchStatus= "Active";
-                    $StaffCollegeId = $row['txt_Staff_College_Id'];
+                    $StaffCollegeId = $_POST['txt_Staff_College_Id'];
                     $BranchId = $_POST['select_Branch'];
                                 
                     $sql1="UPDATE staff_master SET First_Name='$FirstName',Middle_Name='$MiddleName',Last_Name='$LastName',Date_Of_Birth='$DateOfBirth',Gender='$Gender',Contact='$Contact',Email_Id='$Email',Address='$Address',Staff_Status='$StaffBranchStatus',Staff_College_Id='$StaffCollegeId' WHERE Staff_Id='$StaffId'";
