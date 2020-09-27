@@ -123,6 +123,7 @@
                     echo "<td>" . $row['Date_Of_Birth'] . "</td>";
                     echo "<td>" . $row['Staff_Status'] . "</td>";
                     echo "<td><button type='button' class='btn btn-success' onclick='edit(this)'>Edit</button></td>";
+                    echo "<td><button type='button' class='btn btn-warning' onclick='staffchangebranch(this)'>Change Branch</button></td>";
                     echo "</tr>";
                 }
 
@@ -149,6 +150,12 @@
                 var StaffId = btn.parentNode.parentNode.childNodes[0].innerHTML;
 
                 window.location.href='Edit.php?StaffId=' + StaffId;
+            }
+
+            function staffchangebranch(btn){
+                var StaffId = btn.parentNode.parentNode.childNodes[0].innerHTML;
+
+                window.location.href='staffchangebranch.php?StaffId=' + StaffId;
             }
 
         </script>

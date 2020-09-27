@@ -64,77 +64,29 @@
         <form action="" method="POST">
 
             <div class="my-4" style="color:#0041b3">
-                <h4>Staff Master</h4>
+                <h4>Change Staff Branch</h4>
             </div>
             <hr color="grey">
-            <div class="my-4" style="color:#0041b3">
-                <h5>Personal Details</h5>
-            </div>
             <div class="form-row mt-5">
                 <div class="form-group col-md-4">
-                    <label for="txt_FirstName">First Name</label>
-                    <input type="text" id="txt_FirstName" name="txt_FirstName" class="form-control"
-                        required="required" />
+                    <label for="txt_FirstName">Full Name</label>        
+                    <input type="text" id="txt_FullName" name="txt_FullName" class="form-control" readonly ></input>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="txt_MiddleName">Middle Name</label>
-                    <input type="text" id="txt_MiddleName" name="txt_MiddleName" class="form-control"
-                        required="required" />
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="txt_LastName">Last Name</label>
-                    <input type="text" id="txt_LastName" name="txt_LastName" class="form-control"
-                        required="required" />
-                </div>                
-            </div>
-            <div class="form-row">               
-            <div class="form-group col-md-3">
-                    <label for="txt_DateOfBirth">Date Of Birth</label>
-                    <input type="date" id="txt_DateOfBirth" name="txt_DateOfBirth" class="form-control"
-                        required="required" />
-                </div> 
-                <div class="form-group col-md-3">
-                    <label for="select_Gender">Gender</label>
-                    <select id="select_Gender" name="select_Gender" class="form-control">
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="select_StaffStatus">Staff Status</label>
-                    <select id="select_StaffStatus" name="select_StaffStatus" class="form-control">
-                        <option value="Active">Active</option>
-                        <option value="De-Active">De-Active</option>
-                    </select>
+                    <label for="txt_Staff_College_Id">College Id Number</label>
+                    <input type="text" id="txt_Staff_College_Id" name="txt_Staff_College_Id" readonly class="form-control">
+                    </input>
                 </div>                
             </div>
             <div class="form-row">
                 <div class="form-group col-md-4">
-                    <label for="txt_Contact">Contact</label>
-                    <input type="text" id="txt_Contact" name="txt_Contact" class="form-control"
-                        required="required" />
+                        <label for="select_PrevBranch">Previous Branch</label>
+                        <input type="text" id="txt_PrevBranch" name="txt_PrevBranch" readonly class="form-control">
+                        </input>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="txt_Email">Email ID</label>
-                    <input type="email" id="txt_Email" name="txt_Email" class="form-control"
-                        required="required" />
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-12">
-                    <label for="txt_Address">Address</label>
-                    <input type="text" id="txt_Address" name="txt_Address" class="form-control"
-                        required="required" />
-                </div>
-            </div>
-            <hr color="grey">
-            <div class="my-4" style="color:#0041b3">
-                <h5>Academic Details </h5>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-3">
-                        <label for="select_Branch">Branch</label>
-                        <select id="select_Branch" name="select_Branch" disabled class="form-control">
+                        <label for="select_NewBranch">New Branch</label>
+                        <select id="select_NewBranch" name="select_NewBranch" class="form-control">
                      <?php
                         $servername="localhost";
                         $username="root";
@@ -149,12 +101,7 @@
                         }  
                     ?>
                         </select>
-                </div>     
-                <div class="form-group col-md-4">
-                    <label for="txt_Staff_College_Id">College Id Number</label>
-                    <input type="text" id="txt_Staff_College_Id" name="txt_Staff_College_Id" class="form-control">
-                    </input>
-                </div>           
+                </div>                
             </div>
             <div class="my-4">
                 <center>
@@ -184,6 +131,7 @@
                     $Address =  $row['Address'];
                     $StaffBranchStatus =  $row['Staff_Status'];
                     $StaffCollegeId = $row['Staff_College_Id'];
+                    $FullName = $FirstName." ".$MiddleName." ".$LastName;
                 }
                 while($row5 = mysqli_fetch_array($result5))
                 {
@@ -191,37 +139,36 @@
                 }
 
                 if(isset($_POST['submit'])) {
-                    $FirstName =  $_POST['txt_FirstName'];        
-                    $MiddleName =  $_POST['txt_MiddleName'];       
-                    $LastName =  $_POST['txt_LastName']; 
-                    $DateOfBirth =  $_POST['txt_DateOfBirth'];          
-                    $Gender=  $_POST['select_Gender'];
-                    $Contact =  $_POST['txt_Contact'];
-                    $Email =  $_POST['txt_Email'];
-                    $Address =  $_POST['txt_Address'];
+                    //$FirstName =  $_POST['txt_FirstName'];        
+                    //$MiddleName =  $_POST['txt_MiddleName'];       
+                    //$LastName =  $_POST['txt_LastName']; 
+                    //$DateOfBirth =  $_POST['txt_DateOfBirth'];          
+                    //$Gender=  $_POST['select_Gender'];
+                    //$Contact =  $_POST['txt_Contact'];
+                    //$Email =  $_POST['txt_Email'];
+                    //$Address =  $_POST['txt_Address'];
                     //$StaffBranchStatus =  $_POST['select_StaffStatus'];
-                    $BranchId = $_POST['select_Branch'];
+                    $BranchId = $_POST['select_PrevBranch'];
                     $StaffBranchStatus= "Active";
-                    $StaffCollegeId = $_POST['txt_Staff_College_Id'];
-                    $BranchId = $_POST['select_Branch'];
+                    $changeStaffBranchStatus= "DeActive";
+                    //$StaffCollegeId = $_POST['txt_Staff_College_Id'];
+                    //$BranchId = $_POST['select_Branch'];
                                 
-                    $sql1="UPDATE staff_master SET First_Name='$FirstName',Middle_Name='$MiddleName',Last_Name='$LastName',Date_Of_Birth='$DateOfBirth',Gender='$Gender',Contact='$Contact',Email_Id='$Email',Address='$Address',Staff_Status='$StaffBranchStatus',Staff_College_Id='$StaffCollegeId' WHERE Staff_Id='$StaffId'";
+                    //$sql1="UPDATE staff_master SET First_Name='$FirstName',Middle_Name='$MiddleName',Last_Name='$LastName',Date_Of_Birth='$DateOfBirth',Gender='$Gender',Contact='$Contact',Email_Id='$Email',Address='$Address',Staff_Status='$StaffBranchStatus',Staff_College_Id='$StaffCollegeId' WHERE Staff_Id='$StaffId'";
                     
-
-                    //if($con->query($sql1) === TRUE ){
-                    
-                        //$sql2="UPDATE staff_branch_link SET Branch_Id='$BranchId' WHERE Staff_Id='$StaffId' && Staff_Branch_Status='$StaffBranchStatus'";
-                    
+                    $sql1="INSERT INTO staff_branch_link(Staff_Id,Branch_Id,Staff_Branch_Status) VALUES('$StaffId','$BranchId','$StaffBranchStatus')";
+                    $sql2="UPDATE staff_branch_link SET Staff_Branch_Status='$changeStaffBranchStatus' WHERE Staff_Id='$StaffId' && Staff_Branch_Status='$StaffBranchStatus'";
+                    if($con->query($sql2) === TRUE ){
                         if($con->query($sql1) === TRUE){
                             echo "<script> location.href='Index.php'; </script>";
                         }
                         else{
                             echo "<br>error: ".$sql1."<br>".$con->error;
                         }
-                    //}
-                    //else{
-                    //    echo "<br>error: ".$sql1."<br>".$con->error;
-                    //}
+                    }
+                    else{
+                        echo "<br>error: ".$sql2."<br>".$con->error;
+                    }
                 }
            ?>
             <input type="button" value="Back To List" onclick="window.location.href='Index.php'"
@@ -244,52 +191,19 @@
 
     <script>
 
-        var FirstName = "<?php echo $FirstName ?>";
-        var MiddleName = "<?php echo $MiddleName ?>";
-        var LastName = "<?php echo $LastName ?>";
-        var DateOfBirth = "<?php echo $DateOfBirth ?>";
-        var Gender = "<?php echo $Gender ?>";
-        var Contact = "<?php echo $Contact ?>";
-        var Email = "<?php echo $Email ?>";
-        var Address = "<?php echo $Address ?>";
         var StaffBranchStatus = "<?php echo $StaffBranchStatus ?>";
         var StaffCollegeId = "<?php echo $StaffCollegeId ?>";
         var BranchId = "<?php echo $BranchId ?>";
-        $("#txt_FirstName").val(FirstName);
-        $("#txt_MiddleName").val(MiddleName);
-        $("#txt_LastName").val(LastName);
-        $("#txt_DateOfBirth").val(DateOfBirth);            
-        $("#txt_Contact").val(Contact);
-        $("#txt_Email").val(Email);
-        $("#txt_Address").val(Address);
+
         $("#txt_Staff_College_Id").val(StaffCollegeId);
 
-        var select_Gender = document.getElementById("select_Gender");
-        var options_Gender = select_Gender.options;
-        for (var j = 0, option; option = options_Gender[j]; j++) {
 
-            if (option.value == Gender) {
-                select_Gender.selectedIndex = j;
-            }
-        }
+        var FullName = "<?php echo $FullName ?>";
+        $("#txt_FullName").val(FullName);
 
-        var select_StaffStatus = document.getElementById("select_StaffStatus");
-        var options_StaffStatus = select_StaffStatus.options;
-        for (var j = 0, option; option = options_StaffStatus[j]; j++) {
 
-            if (option.value == StaffBranchStatus) {
-                select_StaffStatus.selectedIndex = j;
-            }
-        }
-
-        var select_Branch = document.getElementById("select_Branch");
-        var options_Branch = select_Branch.options;
-        for (var j = 0, option; option = options_Branch[j]; j++) {
-
-            if (option.value == BranchId) {
-                select_Branch.selectedIndex = j;
-            }
-        }
+        var PrevBranch = document.getElementById("Branch");
+        $("#txt_PrevBranch").val(PrevBranch);
     </script>
 
 </body>
