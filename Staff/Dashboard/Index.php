@@ -76,10 +76,8 @@
     } 
     else 
     {
-        echo "Cookie '" . $cookie_name . "' is set!<br>";
-        echo "Value is: " . $_COOKIE["StaffId"];
-
         $StaffId = $_COOKIE["StaffId"];
+        //echo "<script>console.log(".$StaffId.")</script>";
     }
 
     ?>
@@ -91,20 +89,46 @@
             </div>
             <div class="my-5">
 
-                <?php
-                    $servername="localhost";
-                    $username="root";
-                    $password="";
-                    $db="vceterp";
-                    $con = new mysqli($servername,$username,$password,$db);
-                    if(!$con)
-                    {
-                        die('could not connect'.mysql_error());
-                    }
-                    else
-                    {
-                        //echo "<h1>database connected</h1>";
-                    }
+                <div class="form-row">
+                    <div class="form-group col-md-2 my-2">
+                        <label for="select_Academic_Session_Id">Academic Session</label>
+                        <select id="select_Academic_Session_Id" name="select_Academic_Session_Id" class="form-control">
+                            <?php
+                            $servername="localhost";
+                            $username="root";
+                            $password="";
+                            $db="vceterp";
+                            $con = new mysqli($servername,$username,$password,$db);
+                            if(!$con)
+                            {
+                                die('could not connect'.mysql_error());
+                            }
+                            else
+                            {
+                                //echo "<h1>database connected</h1>";
+                            }
+
+                            $sql = "SELECT * FROM academic_session_master";
+                            $result = $con->query($sql);
+                            while($row = $result->fetch_array())
+                            {
+                                echo "<option value ='".$row['Academic_Session_Id']."'>".$row['Academic_Session_Name']."</option>";
+                            }  
+                        ?>
+                        </select>
+                    </div>
+
+                    <?php
+                        echo '<div class="form-group col-md-3">'.
+                                '<input type="text" id="Staff_Id" name="Staff_Id" value="'.$StaffId.'" class="form-control" hidden/>'.
+                            '</div>';
+                    ?>
+
+                </div>
+
+                <hr />
+
+                <?php                    
 
                     $sql = "SELECT * FROM staff_branch_link NATURAL JOIN subject_staff_link NATURAL JOIN branch_master NATURAL JOIN subject_master WHERE Staff_Id = " .$StaffId;
                     $result = $con->query($sql);
@@ -132,18 +156,19 @@
                             $Year = "BE";
                         }
 
-                        echo '<div class="form-row p-4 m-1" style="background-color: whitesmoke;">
-                                <div class="form-group col-md-3">
-                                    <h3 style="color: #1c158a">'.$row["Branch_Name"].'</h3>
-                                    <h4 style="color: #35117d" class="mt-3">'.$Year.'-' .$Semester.'</h4>
-                                </div>
-                                <div class="form-group col-md-7">
-                                    <h4 style="color: #35117d" class="mt-3">'.$row["Subject_Name"].'</h4>
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <button class="btn btn-outline-success m-2 px-4 py-2">View</button>
-                                </div>
-                            </div>';
+                        echo '<div class="form-row p-4 m-1" style="background-color: whitesmoke;">'.
+                                '<input type="text" value="'.$row['Subject_Id'].'" hidden />'.
+                                '<div class="form-group col-md-3">'.
+                                    '<h3 style="color: #1c158a">'.$row["Branch_Name"].'</h3>'.
+                                    '<h4 style="color: #35117d" class="mt-3">'.$Year.'-' .$Semester.'</h4>'.
+                                '</div>'.
+                                '<div class="form-group col-md-7">'.
+                                    '<h4 style="color: #35117d" class="mt-3">'.$row["Subject_Name"].'</h4>'.
+                                '</div>'.
+                                '<div class="form-group col-md-2">'.
+                                    '<button onclick="takeAttendance(this)" class="btn btn-outline-success m-2 px-4 py-2">View</button>'.
+                                '</div>'.
+                            '</div>';
                     }
                 ?>
 
@@ -165,34 +190,70 @@
 
         <script>
 
-            function edit(btn){
+            function edit(btn) {
 
                 var SubjectId = btn.parentNode.parentNode.childNodes[0].innerHTML;
 
-                window.location.href='Edit.php?SubjectId=' + SubjectId;
+                window.location.href = 'Edit.php?SubjectId=' + SubjectId;
             }
-            
-            
-            $("#btn_Search").click(function(){
+
+            $("#btn_Search").click(function () {
                 $("#container_Table").empty();
                 var SemesterId = $("#select_Semester").val();
                 var BranchId = $("#select_BranchId").val();
-            
-            $.ajax({
-                type: "GET",
-                url: 'SubjectSearchFunction.php',
-                contentType: "application/json; charset=utf-8",
-                datatype: "Json",
-                data: { SemesterId: SemesterId, BranchId: BranchId },
-                success: function (data) {
-                     var obj = JSON.parse(data);
-                     $("#container_Table").append(obj.success);
-                },
-                error: function(){
-                    console.log("error");
-                }
+
+                $.ajax({
+                    type: "GET",
+                    url: 'SubjectSearchFunction.php',
+                    contentType: "application/json; charset=utf-8",
+                    datatype: "Json",
+                    data: { SemesterId: SemesterId, BranchId: BranchId },
+                    success: function (data) {
+                        var obj = JSON.parse(data);
+                        $("#container_Table").append(obj.success);
+                    },
+                    error: function () {
+                        console.log("error");
+                    }
+                });
             });
-        });
+
+            function setCookie(cname, cvalue, exdays) {
+                var d = new Date();
+                d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+                var expires = "expires=" + d.toUTCString();
+                document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+            }
+
+            function getCookie(cname) {
+                var name = cname + "=";
+                var ca = document.cookie.split(';');
+                for (var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                        c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                        return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }
+
+            function takeAttendance(btn) {
+
+                var row = btn.parentNode.parentNode;
+                var StaffId = document.getElementById("Staff_Id").value;
+                var SubjectId = row.childNodes[0].value;
+                var AcademicSessionId = document.getElementById("select_Academic_Session_Id").value;
+
+                setCookie("StaffId",StaffId,1);
+                setCookie("SubjectId",SubjectId,1);
+                setCookie("AcademicSessionId",AcademicSessionId,1);
+
+                window.location.href="../Attendance/Index.php";
+            }            
+
         </script>
 
 </body>

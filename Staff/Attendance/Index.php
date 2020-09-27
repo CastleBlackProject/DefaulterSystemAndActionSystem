@@ -1,3 +1,12 @@
+<?php 
+
+    $StaffId = $_COOKIE["StaffId"];
+    $SubjectId = $_COOKIE["SubjectId"];
+    $AcademicSessionId = $_COOKIE["AcademicSessionId"];
+
+?>
+
+
 <!doctype html>
 <html lang="en">
 
@@ -138,21 +147,21 @@
                 var SemesterId = $("#select_Semester").val();
                 var BranchId = $("#select_BranchId").val();
             
-            $.ajax({
-                type: "GET",
-                url: 'SubjectSearchFunction.php',
-                contentType: "application/json; charset=utf-8",
-                datatype: "Json",
-                data: { SemesterId: SemesterId, BranchId: BranchId },
-                success: function (data) {
-                     var obj = JSON.parse(data);
-                     $("#container_Table").append(obj.success);
-                },
-                error: function(){
-                    console.log("error");
-                }
+                $.ajax({
+                    type: "GET",
+                    url: 'SubjectSearchFunction.php',
+                    contentType: "application/json; charset=utf-8",
+                    datatype: "Json",
+                    data: { SemesterId: SemesterId, BranchId: BranchId },
+                    success: function (data) {
+                        var obj = JSON.parse(data);
+                        $("#container_Table").append(obj.success);
+                    },
+                    error: function(){
+                        console.log("error");
+                    }
+                });
             });
-        });
         </script>
 
 </body>
