@@ -134,45 +134,15 @@
                 <h5>Academic Details </h5>
             </div>
             <div class="form-row">
-                <div class="form-group col-md-3">
-                        <label for="select_Branch">Branch</label>
-                        <select id="select_Branch" name="select_Branch" class="form-control">
+            <div class="form-group col-md-4">
+                        <label for="select_Academic_Session_Id">Academic Session</label>
+                        <select id="select_Academic_Session_Id" name="select_Academic_Session_Id" class="form-control">
                     <?php
                         $servername="localhost";
                         $username="root";
                         $password="";
                         $db="vceterp";
                         $con = new mysqli($servername,$username,$password,$db);
-                        // if(!$con)
-                        // {
-                        //     die('could not connect'.mysql_error());
-                        // }
-                        // else
-                        // {
-                        //     echo "<script>alert(<h1>database connected</h1>);</script>";
-                        // }
-                        $sql = "SELECT * FROM branch_master";
-                        $result = $con->query($sql);
-                        while($row = $result->fetch_array())
-                        {
-                            echo "<option value ='".$row['Branch_Id']."'>".$row['Branch_Name']."</option>";
-                        }  
-                    ?>
-                        </select>
-                </div>
-                <div class="form-group col-md-3">
-                        <label for="select_Year">Year</label>
-                        <select id="select_Year" name="select_Year" class="form-control">
-                            <option value='1'>FE</option>
-                            <option value='2'>SE</option>
-                            <option value='3'>TE</option>
-                            <option value='4'>BE</option>
-                        </select>
-                </div>
-                <div class="form-group col-md-3">
-                        <label for="select_Academic_Session_Id">Academic Session</label>
-                        <select id="select_Academic_Session_Id" name="select_Academic_Session_Id" class="form-control">
-                    <?php
                         $sql = "SELECT * FROM academic_session_master";
                         $result = $con->query($sql);
                         while($row = $result->fetch_array())
@@ -181,6 +151,58 @@
                         }  
                     ?>
                         </select>
+                </div>
+                <div class="form-group col-md-4">
+                        <label for="select_Branch">Branch</label>
+                        <select id="select_Branch" name="select_Branch" class="form-control">
+                    <?php
+                        
+                        $sql = "SELECT * FROM branch_master";
+                        $result = $con->query($sql);
+                        while($row = $result->fetch_array())
+                        {
+                            echo "<option value ='".$row['Branch_Id']."'>".$row['Branch_Name']."</option>";
+                        }  
+                    ?>
+                        </select>
+                </div> 
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                        <label for="select_Year">Year</label>
+                        <select id="select_Year" name="select_Year" class="form-control">
+                            <option value='0'>--Select--</option>
+                            <option value='1'>FE</option>
+                            <option value='2'>SE</option>
+                            <option value='3'>TE</option>
+                            <option value='4'>BE</option>
+                        </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="select_Semester">Semester</label>
+                    <select id="select_Semester" name="select_Semester" class="form-control">
+                        <option value='0'>--Select--</option>
+                        <option value='1'>Semester 1</option>
+                        <option value='2'>Semester 2</option>
+                        <option value='3'>Semester 3</option>
+                        <option value='4'>Semester 4</option>
+                        <option value='5'>Semester 5</option>
+                        <option value='6'>Semester 6</option>
+                        <option value='7'>Semester 7</option>
+                        <option value='8'>Semester 8</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="txt_Student_College_Id">College Id Number</label>
+                    <input type="text" id="txt_Student_College_Id" name="txt_Student_College_Id" class="form-control">
+                    </input>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="select_Roll_Number">Roll Number</label>
+                    <input type="number" min="1" max="120" id="select_Roll_Number" name="select_Roll_Number" class="form-control">
+                    </input>
                 </div>
             </div>
             <div class="my-4">
@@ -211,9 +233,11 @@
 
     $sql = "SELECT * FROM student_master WHERE Student_Id = " . $StudentId;
     $result = $con->query($sql);
-
+    $sql5 = "SELECT * FROM student_branch_year_link WHERE Student_Id = " . $StudentId;
+    $result5 = $con->query($sql5);
     while($row = mysqli_fetch_array($result))
     {
+        $StudentCollegeId = $row['Student_College_Id'];
         $FirstName =  $row['First_Name'];        
         $MiddleName =  $row['Middle_Name'];        
         $LastName =  $row['Last_Name']; 
@@ -223,11 +247,17 @@
         $Email =  $row['Email_Id'];
         $Address =  $row['Address'];
         $StudentStatus =  $row['Student_Status'];
-        //$BranchId = $row['Branch_Id'];
-        //$YearId = $row['Year_Id'];
     } 
-
+    while($row5 = mysqli_fetch_array($result5))
+    {
+        $AcademicSessionId = $row5['Academic_Session_Id'];
+        $BranchId = $row5['Branch_Id'];
+        $semesterid = $row5['Semester_Id'];
+        $YearId = $row5['Year_Id'];
+        $RollNo = $row5['Roll_Number'];
+    }
     if(isset($_POST['submit'])) {
+        $StudentCollegeId = $_POST['txt_Student_College_Id'];
         $FirstName =  $_POST['txt_FirstName'];        
         $MiddleName =  $_POST['txt_MiddleName'];       
         $LastName =  $_POST['txt_LastName']; 
@@ -237,10 +267,13 @@
         $Email =  $_POST['txt_Email'];
         $Address =  $_POST['txt_Address'];
         $StudentStatus =  $_POST['select_StudentStatus'];
+        $AcademicSessionId = $_POST['select_Academic_Session_Id'];
         $BranchId = $_POST['select_Branch'];
+        $semesterid = $_POST['select_Semester'];
         $YearId = $_POST['select_Year'];
         $StudentBranchStatus= "Active";
-        $acdsesid = $_POST['select_Academic_Session_Id'];
+        $RollNo = $_POST['select_Roll_Number'];
+
         $sql="UPDATE student_master SET First_Name='$FirstName',Middle_Name='$MiddleName',Last_Name='$LastName',Date_Of_Birth='$DateOfBirth',Gender='$Gender',Contact='$Contact',Email_Id='$Email',Address='$Address',Student_Status='$StudentStatus' WHERE Student_Id='$StudentId'";
         $sql1="UPDATE student_branch_link SET Branch_Id='$BranchId',Student_Branch_Status='$StudentBranchStatus' WHERE Student_Id='$StudentId' AND Student_Branch_Status='$StudentBranchStatus'";
                 
@@ -274,7 +307,7 @@
         crossorigin="anonymous"></script>
 
     <script>
-
+        var StudentCollegeId = "<?php echo $StudentCollegeId ?>";
         var FirstName = "<?php echo $FirstName ?>";
         var MiddleName = "<?php echo $MiddleName ?>";
         var LastName = "<?php echo $LastName ?>";
@@ -284,6 +317,11 @@
         var Email = "<?php echo $Email ?>";
         var Address = "<?php echo $Address ?>";
         var StudentStatus = "<?php echo $StudentStatus ?>";
+        var AcademicSessionId = "<?php echo $AcademicSessionId ?>";
+        var BranchId = "<?php echo $BranchId ?>";
+        var SemesterId = "<?php echo $semesterid ?>";
+        var YearId = "<?php echo $YearId ?>";
+        var RollNo = "<?php echo $RollNo ?>";
 
         $("#txt_FirstName").val(FirstName);
         $("#txt_MiddleName").val(MiddleName);
@@ -315,10 +353,31 @@
         var options_Branch = select_Branch.options;
         for (var j = 0, option; option = options_Branch[j]; j++) {
 
-            if (option.value == Branch) {
+            if (option.value == BranchId) {
                 select_Branch.selectedIndex = j;
-            }
-        }
+           }
+         }
+
+        var select_Year = document.getElementById("select_Year");
+        var options_Year = select_Year.options;
+        for (var j = 0, option; option = options_Year[j]; j++) {
+
+            if (option.value == YearId) {
+                select_Year.selectedIndex = j;
+           }
+         }
+
+        var select_Semester = document.getElementById("select_Semester");
+        var options_Semester = select_Semester.options;
+        for (var j = 0, option; option = options_Semester[j]; j++) {
+
+            if (option.value == SemesterId) {
+                select_Semester.selectedIndex = j;
+           }
+         }
+
+         $("#txt_Student_College_Id").val(StudentCollegeId);
+         $("#select_Roll_Number").val(RollNo);
     </script>
 
 </body>
