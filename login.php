@@ -14,6 +14,14 @@
 
     <title>َAnimated Login Form</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body{
+          background-image: url('Images/vartak_college2.jpg');
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-size: cover;
+        }
+        </style>
   </head>
   <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -68,6 +76,7 @@
   <input type="password" name="txt_Password" placeholder="Password">
   <input type="submit" name="" value="Login">
 </form>
+
 
 <?php 
 
