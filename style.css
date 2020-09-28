@@ -2,8 +2,8 @@ body{
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  /* background: #34495e; */
-  background-image: url("../Images/vartak_college2.jpg");
+  background: #34495e; 
+  /* background-image: url('Images/vartak_college2.jpg'); */
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
