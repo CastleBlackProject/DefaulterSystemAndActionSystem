@@ -233,7 +233,7 @@
             
             ?>
 
-            <input type="button" value="Back To List" onclick="window.location.href='../Dashboard/Index.html'" class="btn btn-primary" />
+            <input type="button" value="Back To List" onclick="window.location.href='../Dashboard/Index.php'" class="btn btn-primary" />
 
         </form>
     </div>

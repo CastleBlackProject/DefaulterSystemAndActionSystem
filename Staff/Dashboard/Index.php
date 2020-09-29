@@ -166,7 +166,8 @@
                                     '<h4 style="color: #35117d" class="mt-3">'.$row["Subject_Name"].'</h4>'.
                                 '</div>'.
                                 '<div class="form-group col-md-2">'.
-                                    '<button onclick="takeAttendance(this)" class="btn btn-outline-success m-2 px-4 py-2">View</button>'.
+                                    '<button onclick="takeAttendance(this)" class="btn btn-outline-success m-2 px-4 py-2">Take Attendance</button>'.
+                                    '<button onclick="checkAttendance(this)" class="btn btn-outline-success m-2 px-4 py-2">Check Attendance</button>'.
                                 '</div>'.
                             '</div>';
                     }
@@ -253,6 +254,20 @@
 
                 window.location.href="../Attendance/Index.php";
             }            
+
+            function checkAttendance(btn) {
+
+                var row = btn.parentNode.parentNode;
+                var StaffId = document.getElementById("Staff_Id").value;
+                var SubjectId = row.childNodes[0].value;
+                var AcademicSessionId = document.getElementById("select_Academic_Session_Id").value;
+
+                setCookie("StaffId",StaffId,1);
+                setCookie("SubjectId",SubjectId,1);
+                setCookie("AcademicSessionId",AcademicSessionId,1);
+
+                window.location.href="../Attendance/Defaulter.php";
+            }
 
         </script>
 
