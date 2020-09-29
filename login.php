@@ -71,18 +71,18 @@
     </nav>
     
 
-<form class="box" action="index.html" method="post">
+<form class="box" action="" method="post">
     <h1>Login</h1>
     <div class="select">
     <select name="select_Admin" id="select_Admin"> 
         <option value="-1">Select User Type</option>
-        <option value="Staff">Staff</option>
-        <option value="Admin">Admin</option>
+        <option value="0">Staff</option>
+        <option value="1">Admin</option>
     </select>
     </div>
   <input type="text" name="txt_Username" placeholder="Username">
   <input type="password" name="txt_Password" placeholder="Password">
-  <input type="submit" name="" value="Login">
+  <input type="submit" name="submit" value="Login">
 </form>
 
 
@@ -112,9 +112,10 @@
         $result = $con->query($sql);
         while($row = mysqli_fetch_array($result))
         {
-            if($Username == $row['Staff_College_Id'] && $Password == $row['Staff_Password'])
+            if($Username == $row['Staff_College_Id'] && $Password == $row['Staff_Password'] && $Admin == $row['Is_Admin'])
             {
                 echo "<script> alert('verified') </script>";
+                break;
 
             }
             else
