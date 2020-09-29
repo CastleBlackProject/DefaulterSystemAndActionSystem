@@ -71,7 +71,14 @@
     </nav>
 
 <form class="box" action="index.html" method="post">
-  <h1>Login</h1>
+    <h1>Login</h1>
+    <div class="select">
+    <select name="slct" id="slct"> 
+        <option value="-1">Select User Type</option>
+        <option value="Staff">Staff</option>
+        <option value="Admin">Admin</option>
+    </select>
+    </div>
   <input type="text" name="txt_Username" placeholder="Username">
   <input type="password" name="txt_Password" placeholder="Password">
   <input type="submit" name="" value="Login">
