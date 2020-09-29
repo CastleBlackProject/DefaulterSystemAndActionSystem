@@ -112,9 +112,10 @@
             if($Username == $row['Staff_College_Id'] && $Password == $row['Staff_Password'] && $Admin == $row['Is_Admin'])
             {
                 echo "<script> alert('verified') </script>"; 
-                $StaffId = $row['Staff_Id'];
-                setcookie("StaffId",$StaffId, 86400, "/");               
-                echo "<script>window.location.href = 'Staff/Dashboard/Index.php'</script>";
+                $StaffId = $row['Staff_Id'];                
+                //setcookie("StaffId",$StaffId, 86400, "/"); 
+                //echo $StaffId;              
+                echo "<script>window.location.href = 'Staff/Dashboard/Index.php?StaffId=".$StaffId."'</script>";
                 break;
             }
             else
