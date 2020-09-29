@@ -163,8 +163,11 @@
                                 else{
                                     $StudentName = $row1['First_Name'] . " " . $row1['Last_Name'];
                                 }
-
-                                $AttendancePercentage = ($LecturesAttended/$TotalLectures) * 100;
+                                if($TotalLectures != 0){
+                                    $AttendancePercentage = ($LecturesAttended/$TotalLectures) * 100;}
+                                else{
+                                    $AttendancePercentage=0;   
+                                }
 
                                 echo'<tr>'.
                                     '<td hidden><input type="text" name="StudentId[]" value="'.$row1['Student_Id'].'" /></td>'.
