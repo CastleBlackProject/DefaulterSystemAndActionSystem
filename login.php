@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-    <title>َAnimated Login Form</title>
+    <title>َLogin</title>
     <link rel="stylesheet" href="style.css">
     <style>
         body{
@@ -85,9 +85,6 @@
   <input type="submit" name="submit" value="Login">
 </form>
 
-
-
-
 <?php 
      $servername="localhost";
      $username="root";
@@ -114,19 +111,18 @@
         {
             if($Username == $row['Staff_College_Id'] && $Password == $row['Staff_Password'] && $Admin == $row['Is_Admin'])
             {
-                echo "<script> alert('verified') </script>";
+                echo "<script> alert('verified') </script>"; 
+                $StaffId = $row['Staff_Id'];
+                setcookie("StaffId",$StaffId, 86400, "/");               
+                echo "<script>window.location.href = 'Staff/Dashboard/Index.php'</script>";
                 break;
-
             }
             else
             {
-                echo "<script> alert('inner if else wrong')</script>";
+                //echo "<script> alert('inner if else wrong')</script>";
             }
         }      
-     }
-    //$StaffId = 1;
-    //setcookie("Staff_Id",$StaffId, 86400, "/");
-
+     }    
 ?>
 
   </body>
