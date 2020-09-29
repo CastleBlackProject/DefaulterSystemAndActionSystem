@@ -118,7 +118,7 @@
                             <th hidden>Student ID</th>
                             <th>Roll No.</th>
                             <th>Student's Name</th>
-                            <th></th>
+                            <th><input type="checkbox" id="chkboc_checkAll" onclick="checkAllStudents()"/></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -135,11 +135,11 @@
                                 }
 
                                 echo'<tr>'.
-                                    '<td hidden><input type="text" name="StudentId[]" value="'.$row['Student_Id'].'" /></td>'.
-                                    '<td style="width: 150px;">'.$row['Roll_Number'].'</td>'.
-                                    '<td>'.$StudentName.'</td>'.
-                                    '<td><input type="checkbox" name="chkbox_Attendance[]" value="'.$row['Student_Id'].'" /></td>'.
-                                '</tr>';
+                                        '<td hidden><input type="text" name="StudentId[]" value="'.$row['Student_Id'].'" /></td>'.
+                                        '<td style="width: 150px;">'.$row['Roll_Number'].'</td>'.
+                                        '<td>'.$StudentName.'</td>'.
+                                        '<td><input type="checkbox" name="chkbox_Attendance[]" value="'.$row['Student_Id'].'" class="chkbox_Attendance" /></td>'.
+                                    '</tr>';
                             }                            
                         ?>
                     </tbody>
@@ -280,6 +280,20 @@
                     }
                 });
             });
+
+            function checkAllStudents(){
+                var checkbox = document.getElementsByClassName("chkbox_Attendance");
+
+                for(var i=0; i < checkbox.length; i++){
+                    if ($(this).prop("checked") == true) {
+                        checkbox[i].checked = false;
+                    }
+                    else{
+                        checkbox[i].checked = true;
+                    }
+                } 
+            }
+
         </script>
 
 </body>
