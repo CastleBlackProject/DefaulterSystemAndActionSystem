@@ -69,11 +69,12 @@
             </form>
         </div>
     </nav>
+    
 
 <form class="box" action="index.html" method="post">
     <h1>Login</h1>
     <div class="select">
-    <select name="slct" id="slct"> 
+    <select name="select_Admin" id="select_Admin"> 
         <option value="-1">Select User Type</option>
         <option value="Staff">Staff</option>
         <option value="Admin">Admin</option>
@@ -85,8 +86,43 @@
 </form>
 
 
-<?php 
 
+
+<?php 
+     $servername="localhost";
+     $username="root";
+     $password="";
+     $db="vceterp";
+     $con = new mysqli($servername,$username,$password,$db);
+     if(!$con)
+     {
+         die('could not connect'.mysql_error());
+     }
+     else
+     {
+        #echo "<h1>database connected</h1>";
+     }  
+     if(isset($_POST['submit'])) 
+     {
+        $Username = $_POST['txt_Username'];
+        $Password = $_POST['txt_Password'];
+        $Admin = $_POST['select_Admin'];
+         
+        $sql="SELECT * FROM staff_admin_login";
+        $result = $con->query($sql);
+        while($row = mysqli_fetch_array($result))
+        {
+            if($Username == $row['Staff_College_Id'] && $Password == $row['Staff_Password'])
+            {
+                echo "<script> alert('verified') </script>";
+
+            }
+            else
+            {
+                echo "<script> alert('inner if else wrong')</script>";
+            }
+        }      
+     }
     //$StaffId = 1;
     //setcookie("Staff_Id",$StaffId, 86400, "/");
 
