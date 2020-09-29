@@ -20,6 +20,14 @@
 
     $sql = "SELECT * FROM student_master NATURAL JOIN subject_master NATURAL JOIN student_branch_year_link WHERE Subject_Id = ".$SubjectId." AND Academic_Session_Id = ".$AcademicSessionId;
     $result = $con->query($sql);
+
+    $sql1 = "SELECT max(Lecture_No) FROM lecture_master WHERE Staff_Id = ".$StaffId." AND Subject_Id = ".$SubjectId." AND Academic_Session_Id = ".$AcademicSessionId;
+    $LectureNo = $con->query($sql1);
+
+    if($LectureNo == null){
+        $LectureNo = 1;
+    }
+
 ?>
 
 
@@ -98,7 +106,9 @@
                     <div class="form-row">
                         <div class="form-group col-md-3">
                             <label>Lecture No.</label>
-                            <input type="number" id="txt_LectureNo" name="txt_LectureNo" class="form-control" />
+                            <?php
+                                echo'<input type="number" id="txt_LectureNo" name="txt_LectureNo" value="'.$LectureNo.'" class="form-control" />';
+                            ?>
                         </div>
                         <div class="form-group col-md-3">
                             <label>Date</label>
