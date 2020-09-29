@@ -60,16 +60,16 @@
         </div>
     </nav>
 
-    <?php 
+    <!-- ?php 
 
-        $StaffId = 1;
-        setcookie("Staff_Id",$StaffId, 86400, "/");
+        // $StaffId = 1;
+        // setcookie("Staff_Id",$StaffId, 86400, "/");
 
-    ?>
+    ?> -->
 
     <?php
 
-    if(!isset($_COOKIE["Staff_Id"])) 
+    if(!isset($_COOKIE["StaffId"])) 
     {
         
         //echo "Cookie named '" . $cookie_name . "' is not set!";
@@ -77,6 +77,7 @@
     else 
     {
         $StaffId = $_COOKIE["StaffId"];
+        echo $StaffId;
         //echo "<script>console.log(".$StaffId.")</script>";
     }
 
