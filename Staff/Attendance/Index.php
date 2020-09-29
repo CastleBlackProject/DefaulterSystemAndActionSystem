@@ -27,6 +27,9 @@
     if($LectureNo == null){
         $LectureNo = 1;
     }
+    else{
+        $LectureNo++;
+    }
 
 ?>
 
