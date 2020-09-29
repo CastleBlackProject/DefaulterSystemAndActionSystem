@@ -210,6 +210,7 @@
                         if($con->query($sql3) === TRUE )
                         {
                             //echo "<script> alert('success') </script>";
+                            echo "<script>window.location.href='../Dashboard/Index.php'</script>";
                         }
                         else
                         {

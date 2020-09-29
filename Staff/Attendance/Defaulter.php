@@ -21,7 +21,15 @@
     $sql1 = "SELECT * FROM student_master NATURAL JOIN subject_master NATURAL JOIN student_branch_year_link WHERE Subject_Id = ".$SubjectId." AND Academic_Session_Id = ".$AcademicSessionId;
     $result1 = $con->query($sql1);
 
-    $sql2 = "SELECT * FROM lecture_master WHERE Subject_Id = ".$SubjectId." AND Staff_Id = ".$StaffId;
+    $sql2 = "SELECT * FROM lecture_master WHERE Subject_Id = ".$SubjectId." AND Staff_Id = ".$StaffId." AND Academic_Session_Id = ".$AcademicSessionId;
+    $result2 = $con->query($sql2);
+    $TotalLectures = 0;
+    while($row2 = mysqli_fetch_array($result2)){
+        $TotalLectures++;
+    }
+
+
+    $result2 = $con->query($sql2);
 ?>
 
 
@@ -99,6 +107,12 @@
 
             <div>
                 <div class="form-row">
+                    <?php
+                        echo '<div class="form-group col-md-2">'.
+                                '<label>Total Lectures</label>'.
+                                '<input type="number" id="txt_TotalLectures" name="txt_TotalLectures" class="form-control" value="'.$TotalLectures.'" readonly/>'.
+                            '</div>'
+                    ?>
                     <div class="form-group col-md-2">
                         <label>Attendance Criteria (in %)</label>
                         <input type="number" id="txt_AttendanceCriteria" name="txt_AttendanceCriteria" class="form-control" />
@@ -108,7 +122,7 @@
             <hr />            
 
             <div id="container_fieldset">
-                <table class="table table-bordered table-hover">
+                <table  id="table_Students" class="table table-bordered table-hover">
                     <thead>
                         <tr>
                             <th hidden>Student ID</th>
@@ -118,7 +132,7 @@
                             <th>Percentage</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tbody_Students">
                         <?php
                             while($row1 = mysqli_fetch_array($result1))
                             {
@@ -150,12 +164,14 @@
                                     $StudentName = $row1['First_Name'] . " " . $row1['Last_Name'];
                                 }
 
+                                $AttendancePercentage = ($LecturesAttended/$TotalLectures) * 100;
+
                                 echo'<tr>'.
                                     '<td hidden><input type="text" name="StudentId[]" value="'.$row1['Student_Id'].'" /></td>'.
                                     '<td style="width: 150px;">'.$row1['Roll_Number'].'</td>'.
                                     '<td>'.$StudentName.'</td>'.
                                     '<td>'.$LecturesAttended.'</td>'.
-                                    '<td>0</td>'.
+                                    '<td>'.$AttendancePercentage.'</td>'.
                                 '</tr>';
                             }                            
                         ?>
@@ -163,12 +179,12 @@
                 </table>
             </div>            
             
-            <div class="my-4">
+            <!-- <div class="my-4">
                 <center>
                     <button type="submit" name="submit" value="submit" class="btn btn-success">Submit</button>
                     <button type="reset" class="btn btn-success">Reset</button>
                 </center>
-            </div>
+            </div> -->
 
             <input type="button" value="Back To List" onclick="window.location.href='../Dashboard/Index.php'" class="btn btn-primary" />
 
@@ -187,6 +203,27 @@
             integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
             crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+        <script>
+
+            $("#txt_AttendanceCriteria").change(function(){
+                var AttendanceCriteria = $(this).val();
+                var tbody = document.getElementById("tbody_Students");
+                var countRows = $('#table_Students tbody').find('tr').length;
+
+                for(var i=1; i <= countRows; i++){
+                    var row = tbody.childNodes[i];
+                    var AttendancePercentage = parseFloat(row.childNodes[4].innerHTML);
+
+                    if(AttendancePercentage < AttendanceCriteria){
+                        row.style.backgroundColor = "#cc2f2f";
+                    }else{
+                        row.style.backgroundColor = "white";
+                    }
+                }
+            });
+
+        </script>
 
 </body>
 
