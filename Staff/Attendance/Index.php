@@ -21,7 +21,7 @@
     $sql = "SELECT * FROM student_master NATURAL JOIN subject_master NATURAL JOIN student_branch_year_link WHERE Subject_Id = ".$SubjectId." AND Academic_Session_Id = ".$AcademicSessionId;
     $result = $con->query($sql);
 
-    $sql1 = "SELECT max(Lecture_No) FROM lecture_master WHERE Staff_Id = ".$StaffId." AND Subject_Id = ".$SubjectId." AND Academic_Session_Id = ".$AcademicSessionId;
+    $sql1 = "SELECT count(Lecture_No) FROM lecture_master WHERE Staff_Id = ".$StaffId." AND Subject_Id = ".$SubjectId." AND Academic_Session_Id = ".$AcademicSessionId;
     $LectureNo = $con->query($sql1);
 
     if($LectureNo == null){
@@ -223,7 +223,7 @@
                         if($con->query($sql3) === TRUE )
                         {
                             //echo "<script> alert('success') </script>";
-                            echo "<script>window.location.href='../Dashboard/Index.php'</script>";
+                            echo "<script>window.location.href='../Dashboard/Index.php?StaffId=".$StaffId."'</script>";
                         }
                         else
                         {
@@ -247,7 +247,7 @@
             
             ?>
 
-            <input type="button" value="Back To List" onclick="window.location.href='../Dashboard/Index.php'" class="btn btn-primary" />
+            <input type="button" onclick="backToList()" value="Back To List" class="btn btn-primary" />
 
         </form>
     </div>
@@ -305,6 +305,12 @@
                         checkbox[i].checked = true;
                     }
                 } 
+            }
+
+            var StaffId = <?php echo $StaffId;?>;
+
+            function backToList(){
+                window.location.href='../Dashboard/Index.php?StaffId='+StaffId;
             }
 
         </script>

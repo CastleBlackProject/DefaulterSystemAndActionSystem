@@ -28,7 +28,6 @@
         $TotalLectures++;
     }
 
-
     $result2 = $con->query($sql2);
 ?>
 
@@ -189,7 +188,7 @@
                 </center>
             </div> -->
 
-            <input type="button" value="Back To List" onclick="window.location.href='../Dashboard/Index.php'" class="btn btn-primary" />
+            <input type="button" onclick="backToList()" value="Back To List" class="btn btn-primary" />
 
         </form>
     </div>
@@ -225,6 +224,12 @@
                     }
                 }
             });
+
+            var StaffId = <?php echo $StaffId;?>;
+
+            function backToList(){
+                window.location.href='../Dashboard/Index.php?StaffId='+StaffId;
+            }
 
         </script>
 

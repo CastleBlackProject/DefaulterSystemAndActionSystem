@@ -126,5 +126,13 @@
      }    
 ?>
 
+<script>
+
+function backToList(){
+    window.location.href='../Dashboard/Index.php?StaffId='+StaffId;
+}
+
+</script>
+
   </body>
 </html>
