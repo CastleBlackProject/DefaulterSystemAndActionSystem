@@ -60,12 +60,12 @@
         </div>
     </nav>
 
-    <?php 
+    <!-- ?php 
 
         $StaffId = $_GET['StaffId'];
         setcookie("StaffId",$StaffId, 86400, "/");
 
-    ?>
+    ?> -->
 
     <?php
 
