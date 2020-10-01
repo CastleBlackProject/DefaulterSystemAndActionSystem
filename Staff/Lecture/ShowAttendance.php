@@ -178,12 +178,12 @@
                 </table>
             </div>            
             
-            <div class="my-4">
+            <!-- <div class="my-4">
                 <center>
                     <button type="submit" name="submit" value="submit" class="btn btn-success">Submit</button>
                     <button type="reset" class="btn btn-success">Reset</button>
                 </center>
-            </div>
+            </div> -->
 
             <?php
             

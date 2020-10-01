@@ -161,7 +161,7 @@
                                 '<div class="form-group col-md-2">'.
                                     '<button type="button" onclick="takeAttendance(this)" class="btn btn-outline-success m-2 px-4 py-2">Take Attendance</button>'.
                                     '<button type="button" onclick="checkAttendance(this)" class="btn btn-outline-success m-2 px-4 py-2">Check Attendance</button>'.
-                                    '<button type="button" onclick="showLectureDetails(this)" class="btn btn-outline-success m-2 px-4 py-2">LectureDetails</button>'.
+                                    '<button type="button" onclick="showLectureDetails(this)" class="btn btn-outline-success m-2 px-4 py-2">Lecture Details</button>'.
                                 '</div>'.
                             '</div>';
                     }
