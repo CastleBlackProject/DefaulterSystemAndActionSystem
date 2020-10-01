@@ -104,26 +104,42 @@
         $Username = $_POST['txt_Username'];
         $Password = $_POST['txt_Password'];
         $Admin = $_POST['select_Admin'];
-         
+        $check = 0;
+        $valid = 0;
         $sql="SELECT * FROM staff_admin_login";
         $result = $con->query($sql);
         while($row = mysqli_fetch_array($result))
         {
-            if($Username == $row['Staff_College_Id'] && $Password == $row['Staff_Password'] && $Admin == $row['Is_Admin'])
+            if($Username == $row['Staff_College_Id'] && $Password == $row['Staff_Password'])
             {
-                echo "<script> alert('verified') </script>"; 
+                $valid = 1;
+                // echo "<script> alert('verified') </script>"; 
                 $StaffId = $row['Staff_Id'];                
-                //setcookie("StaffId",$StaffId, 86400, "/"); 
-                //echo $StaffId;              
-                echo "<script>window.location.href = 'Staff/Dashboard/Index.php?StaffId=".$StaffId."'</script>";
-                break;
-            }
-            else
+                setcookie("StaffId",$StaffId, 86400, "/"); 
+                echo $StaffId;              
+                if($Admin == $row['Is_Admin'] && $row['Is_Admin'] == 0){
+                    echo "<script>window.location.href = 'Staff/Dashboard/Index.php?StaffId=".$StaffId."'</script>";
+                    $check = 1;
+                    break;
+                }
+                elseif($Admin == $row['Is_Admin'] && $row['Is_Admin'] == 1){
+                    echo "<script>window.location.href = 'Admin/Index.html'</script>";
+                    $check = 1;
+                    break;
+                }
+            }    
+        }     
+        if($valid = 1 && $check = 0)
             {
-                //echo "<script> alert('inner if else wrong')</script>";
+                echo "<script> alert('selected status is not given to you')</script>";
+                echo "console.log(abc)";
+            }     
+        if($valid = 0)
+            {
+                echo "<script> alert('your login id or password is wrong')</script>";
+                echo "console.log(abc)";
             }
-        }      
-     }    
+        }
 ?>
 
 <script>
