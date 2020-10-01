@@ -74,97 +74,97 @@
 <form class="box" action="" method="post">
     <h1>Login</h1>
     <div class="select">
-    <select name="select_Admin" id="select_Admin"> 
+    <select id="select_Admin" name="select_Admin" id="select_Admin"> 
         <option value="-1">Select User Type</option>
         <option value="0">Staff</option>
         <option value="1">Admin</option>
     </select>
     </div>
-  <input type="text" name="txt_Username" placeholder="Username" required>
-  <input type="password" name="txt_Password" placeholder="Password" required>
-  <input type="submit" name="submit" value="Login">
+  <input type="text" id="txt_Username" name="txt_Username" placeholder="Username" required>
+  <input type="password" id="txt_Password" name="txt_Password" placeholder="Password" required>
+  <input type="button" onclick="checkLogin()" name="submit" value="Login" />
+  <!-- <input type="submit" id="btn_HiddenSubmit" value="Login" hidden /> -->
 </form>
 
-<?php 
-     $servername="localhost";
-     $username="root";
-     $password="";
-     $db="vceterp";
-     $con = new mysqli($servername,$username,$password,$db);
-     if(!$con)
-     {
-         die('could not connect'.mysql_error());
-     }
-     else
-     {
-        #echo "<h1>database connected</h1>";
-     }  
-    if(isset($_POST['submit'])) 
-    {
-        $Username = $_POST['txt_Username'];
-        $Password = $_POST['txt_Password'];
-        $Admin = $_POST['select_Admin'];
-        $valid = 0;
-        $sql="SELECT * FROM staff_admin_login";
-        $result = $con->query($sql);
-        while($row = mysqli_fetch_array($result))
-        {
-            if($Username == $row['Staff_College_Id'] && $Password == $row['Staff_Password'])
-            {
-                $valid = 1;
-                if($Admin == -1)
-                {
-                    echo "<script> alert('please select the login type') </script>";
-                }
-                elseif($row['Is_Admin'] == 1)
-                {
-                    if($Admin == 1)
-                    {
-                        echo "<script> alert('verified') </script>"; 
-                        $StaffId = $row['Staff_Id'];
-                        setcookie("StaffId",$StaffId, 86400, "/");
-                        echo $StaffId;
-                        echo "<script>window.location.href = 'Admin/Index.html'</script>";
-                    }
-                    elseif($Admin == 0)
-                    {
-                        echo "<script> alert('verified') </script>"; 
-                        $StaffId = $row['Staff_Id'];
-                        setcookie("StaffId",$StaffId, 86400, "/");
-                        echo $StaffId;
-                        echo "<script>window.location.href = 'Staff/Dashboard/Index.php?StaffId=".$StaffId."'</script>";
-                    }
-                }
-                elseif($row['Is_Admin'] == 0)
-                {
-                    if($Admin == 1)
-                    {
-                        echo "<script> alert('selected admin status is not given to you')</script></script>";
-                    }
-                    elseif($Admin == 0)
-                    {
-                        echo "<script> alert('verified') </script>"; 
-                        $StaffId = $row['Staff_Id'];
-                        setcookie("StaffId",$StaffId, 86400, "/");
-                        echo $StaffId;
-                        echo "<script>window.location.href = 'Staff/Dashboard/Index.php?StaffId=".$StaffId."'</script>";
-                    }
-                }
-            }
-        }
-        if($valid == 0)
-            {
-                echo "<script> alert('your login id or password is wrong')</script>";
-                echo "console.log(abc)";
-            }
-        
-    }
-?>
+<!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
 <script>
 
-function backToList(){
-    window.location.href='../Dashboard/Index.php?StaffId='+StaffId;
+    function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+function checkLogin(){
+
+    var Username = $("#txt_Username").val();
+    var Password = $("#txt_Password").val();
+    var UserType = $("#select_Admin").val();
+
+    if(UserType == -1){
+        alert('Please Select The User Type')
+    }
+    else{
+        $.ajax({
+            type: "GET",
+            url: 'checkLogin.php',
+            contentType: "application/json; charset=utf-8",
+            datatype: "Json",
+            data: { UserType: UserType, Username: Username, Password: Password },
+            success: function (data) {
+                var obj = JSON.parse(data);
+                var data = obj.success;
+
+                if(data == 1){
+                    var StaffId = obj.StaffId;
+                    setCookie("StaffId",StaffId,1);
+                    window.location.href = "Admin/Index.html";
+                }
+                else if(data == 2){
+                    var StaffId = obj.StaffId;
+                    setCookie("StaffId",StaffId,1);
+                    window.location.href = "Staff/Dashboard/Index.php";
+                }
+                else if(data == -1){
+                    alert("Access Denied");
+                }
+                else if(data == -2){
+                    alert("Incorrect Username or Password");
+                }
+            },
+            error: function(){
+                console.log("error");
+            }
+    });
+    }    
 }
 
 </script>

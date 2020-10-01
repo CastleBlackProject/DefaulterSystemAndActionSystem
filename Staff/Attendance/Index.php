@@ -21,16 +21,16 @@
     $sql = "SELECT * FROM student_master NATURAL JOIN subject_master NATURAL JOIN student_branch_year_link WHERE Subject_Id = ".$SubjectId." AND Academic_Session_Id = ".$AcademicSessionId;
     $result = $con->query($sql);
 
-    $sql1 = "SELECT count(Lecture_No) FROM lecture_master WHERE Staff_Id = ".$StaffId." AND Subject_Id = ".$SubjectId." AND Academic_Session_Id = ".$AcademicSessionId;
-    $LectureNo = $con->query($sql1);
+    $sql1 = "SELECT * FROM lecture_master WHERE Staff_Id = ".$StaffId." AND Subject_Id = ".$SubjectId." AND Academic_Session_Id = ".$AcademicSessionId;
+    $result1 = $con->query($sql1);
 
-    if($LectureNo == null){
-        $LectureNo = 1;
-    }
-    else{
-        $LectureNo++;
+    $LectureNo = 0;
+    while($row = mysqli_fetch_array($result1))
+    {
+        $LectureNo++;        
     }
 
+    $LectureNo++;
 ?>
 
 

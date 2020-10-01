@@ -116,8 +116,7 @@
                 $sql = "SELECT * FROM staff_master WHERE Staff_Id = " . $StaffId;
                 $result = $con->query($sql);
                 $sql5 = "SELECT * FROM staff_branch_link WHERE Staff_Id = " . $StaffId;
-                $result5 = $con->query($sql5);
-
+                $result5 = $con->query($sql5);                
             
                 while($row = mysqli_fetch_array($result))
                 {
@@ -133,9 +132,16 @@
                     $StaffCollegeId = $row['Staff_College_Id'];
                     $FullName = $FirstName." ".$MiddleName." ".$LastName;
                 }
+                $BranchId = 0;
                 while($row5 = mysqli_fetch_array($result5))
                 {
                     $BranchId = $row5['Branch_Id'];
+                }
+
+                $sql6 = "SELECT * FROM branch_master WHERE Branch_Id = ".$BranchId;
+                $result6 = $con->query($sql6);
+                while($row6 = mysqli_fetch_array($result6)){
+                    $BranchName = $row6['Branch_Name'];
                 }
 
                 if(isset($_POST['submit'])) {
@@ -148,7 +154,7 @@
                     //$Email =  $_POST['txt_Email'];
                     //$Address =  $_POST['txt_Address'];
                     //$StaffBranchStatus =  $_POST['select_StaffStatus'];
-                    $BranchId = $_POST['select_PrevBranch'];
+                    $BranchId = $_POST['select_NewBranch'];
                     $StaffBranchStatus= "Active";
                     $changeStaffBranchStatus= "DeActive";
                     //$StaffCollegeId = $_POST['txt_Staff_College_Id'];
@@ -191,19 +197,14 @@
 
     <script>
 
-        var StaffBranchStatus = "<?php echo $StaffBranchStatus ?>";
-        var StaffCollegeId = "<?php echo $StaffCollegeId ?>";
-        var BranchId = "<?php echo $BranchId ?>";
+        var StaffCollegeId = "<?php echo $StaffCollegeId ?>";        
+        var FullName = "<?php echo $FullName ?>";
+        var BranchName = "<?php echo $BranchName ?>";
 
         $("#txt_Staff_College_Id").val(StaffCollegeId);
-
-
-        var FullName = "<?php echo $FullName ?>";
         $("#txt_FullName").val(FullName);
+        $("#txt_PrevBranch").val(BranchName);
 
-
-        var PrevBranch = document.getElementById("Branch");
-        $("#txt_PrevBranch").val(PrevBranch);
     </script>
 
 </body>
