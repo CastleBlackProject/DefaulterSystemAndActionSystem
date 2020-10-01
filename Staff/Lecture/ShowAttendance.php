@@ -147,8 +147,6 @@
                                     $StudentName = $row['First_Name'] . " " . $row['Last_Name'];
                                 }
 
-                                
-
                                 $sql2 = "SELECT Is_Present FROM attendance_master WHERE Lecture_Id = ".$LectureId." AND Student_Id = ".$StudentId;
                                 $result2 = $con->query($sql2);
 
@@ -178,12 +176,12 @@
                 </table>
             </div>            
             
-            <!-- <div class="my-4">
+            <div class="my-4">
                 <center>
                     <button type="submit" name="submit" value="submit" class="btn btn-success">Submit</button>
                     <button type="reset" class="btn btn-success">Reset</button>
                 </center>
-            </div> -->
+            </div>
 
             <?php
             
@@ -197,8 +195,8 @@
                     $LectureDate = $_POST['txt_LectureDate'];
                     $Students = $_POST['StudentId'];
                     $StudentsPresent = $_POST['chkbox_Attendance'];
-
-                    $sql1 = "INSERT INTO lecture_master(Academic_Session_Id,Subject_Id,Staff_Id,Lecture_Number,Lecture_Date) VALUES($AcademicSessionId,$SubjectId,$StaffId,'$LectureNo','$LectureDate')";
+                    
+                    $sql1 = "UPDATE lecture_master SET Lecture_Number = '".$LectureNo."', Lecture_Date = '".$LectureDate."' WHERE Lecture_Id = ".$LectureId;
 
                     if($con->query($sql1) === TRUE )
                     {
@@ -209,20 +207,6 @@
                         echo "<br>error: ".$sql1."<br>".$con->error;
                     }
 
-                    $LectureId = 0;
-
-                    $sql2="SELECT max(Lecture_Id) as id from lecture_master";
-                    $result2 = $con->query($sql2);
-                    $row = $result2->fetch_assoc();
-                    //echo "<br> last id is : ".$row['id'];
-                    if($row['id'] == 0)
-                    {
-                        $LectureId=1;
-                    }
-                    else{
-                        $LectureId=$row['id'];
-                    }
-
                     for($i=0; $i < count($Students); $i++)
                     {
                         $isPresent = false;
@@ -230,19 +214,18 @@
                         {
                             if($Students[$i] == $StudentsPresent[$j])
                             {
-                                $sql3 = "INSERT INTO attendance_master(Lecture_Id,Student_Id,Is_Present) VALUES($LectureId,$Students[$i],1)";
+                                $sql3 = "UPDATE attendance_master SET Is_Present = 1 WHERE Lecture_Id = ".$LectureId." AND Student_Id = ".$Students[$i];
                                 $isPresent = true;
                             }                            
                         }
 
                         if(!$isPresent){
-                            $sql3 = "INSERT INTO attendance_master(Lecture_Id,Student_Id,Is_Present) VALUES($LectureId,$Students[$i],0)";
+                            $sql3 = "UPDATE attendance_master SET Is_Present = 0 WHERE Lecture_Id = ".$LectureId." AND Student_Id = ".$Students[$i];
                         }
 
                         if($con->query($sql3) === TRUE )
                         {
-                            //echo "<script> alert('success') </script>";
-                            echo "<script>window.location.href='../Dashboard/Index.php'</script>";
+                            echo "<script>window.location.href='Index.php'</script>";
                         }
                         else
                         {
