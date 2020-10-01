@@ -82,7 +82,7 @@
     </div>
   <input type="text" id="txt_Username" name="txt_Username" placeholder="Username" required>
   <input type="password" id="txt_Password" name="txt_Password" placeholder="Password" required>
-  <input type="button" onclick="checkLogin()" name="submit" value="Login" />
+  <input type="button" onclick="checkLogin()" name="btn_submit" value="Login" >
   <!-- <input type="submit" id="btn_HiddenSubmit" value="Login" hidden /> -->
 </form>
 
