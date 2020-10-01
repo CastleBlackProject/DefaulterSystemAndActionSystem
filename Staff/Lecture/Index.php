@@ -106,7 +106,7 @@
                                     echo "<td hidden>" . $row['Lecture_Id'] . "</td>";
                                     echo "<td>" . $row['Lecture_Number'] . "</td>";
                                     echo "<td>" . $row['Lecture_Date'] . "</td>";
-                                    echo "<td><button type='button' onclick='showAttendance(this)' class='btn btn-success'>Show Attendance</button></td>";                                    
+                                    echo "<td><button type='button' onclick='showAttendance(this)' class='btn btn-success'>View / Edit Attendance</button></td>";                                    
                                     echo "</tr>";
                                 }
                         ?>

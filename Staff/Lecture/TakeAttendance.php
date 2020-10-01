@@ -137,7 +137,7 @@
                             <th hidden>Student ID</th>
                             <th>Roll No.</th>
                             <th>Student's Name</th>
-                            <th><input type="checkbox" id="chkboc_checkAll" onclick="checkAllStudents()"/></th>
+                            <th><input type="checkbox" id="chkboc_checkAll" onclick="checkAllStudents()"/> <label class="ml-1">Check All</label></th>
                         </tr>
                     </thead>
                     <tbody>
