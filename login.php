@@ -80,8 +80,8 @@
         <option value="1">Admin</option>
     </select>
     </div>
-  <input type="text" name="txt_Username" placeholder="Username">
-  <input type="password" name="txt_Password" placeholder="Password">
+  <input type="text" name="txt_Username" placeholder="Username" required>
+  <input type="password" name="txt_Password" placeholder="Password" required>
   <input type="submit" name="submit" value="Login">
 </form>
 
@@ -99,12 +99,11 @@
      {
         #echo "<h1>database connected</h1>";
      }  
-     if(isset($_POST['submit'])) 
-     {
+    if(isset($_POST['submit'])) 
+    {
         $Username = $_POST['txt_Username'];
         $Password = $_POST['txt_Password'];
         $Admin = $_POST['select_Admin'];
-        $check = 0;
         $valid = 0;
         $sql="SELECT * FROM staff_admin_login";
         $result = $con->query($sql);
@@ -113,33 +112,53 @@
             if($Username == $row['Staff_College_Id'] && $Password == $row['Staff_Password'])
             {
                 $valid = 1;
-                //echo "<script> alert('verified') </script>"; 
-                $StaffId = $row['Staff_Id'];
-                setcookie("StaffId",$StaffId, 86400, "/");
-                echo $StaffId;
-                if($Admin == $row['Is_Admin'] && $row['Is_Admin'] == 0){
-                    echo "<script>window.location.href = 'Staff/Dashboard/Index.php?StaffId=".$StaffId."'</script>";
-                    $check = 1;
-                    break;
+                if($Admin == -1)
+                {
+                    echo "<script> alert('please select the login type') </script>";
                 }
-                elseif($Admin == $row['Is_Admin'] && $row['Is_Admin'] == 1){
-                    echo "<script>window.location.href = 'Admin/Index.html'</script>";
-                    $check = 1;
-                    break;
+                elseif($row['Is_Admin'] == 1)
+                {
+                    if($Admin == 1)
+                    {
+                        echo "<script> alert('verified') </script>"; 
+                        $StaffId = $row['Staff_Id'];
+                        setcookie("StaffId",$StaffId, 86400, "/");
+                        echo $StaffId;
+                        echo "<script>window.location.href = 'Admin/Index.html'</script>";
+                    }
+                    elseif($Admin == 0)
+                    {
+                        echo "<script> alert('verified') </script>"; 
+                        $StaffId = $row['Staff_Id'];
+                        setcookie("StaffId",$StaffId, 86400, "/");
+                        echo $StaffId;
+                        echo "<script>window.location.href = 'Staff/Dashboard/Index.php?StaffId=".$StaffId."'</script>";
+                    }
+                }
+                elseif($row['Is_Admin'] == 0)
+                {
+                    if($Admin == 1)
+                    {
+                        echo "<script> alert('selected admin status is not given to you')</script></script>";
+                    }
+                    elseif($Admin == 0)
+                    {
+                        echo "<script> alert('verified') </script>"; 
+                        $StaffId = $row['Staff_Id'];
+                        setcookie("StaffId",$StaffId, 86400, "/");
+                        echo $StaffId;
+                        echo "<script>window.location.href = 'Staff/Dashboard/Index.php?StaffId=".$StaffId."'</script>";
+                    }
                 }
             }
         }
-        if($valid = 1 && $check = 0)
-            {
-                echo "<script> alert('selected status is not given to you')</script>";
-                echo "console.log(abc)";
-            }
-        if($valid = 0)
+        if($valid == 0)
             {
                 echo "<script> alert('your login id or password is wrong')</script>";
                 echo "console.log(abc)";
             }
-        }
+        
+    }
 ?>
 
 <script>
