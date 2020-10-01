@@ -18,17 +18,25 @@
         //echo "<h1>database connected</h1>";
     }
 
-    $sql1 = "SELECT * FROM student_master NATURAL JOIN subject_master NATURAL JOIN student_branch_year_link WHERE Subject_Id = ".$SubjectId." AND Academic_Session_Id = ".$AcademicSessionId;
+    $sql = "SELECT * FROM student_master NATURAL JOIN subject_master NATURAL JOIN student_branch_year_link WHERE Subject_Id = ".$SubjectId." AND Academic_Session_Id = ".$AcademicSessionId;
+    $result = $con->query($sql);
+
+    $sql1 = "SELECT * FROM lecture_master WHERE Staff_Id = ".$StaffId." AND Subject_Id = ".$SubjectId." AND Academic_Session_Id = ".$AcademicSessionId;
     $result1 = $con->query($sql1);
 
-    $sql2 = "SELECT * FROM lecture_master WHERE Subject_Id = ".$SubjectId." AND Staff_Id = ".$StaffId." AND Academic_Session_Id = ".$AcademicSessionId;
-    $result2 = $con->query($sql2);
-    $TotalLectures = 0;
-    while($row2 = mysqli_fetch_array($result2)){
-        $TotalLectures++;
+    $LectureNo = 0;
+    while($row = mysqli_fetch_array($result1))
+    {
+        $LectureNo++;        
     }
 
-    $result2 = $con->query($sql2);
+    $LectureNo++;
+
+
+    $timezone = "Asia/Colombo";
+    date_default_timezone_set($timezone);
+    $today = date("Y-m-d");
+
 ?>
 
 
@@ -44,7 +52,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-    <title>Defaulter</title>
+    <title>Attendance</title>
 </head>
 
 <body>
@@ -98,95 +106,137 @@
         <form method="POST" action="">
             <div>
                 <div class="my-4" style="color:#0041b3">
-                    <h4>Defaulter</h4>
+                    <h4>Attendance</h4>
                 </div>
-            </div>
-            
-            <hr /> 
 
-            <div>
-                <div class="form-row">
-                    <?php
-                        echo '<div class="form-group col-md-2">'.
-                                '<label>Total Lectures</label>'.
-                                '<input type="number" id="txt_TotalLectures" name="txt_TotalLectures" class="form-control" value="'.$TotalLectures.'" readonly/>'.
-                            '</div>'
-                    ?>
-                    <div class="form-group col-md-2">
-                        <label>Attendance Criteria (in %)</label>
-                        <input type="number" id="txt_AttendanceCriteria" name="txt_AttendanceCriteria" class="form-control" />
-                    </div>                                                               
-                </div>            
-            </div>
+                <hr />
+
+                <div>
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label>Lecture No.</label>
+                            <?php
+                                echo'<input type="number" id="txt_LectureNo" name="txt_LectureNo" value="'.$LectureNo.'" class="form-control" />';
+                            ?>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Date</label>
+                            <input type="date" id="txt_LectureDate" name="txt_LectureDate" value="<?php echo $today?>" class="form-control" />
+                        </div>                                              
+                    </div>            
+                </div>
+
+            </div>            
+
             <hr />            
 
             <div id="container_fieldset">
-                <table  id="table_Students" class="table table-bordered table-hover">
+                <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
                             <th hidden>Student ID</th>
                             <th>Roll No.</th>
                             <th>Student's Name</th>
-                            <th>No. of Lectures Attended</th>
-                            <th>Percentage</th>
+                            <th><input type="checkbox" id="chkboc_checkAll" onclick="checkAllStudents()"/></th>
                         </tr>
                     </thead>
-                    <tbody id="tbody_Students">
+                    <tbody>
                         <?php
-                            while($row1 = mysqli_fetch_array($result1))
+                            while($row = mysqli_fetch_array($result))
                             {
-                                $StudentId = $row1['Student_Id'];
-
-                                $LecturesAttended = 0;
-
-                                $result2 = $con->query($sql2);
-
-                                while($row2 = mysqli_fetch_array($result2))
-                                {
-                                    $sql3 = "SELECT * FROM attendance_master WHERE Lecture_Id = ".$row2['Lecture_Id']." AND Student_Id = ".$StudentId;
-                                    $result3 = $con->query($sql3);
-
-                                    while($row3 = mysqli_fetch_array($result3))
-                                    {
-                                        if($row3['Is_Present'] == 1){
-                                            $LecturesAttended++;
-                                        }
-                                    }
-                                }
-
                                 $StudentName = "";
 
-                                if($row1['Middle_Name'] != ""){
-                                    $StudentName = $row1['First_Name'] . " " . $row1['Middle_Name'] . " " . $row1['Last_Name'];
+                                if($row['Middle_Name'] != ""){
+                                    $StudentName = $row['First_Name'] . " " . $row['Middle_Name'] . " " . $row['Last_Name'];
                                 }
                                 else{
-                                    $StudentName = $row1['First_Name'] . " " . $row1['Last_Name'];
-                                }
-                                if($TotalLectures != 0){
-                                    $AttendancePercentage = ($LecturesAttended/$TotalLectures) * 100;}
-                                else{
-                                    $AttendancePercentage=0;   
+                                    $StudentName = $row['First_Name'] . " " . $row['Last_Name'];
                                 }
 
                                 echo'<tr>'.
-                                    '<td hidden><input type="text" name="StudentId[]" value="'.$row1['Student_Id'].'" /></td>'.
-                                    '<td style="width: 150px;">'.$row1['Roll_Number'].'</td>'.
-                                    '<td>'.$StudentName.'</td>'.
-                                    '<td>'.$LecturesAttended.'</td>'.
-                                    '<td>'.$AttendancePercentage.'</td>'.
-                                '</tr>';
+                                        '<td hidden><input type="text" name="StudentId[]" value="'.$row['Student_Id'].'" /></td>'.
+                                        '<td style="width: 150px;">'.$row['Roll_Number'].'</td>'.
+                                        '<td>'.$StudentName.'</td>'.
+                                        '<td><input type="checkbox" name="chkbox_Attendance[]" value="'.$row['Student_Id'].'" class="chkbox_Attendance" /></td>'.
+                                    '</tr>';
                             }                            
                         ?>
                     </tbody>
                 </table>
             </div>            
             
-            <!-- <div class="my-4">
+            <div class="my-4">
                 <center>
                     <button type="submit" name="submit" value="submit" class="btn btn-success">Submit</button>
                     <button type="reset" class="btn btn-success">Reset</button>
                 </center>
-            </div> -->
+            </div>
+
+            <?php
+            
+                if(isset($_POST['submit'])) 
+                {
+                    $StaffId = $_COOKIE["StaffId"];
+                    $SubjectId = $_COOKIE["SubjectId"];
+                    $AcademicSessionId = $_COOKIE["AcademicSessionId"];
+
+                    $LectureNo = $_POST['txt_LectureNo'];
+                    $LectureDate = $_POST['txt_LectureDate'];
+                    $Students = $_POST['StudentId'];
+                    $StudentsPresent = $_POST['chkbox_Attendance'];
+
+                    $sql1 = "INSERT INTO lecture_master(Academic_Session_Id,Subject_Id,Staff_Id,Lecture_Number,Lecture_Date) VALUES($AcademicSessionId,$SubjectId,$StaffId,'$LectureNo','$LectureDate')";
+
+                    if($con->query($sql1) === TRUE )
+                    {
+                        //echo "<script> alert('success') </script>";
+                    }
+                    else
+                    {
+                        echo "<br>error: ".$sql1."<br>".$con->error;
+                    }
+
+                    $LectureId = 0;
+
+                    $sql2="SELECT max(Lecture_Id) as id from lecture_master";
+                    $result2 = $con->query($sql2);
+                    $row = $result2->fetch_assoc();
+                    if($row['id'] == 0)
+                    {
+                        $LectureId=1;
+                    }
+                    else{
+                        $LectureId=$row['id'];
+                    }
+
+                    for($i=0; $i < count($Students); $i++)
+                    {
+                        $isPresent = false;
+                        for($j=0; $j < count($StudentsPresent); $j++)
+                        {
+                            if($Students[$i] == $StudentsPresent[$j])
+                            {
+                                $sql3 = "INSERT INTO attendance_master(Lecture_Id,Student_Id,Is_Present) VALUES($LectureId,$Students[$i],1)";
+                                $isPresent = true;
+                            }                            
+                        }
+
+                        if(!$isPresent){
+                            $sql3 = "INSERT INTO attendance_master(Lecture_Id,Student_Id,Is_Present) VALUES($LectureId,$Students[$i],0)";
+                        }
+
+                        if($con->query($sql3) === TRUE )
+                        {
+                            echo "<script>window.location.href='../Dashboard/Index.php'</script>";
+                        }
+                        else
+                        {
+                            echo "<br>error: ".$sql3."<br>".$con->error;
+                        }
+                    }
+                }
+            
+            ?>
 
             <input type="button" onclick="backToList()" value="Back To List" class="btn btn-primary" />
 
@@ -208,27 +258,21 @@
 
         <script>
 
-            $("#txt_AttendanceCriteria").change(function(){
-                var AttendanceCriteria = $(this).val();
-                var tbody = document.getElementById("tbody_Students");
-                var countRows = $('#table_Students tbody').find('tr').length;
+            function checkAllStudents(){
+                var checkbox = document.getElementsByClassName("chkbox_Attendance");
 
-                for(var i=1; i <= countRows; i++){
-                    var row = tbody.childNodes[i];
-                    var AttendancePercentage = parseFloat(row.childNodes[4].innerHTML);
-
-                    if(AttendancePercentage < AttendanceCriteria){
-                        row.style.backgroundColor = "#cc2f2f";
-                    }else{
-                        row.style.backgroundColor = "white";
+                for(var i=0; i < checkbox.length; i++){
+                    if ($(this).prop("checked") == true) {
+                        checkbox[i].checked = false;
                     }
-                }
-            });
-
-            var StaffId = <?php echo $StaffId;?>;
+                    else{
+                        checkbox[i].checked = true;
+                    }
+                } 
+            }
 
             function backToList(){
-                window.location.href='../Dashboard/Index.php?StaffId='+StaffId;
+                window.location.href='../Dashboard/Index.php';
             }
 
         </script>

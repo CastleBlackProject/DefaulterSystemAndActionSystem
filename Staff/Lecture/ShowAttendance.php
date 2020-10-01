@@ -1,5 +1,6 @@
 <?php 
 
+    $LectureId = $_GET["id"];
     $StaffId = $_COOKIE["StaffId"];
     $SubjectId = $_COOKIE["SubjectId"];
     $AcademicSessionId = $_COOKIE["AcademicSessionId"];
@@ -21,16 +22,14 @@
     $sql = "SELECT * FROM student_master NATURAL JOIN subject_master NATURAL JOIN student_branch_year_link WHERE Subject_Id = ".$SubjectId." AND Academic_Session_Id = ".$AcademicSessionId;
     $result = $con->query($sql);
 
-    $sql1 = "SELECT * FROM lecture_master WHERE Staff_Id = ".$StaffId." AND Subject_Id = ".$SubjectId." AND Academic_Session_Id = ".$AcademicSessionId;
+    $sql1 = "SELECT * FROM lecture_master WHERE Staff_Id = ".$StaffId." AND Subject_Id = ".$SubjectId." AND Academic_Session_Id = ".$AcademicSessionId." AND Lecture_Id = ".$LectureId;
     $result1 = $con->query($sql1);
 
-    $LectureNo = 0;
     while($row = mysqli_fetch_array($result1))
     {
-        $LectureNo++;        
+        $LectureNo = $row['Lecture_Number'];
+        $LectureDate = $row['Lecture_Date'];
     }
-
-    $LectureNo++;
 ?>
 
 
@@ -115,7 +114,7 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label>Date</label>
-                            <input type="date" id="txt_LectureDate" name="txt_LectureDate" class="form-control" />
+                            <input type="date" id="txt_LectureDate" name="txt_LectureDate" value="<?php echo $LectureDate?>" class="form-control" />
                         </div>                                              
                     </div>            
                 </div>
@@ -138,6 +137,7 @@
                         <?php
                             while($row = mysqli_fetch_array($result))
                             {
+                                $StudentId = $row['Student_Id'];
                                 $StudentName = "";
 
                                 if($row['Middle_Name'] != ""){
@@ -147,12 +147,31 @@
                                     $StudentName = $row['First_Name'] . " " . $row['Last_Name'];
                                 }
 
-                                echo'<tr>'.
-                                        '<td hidden><input type="text" name="StudentId[]" value="'.$row['Student_Id'].'" /></td>'.
-                                        '<td style="width: 150px;">'.$row['Roll_Number'].'</td>'.
-                                        '<td>'.$StudentName.'</td>'.
-                                        '<td><input type="checkbox" name="chkbox_Attendance[]" value="'.$row['Student_Id'].'" class="chkbox_Attendance" /></td>'.
+                                
+
+                                $sql2 = "SELECT Is_Present FROM attendance_master WHERE Lecture_Id = ".$LectureId." AND Student_Id = ".$StudentId;
+                                $result2 = $con->query($sql2);
+
+                                while($row2 = mysqli_fetch_array($result2)){
+                                    $isPresent = $row2['Is_Present'];
+                                }
+
+                                if($isPresent == 1){
+                                    echo'<tr>'.
+                                    '<td hidden><input type="text" name="StudentId[]" value="'.$row['Student_Id'].'" /></td>'.
+                                    '<td style="width: 150px;">'.$row['Roll_Number'].'</td>'.
+                                    '<td>'.$StudentName.'</td>'.
+                                    '<td><input type="checkbox" name="chkbox_Attendance[]" value="'.$row['Student_Id'].'" class="chkbox_Attendance" checked /></td>'.
                                     '</tr>';
+                                }
+                                else{
+                                    echo'<tr style="background-color: #cc2f2f; color: #ffffff">'.
+                                    '<td hidden><input type="text" name="StudentId[]" value="'.$row['Student_Id'].'" /></td>'.
+                                    '<td style="width: 150px;">'.$row['Roll_Number'].'</td>'.
+                                    '<td>'.$StudentName.'</td>'.
+                                    '<td><input type="checkbox" name="chkbox_Attendance[]" value="'.$row['Student_Id'].'" class="chkbox_Attendance" /></td>'.
+                                    '</tr>';
+                                }
                             }                            
                         ?>
                     </tbody>
@@ -223,26 +242,13 @@
                         if($con->query($sql3) === TRUE )
                         {
                             //echo "<script> alert('success') </script>";
-                            echo "<script>window.location.href='../Dashboard/Index.php?StaffId=".$StaffId."'</script>";
+                            echo "<script>window.location.href='../Dashboard/Index.php'</script>";
                         }
                         else
                         {
                             echo "<br>error: ".$sql3."<br>".$con->error;
                         }
                     }
-
-                    
-
-                    //$sql="INSERT INTO branch_master(Branch_Name,Branch_Code,Branch_Status) VALUES('$BranName','$BranCode','$BranStatus')";
-                    
-                    // if($con->query($sql) === TRUE )
-                    // {
-                    //     echo "<script> location.href='Index.php'; </script>";
-                    // }
-                    // else
-                    // {
-                    //     echo "<br>error: ".$sql."<br>".$con->error;
-                    // }
                 }
             
             ?>
@@ -266,33 +272,6 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
         <script>
-            function edit(btn){
-
-                var SubjectId = btn.parentNode.parentNode.childNodes[0].innerHTML;
-
-                window.location.href='Edit.php?SubjectId=' + SubjectId;
-            }
-                        
-            $("#btn_Search").click(function(){
-                $("#container_Table").empty();
-                var SemesterId = $("#select_Semester").val();
-                var BranchId = $("#select_BranchId").val();
-            
-                $.ajax({
-                    type: "GET",
-                    url: 'SubjectSearchFunction.php',
-                    contentType: "application/json; charset=utf-8",
-                    datatype: "Json",
-                    data: { SemesterId: SemesterId, BranchId: BranchId },
-                    success: function (data) {
-                        var obj = JSON.parse(data);
-                        $("#container_Table").append(obj.success);
-                    },
-                    error: function(){
-                        console.log("error");
-                    }
-                });
-            });
 
             function checkAllStudents(){
                 var checkbox = document.getElementsByClassName("chkbox_Attendance");
@@ -307,10 +286,8 @@
                 } 
             }
 
-            var StaffId = <?php echo $StaffId;?>;
-
             function backToList(){
-                window.location.href='../Dashboard/Index.php?StaffId='+StaffId;
+                window.location.href='Index.php';
             }
 
         </script>
