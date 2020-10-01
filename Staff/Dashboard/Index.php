@@ -123,7 +123,7 @@
 
                 <?php                    
 
-                    $sql = "SELECT * FROM staff_branch_link NATURAL JOIN subject_staff_link NATURAL JOIN branch_master NATURAL JOIN subject_master WHERE Staff_Id = " .$StaffId;
+                    $sql = "SELECT * FROM staff_branch_link NATURAL JOIN subject_staff_link NATURAL JOIN branch_master NATURAL JOIN subject_master WHERE Staff_Id = " .$StaffId. " AND staff_branch_status = 'Active'";
                     $result = $con->query($sql);
 
                     while($row = mysqli_fetch_array($result))
