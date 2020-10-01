@@ -113,10 +113,10 @@
             if($Username == $row['Staff_College_Id'] && $Password == $row['Staff_Password'])
             {
                 $valid = 1;
-                // echo "<script> alert('verified') </script>"; 
-                $StaffId = $row['Staff_Id'];                
-                setcookie("StaffId",$StaffId, 86400, "/"); 
-                echo $StaffId;              
+                //echo "<script> alert('verified') </script>"; 
+                $StaffId = $row['Staff_Id'];
+                setcookie("StaffId",$StaffId, 86400, "/");
+                echo $StaffId;
                 if($Admin == $row['Is_Admin'] && $row['Is_Admin'] == 0){
                     echo "<script>window.location.href = 'Staff/Dashboard/Index.php?StaffId=".$StaffId."'</script>";
                     $check = 1;
@@ -127,13 +127,13 @@
                     $check = 1;
                     break;
                 }
-            }    
-        }     
+            }
+        }
         if($valid = 1 && $check = 0)
             {
                 echo "<script> alert('selected status is not given to you')</script>";
                 echo "console.log(abc)";
-            }     
+            }
         if($valid = 0)
             {
                 echo "<script> alert('your login id or password is wrong')</script>";
