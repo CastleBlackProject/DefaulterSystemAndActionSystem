@@ -144,7 +144,7 @@
             </div>
 
             <div class="my-4">
-                <center>
+                <center>`
                     <button type="submit" name="submit" value="submit" class="btn btn-success">Submit</button>
                     <button type="reset" class="btn btn-success">Reset</button>
                 </center>

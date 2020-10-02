@@ -14,48 +14,39 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <img src="../../Images/vcetlogoicon.png"></img>&emsp;
         <a class="navbar-brand" href="https://vcet.edu.in/">VCET</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <!-- <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li> -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Institute Management
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="../Branch/Index.php">Branch Master</a>
-                        <a class="dropdown-item" href="../AcademicSession/Index.php">Academic Session</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Assign Staff</a>
-                        <a class="dropdown-item" href="#">Assign Student</a>
-                    </div>
+                <li class="nav-item mx-2">
+                    <a class="nav-link" href="../Index.php" id="nav_Dashboard" role="button">Dashboard</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Branch Management
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <!-- <div class="dropdown-divider"></div> -->
-                        <a class="dropdown-item" href="../Staff/Index.php">Staff Master</a>
-                        <a class="dropdown-item" href="../Subject/Index.php">Subject Master</a>
-                        <a class="dropdown-item" href="../Students/Index.php">Student Master</a>
-                    </div>
+                <li class="nav-item mx-2">
+                    <a class="nav-link" href="../AcademicSession/Index.php" id="nav_AcademicSession" role="button">Academic Session </a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a class="nav-link" href="../Branch/Index.php" id="nav_Branch" role="button">Branch </a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a class="nav-link" href="../Staff/Index.php" id="nav_Staff" role="button">Staff </a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a class="nav-link" href="../Students/Index.php" id="nav_Students" role="button">Students</a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a class="nav-link" href="../Subject/Index.php" id="nav_Subject" role="button">Subject </a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a class="nav-link" href="../SubjectStaff/Create.php" id="nav_Staff" role="button">Assign Subject</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="logout()">Log Out</button>
             </form>
         </div>
     </nav>
@@ -136,6 +127,17 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
-</body>
+
+        <script>
+
+        function logout(){
+        window.location.href = '../../Login.php';
+            }
+
+        </script>
+
+
+
+    </body>
 
 </html>
