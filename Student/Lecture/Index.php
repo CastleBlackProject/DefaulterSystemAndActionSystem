@@ -116,7 +116,7 @@
                                     while($row1 = mysqli_fetch_array($result1))
                                     {
                                         if($row1['Middle_Name'] != ""){
-                                            $StaffName = $row1['First_Name'] . " " . $row1['Middle_Name'] . $row1['Last_Name'];
+                                            $StaffName = $row1['First_Name'] . " " . $row1['Middle_Name'] ." ". $row1['Last_Name'];
                                         }
                                         else{
                                             $StaffName = $row1['First_Name'] . " " . $row1['Last_Name'];
