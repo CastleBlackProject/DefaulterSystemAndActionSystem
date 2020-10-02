@@ -114,9 +114,10 @@
             $ToPercentage = $_POST['select_ToPercent'];
             $DefaulterAction = $_POST['txt_defaulteraction'];
             $counter = 0;
+            echo count($FromPercentage);
             for($i=0; $i < count($FromPercentage); $i++)
             {
-                    echo count($FromPercentage);
+                    
                     // $counter++;
                     // $sql="INSERT INTO defaulter_action_master(Subject_Id,Staff_Id,Academic_Session_Id,From_Percentage,To_Percentage,Defaulter_Action) VALUES('$SubjectId','$StaffId','$AcademicSessionId','$FromPercentage[$i]','$ToPercentage[$i]','$DefaulterAction[$i]')";
                     // if($con->query($sql) === TRUE )
