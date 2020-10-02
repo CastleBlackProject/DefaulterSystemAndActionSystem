@@ -100,6 +100,7 @@
                     <th scope="col">Date Of Birth</th>
                     <th scope="col">Staff Status</th>
                     <th></th>
+                    <th></th>
                   </tr> 
                 </thead>';
                 $sql = "SELECT * FROM staff_master";
