@@ -162,6 +162,7 @@
                                     '<button type="button" onclick="takeAttendance(this)" class="btn btn-outline-success m-2 px-4 py-2">Take Attendance</button>'.
                                     '<button type="button" onclick="checkAttendance(this)" class="btn btn-outline-success m-2 px-4 py-2">Check Attendance</button>'.
                                     '<button type="button" onclick="showLectureDetails(this)" class="btn btn-outline-success m-2 px-4 py-2">Lecture Details</button>'.
+                                    '<button type="button" onclick="createdefaulteraction(this)" class="btn btn-outline-warning m-2 px-4 py-2">add defaulter action</button>'.
                                 '</div>'.
                             '</div>';
                     }
@@ -275,6 +276,18 @@
                 setCookie("AcademicSessionId",AcademicSessionId,1);
 
                 window.location.href="../Lecture/Index.php";
+            }
+            function createdefaulteraction(btn){
+                var row = btn.parentNode.parentNode;
+                var StaffId = document.getElementById("Staff_Id").value;
+                var SubjectId = row.childNodes[0].value;
+                var AcademicSessionId = document.getElementById("select_Academic_Session_Id").value;
+
+                setCookie("StaffId",StaffId,1);
+                setCookie("SubjectId",SubjectId,1);
+                setCookie("AcademicSessionId",AcademicSessionId,1);
+
+                window.location.href="../Defaulter/Create.php";
             }
 
         </script>

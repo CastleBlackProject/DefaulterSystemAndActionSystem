@@ -1,3 +1,20 @@
+<?php
+    $StaffId = $_COOKIE["StaffId"];
+    $SubjectId = $_COOKIE["SubjectId"];
+    $AcademicSessionId = $_COOKIE["AcademicSessionId"];
+
+    $servername="localhost";
+    $username="root";
+    $password="";
+    $db="vceterp";
+    $con = new mysqli($servername,$username,$password,$db);
+    if(!$con)
+    {
+        die('could not connect'.mysql_error());
+    }
+?>
+
+
 <!doctype html>
 <html lang="en">
 
@@ -71,7 +88,7 @@
                 <div class="form-group col-md-3">
                     <label></label>
                     <button type="button" id="btn_Search" onclick="addRow()" class="btn btn-success">Add Row</button>
-                </div> 
+                </div>  
             </div>
 
             <table id="table_DefaulterAction" class="table table-hover">
@@ -83,8 +100,37 @@
                 </thead>
                 <tbody id="tbody_DefaulterAction"></tbody>
             </table>
+            <div class="mt-3">
+                <center>
+                <button type="submit" id="btn_Submit" class="btn btn-success">Submit</button>
+                <button type="reset" id="btn_Reset" class="btn btn-success">Reset</button>
+                </center>
+            </div>
         </form>
-    </div>            
+    </div> 
+<?php 
+    if(isset($_POST['submit'])) {
+            $FromPercentage = $_POST['select_FromPercent'];
+            $ToPercentage = $_POST['select_ToPercent'];
+            $DefaulterAction = $_POST['txt_defaulteraction'];
+            $counter = 0;
+            for($i=0; $i < count($FromPercentage); $i++)
+            {
+                    echo count($FromPercentage);
+                    // $counter++;
+                    // $sql="INSERT INTO defaulter_action_master(Subject_Id,Staff_Id,Academic_Session_Id,From_Percentage,To_Percentage,Defaulter_Action) VALUES('$SubjectId','$StaffId','$AcademicSessionId','$FromPercentage[$i]','$ToPercentage[$i]','$DefaulterAction[$i]')";
+                    // if($con->query($sql) === TRUE )
+                    // {
+                    //     echo "<script> alert('success') </script>";
+                    // }
+                    // else
+                    // {
+                    //     echo "<br>error: ".$sql."<br>".$con->error;
+                    // }
+            }
+        }
+?>           
+
 
      <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -126,56 +172,4 @@
     </script>
 
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<?php 
-    $StaffId = $_COOKIE["StaffId"];
-    $SubjectId = $_COOKIE["SubjectId"];
-    $AcademicSessionId = $_COOKIE["AcademicSessionId"];
-
-    $servername="localhost";
-    $username="root";
-    $password="";
-    $db="vceterp";
-    $con = new mysqli($servername,$username,$password,$db);
-    if(!$con)
-    {
-        die('could not connect'.mysql_error());
-    }    
-?>
