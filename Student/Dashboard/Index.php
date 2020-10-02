@@ -64,7 +64,7 @@
 
     if(!isset($_COOKIE["StudentId"])) 
     {        
-        echo "Cookie named '" . $cookie_name . "' is not set!";
+        //echo "Cookie named '" . $cookie_name . "' is not set!";
     } 
     else 
     {
@@ -74,7 +74,7 @@
         //echo "<script>console.log(".$StaffId.")</script>";
     }
 
-        $StudentId = 1;
+        //$StudentId = 1;
 
     ?>
 
