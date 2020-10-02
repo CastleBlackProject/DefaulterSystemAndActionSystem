@@ -62,17 +62,17 @@
 
     <?php
 
-    // if(!isset($_COOKIE["StudentId"])) 
-    // {        
-    //     //echo "Cookie named '" . $cookie_name . "' is not set!";
-    // } 
-    // else 
-    // {
-    //     //$StudentId = $_COOKIE["StudentId"];
-    //     $StudentId = 1;
-    //     //echo $StaffId;
-    //     //echo "<script>console.log(".$StaffId.")</script>";
-    // }
+    if(!isset($_COOKIE["StudentId"])) 
+    {        
+        echo "Cookie named '" . $cookie_name . "' is not set!";
+    } 
+    else 
+    {
+        $StudentId = $_COOKIE["StudentId"];
+        //$StudentId = 1;
+        //echo $StaffId;
+        //echo "<script>console.log(".$StaffId.")</script>";
+    }
 
         $StudentId = 1;
 
