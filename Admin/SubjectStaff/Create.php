@@ -25,25 +25,25 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="Index.php" id="nav_Dashboard" role="button">Dashboard</a>
+                    <a class="nav-link" href="../Index.php" id="nav_Dashboard" role="button">Dashboard</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="AcademicSession/Index.php" id="nav_AcademicSession" role="button">Academic Session </a>
+                    <a class="nav-link" href="../AcademicSession/Index.php" id="nav_AcademicSession" role="button">Academic Session </a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="Branch/Index.php" id="nav_Branch" role="button">Branch </a>
+                    <a class="nav-link" href="../Branch/Index.php" id="nav_Branch" role="button">Branch </a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="Staff/Index.php" id="nav_Staff" role="button">Staff </a>
+                    <a class="nav-link" href="../Staff/Index.php" id="nav_Staff" role="button">Staff </a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="Students/Index.php" id="nav_Students" role="button">Students</a>
+                    <a class="nav-link" href="../Students/Index.php" id="nav_Students" role="button">Students</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="Subject/Index.php" id="nav_Subject" role="button">Subject </a>
+                    <a class="nav-link" href="../Subject/Index.php" id="nav_Subject" role="button">Subject </a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="SubjectStaff/Create.php" id="nav_Staff" role="button">Assign Subject</a>
+                    <a class="nav-link" href="../SubjectStaff/Create.php" id="nav_Staff" role="button">Assign Subject</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -303,6 +303,13 @@
         });
 
     </script>
+    <script>
+
+function logout(){
+    window.location.href = '../../Login.php';
+}
+
+</script>
 
 </body>
 
