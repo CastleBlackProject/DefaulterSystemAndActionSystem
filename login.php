@@ -78,6 +78,7 @@
         <option value="-1">Select User Type</option>
         <option value="0">Staff</option>
         <option value="1">Admin</option>
+        <option value="2">Student</option>
     </select>
     </div>
   <input type="text" id="txt_Username" name="txt_Username" placeholder="Username" required>
@@ -152,6 +153,11 @@ function checkLogin(){
                     var StaffId = obj.StaffId;
                     setCookie("StaffId",StaffId,1);
                     window.location.href = "Staff/Dashboard/Index.php";
+                }
+                else if(data == 3){
+                    var StudentId = obj.StudentId;
+                    setCookie("StudentId",StudentId,1);
+                    window.location.href = "Student/Dashboard/Index.php";
                 }
                 else if(data == -1){
                     alert("Access Denied");
