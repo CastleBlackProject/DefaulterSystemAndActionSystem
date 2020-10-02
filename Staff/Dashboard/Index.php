@@ -162,7 +162,7 @@
                                     '<button type="button" onclick="takeAttendance(this)" class="btn btn-outline-success m-2 px-4 py-2">Take Attendance</button>'.
                                     '<button type="button" onclick="checkAttendance(this)" class="btn btn-outline-success m-2 px-4 py-2">Check Attendance</button>'.
                                     '<button type="button" onclick="showLectureDetails(this)" class="btn btn-outline-success m-2 px-4 py-2">Lecture Details</button>'.
-                                    '<button type="button" onclick="createdefaulteraction(this)" class="btn btn-outline-warning m-2 px-4 py-2">add defaulter action</button>'.
+                                    '<button type="button" onclick="createDefaulterAction(this)" class="btn btn-outline-warning m-2 px-4 py-2">Add Defaulter Action</button>'.
                                 '</div>'.
                             '</div>';
                     }
@@ -185,34 +185,6 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
         <script>
-
-            function edit(btn) {
-
-                var SubjectId = btn.parentNode.parentNode.childNodes[0].innerHTML;
-
-                window.location.href = 'Edit.php?SubjectId=' + SubjectId;
-            }
-
-            $("#btn_Search").click(function () {
-                $("#container_Table").empty();
-                var SemesterId = $("#select_Semester").val();
-                var BranchId = $("#select_BranchId").val();
-
-                $.ajax({
-                    type: "GET",
-                    url: 'SubjectSearchFunction.php',
-                    contentType: "application/json; charset=utf-8",
-                    datatype: "Json",
-                    data: { SemesterId: SemesterId, BranchId: BranchId },
-                    success: function (data) {
-                        var obj = JSON.parse(data);
-                        $("#container_Table").append(obj.success);
-                    },
-                    error: function () {
-                        console.log("error");
-                    }
-                });
-            });
 
             function setCookie(cname, cvalue, exdays) {
                 var d = new Date();
@@ -277,7 +249,7 @@
 
                 window.location.href="../Lecture/Index.php";
             }
-            function createdefaulteraction(btn){
+            function createDefaulterAction(btn){
                 var row = btn.parentNode.parentNode;
                 var StaffId = document.getElementById("Staff_Id").value;
                 var SubjectId = row.childNodes[0].value;

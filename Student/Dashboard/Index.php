@@ -62,17 +62,19 @@
 
     <?php
 
-    if(!isset($_COOKIE["StudentId"])) 
-    {        
-        //echo "Cookie named '" . $cookie_name . "' is not set!";
-    } 
-    else 
-    {
-        //$StudentId = $_COOKIE["StudentId"];
+    // if(!isset($_COOKIE["StudentId"])) 
+    // {        
+    //     //echo "Cookie named '" . $cookie_name . "' is not set!";
+    // } 
+    // else 
+    // {
+    //     //$StudentId = $_COOKIE["StudentId"];
+    //     $StudentId = 1;
+    //     //echo $StaffId;
+    //     //echo "<script>console.log(".$StaffId.")</script>";
+    // }
+
         $StudentId = 1;
-        //echo $StaffId;
-        //echo "<script>console.log(".$StaffId.")</script>";
-    }
 
     ?>
 
@@ -117,7 +119,7 @@
 
                 <?php                    
 
-                    $sql = "SELECT * FROM `student_master` NATURAL JOIN student_branch_year_link NATURAL JOIN subject_master  NATURAL JOIN branch_master WHERE Student_Id = ".$StudentId;
+                    $sql = "SELECT * FROM `student_master` NATURAL JOIN student_branch_year_link NATURAL JOIN student_branch_link NATURAL JOIN subject_master  NATURAL JOIN branch_master WHERE Student_Id = ".$StudentId." AND Student_Branch_Status = 'Active'";
                     $result = $con->query($sql);
 
                     while($row = mysqli_fetch_array($result))
@@ -153,11 +155,10 @@
                                     '<h4 style="color: #35117d" class="mt-3">'.$row["Subject_Name"].'</h4>'.
                                 '</div>'.
                                 '<div class="form-group col-md-2">'.
-                                    '<button type="button" onclick="takeAttendance(this)" class="btn btn-outline-success m-2 px-4 py-2">Take Attendance</button>'.
-                                    '<button type="button" onclick="checkAttendance(this)" class="btn btn-outline-success m-2 px-4 py-2">Check Attendance</button>'.
-                                    '<button type="button" onclick="showLectureDetails(this)" class="btn btn-outline-success m-2 px-4 py-2">Lecture Details</button>'.
+                                    '<button type="button" onclick="showLectureWiseAttendance(this)" class="btn btn-outline-success m-2 px-4 py-2">Lecture Wise Attendance</button>'.                                    
                                 '</div>'.
                             '</div>';
+
                     }
                 ?>
 
@@ -179,34 +180,6 @@
 
         <script>
 
-            function edit(btn) {
-
-                var SubjectId = btn.parentNode.parentNode.childNodes[0].innerHTML;
-
-                window.location.href = 'Edit.php?SubjectId=' + SubjectId;
-            }
-
-            $("#btn_Search").click(function () {
-                $("#container_Table").empty();
-                var SemesterId = $("#select_Semester").val();
-                var BranchId = $("#select_BranchId").val();
-
-                $.ajax({
-                    type: "GET",
-                    url: 'SubjectSearchFunction.php',
-                    contentType: "application/json; charset=utf-8",
-                    datatype: "Json",
-                    data: { SemesterId: SemesterId, BranchId: BranchId },
-                    success: function (data) {
-                        var obj = JSON.parse(data);
-                        $("#container_Table").append(obj.success);
-                    },
-                    error: function () {
-                        console.log("error");
-                    }
-                });
-            });
-
             function setCookie(cname, cvalue, exdays) {
                 var d = new Date();
                 d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -227,44 +200,16 @@
                     }
                 }
                 return "";
-            }
+            }                       
 
-            function takeAttendance(btn) {
+            function showLectureWiseAttendance(btn){
 
                 var row = btn.parentNode.parentNode;
-                var StaffId = document.getElementById("Staff_Id").value;
+                var StudentId = document.getElementById("Student_Id").value;
                 var SubjectId = row.childNodes[0].value;
                 var AcademicSessionId = document.getElementById("select_Academic_Session_Id").value;
 
-                setCookie("StaffId",StaffId,1);
-                setCookie("SubjectId",SubjectId,1);
-                setCookie("AcademicSessionId",AcademicSessionId,1);
-
-                window.location.href="../Lecture/TakeAttendance.php";
-            }            
-
-            function checkAttendance(btn) {
-
-                var row = btn.parentNode.parentNode;
-                var StaffId = document.getElementById("Staff_Id").value;
-                var SubjectId = row.childNodes[0].value;
-                var AcademicSessionId = document.getElementById("select_Academic_Session_Id").value;
-
-                setCookie("StaffId",StaffId,1);
-                setCookie("SubjectId",SubjectId,1);
-                setCookie("AcademicSessionId",AcademicSessionId,1);
-
-                window.location.href="../Lecture/CheckAttendance.php";
-            }
-
-            function showLectureDetails(btn){
-
-                var row = btn.parentNode.parentNode;
-                var StaffId = document.getElementById("Staff_Id").value;
-                var SubjectId = row.childNodes[0].value;
-                var AcademicSessionId = document.getElementById("select_Academic_Session_Id").value;
-
-                setCookie("StaffId",StaffId,1);
+                setCookie("StudentId",StudentId,1);
                 setCookie("SubjectId",SubjectId,1);
                 setCookie("AcademicSessionId",AcademicSessionId,1);
 
