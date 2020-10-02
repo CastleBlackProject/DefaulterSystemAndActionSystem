@@ -147,7 +147,7 @@ function checkLogin(){
                 if(data == 1){
                     var StaffId = obj.StaffId;
                     setCookie("StaffId",StaffId,1);
-                    window.location.href = "Admin/Index.html";
+                    window.location.href = "Admin/Index.php";
                 }
                 else if(data == 2){
                     var StaffId = obj.StaffId;
