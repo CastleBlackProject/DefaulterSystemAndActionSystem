@@ -102,36 +102,40 @@
             </table>
             <div class="mt-3">
                 <center>
-                <button type="submit" id="btn_Submit" class="btn btn-success">Submit</button>
+                <button type="submit" value="submit" name="submit" class="btn btn-success">Submit</button>
                 <button type="reset" id="btn_Reset" class="btn btn-success">Reset</button>
-                </center>
-            </div>
-        </form>
-    </div> 
+                
+         
 <?php 
     if(isset($_POST['submit'])) {
             $FromPercentage = $_POST['select_FromPercent'];
             $ToPercentage = $_POST['select_ToPercent'];
             $DefaulterAction = $_POST['txt_defaulteraction'];
             $counter = 0;
-            echo count($FromPercentage);
+            //echo count($FromPercentage);
             for($i=0; $i < count($FromPercentage); $i++)
             {
                     
-                    // $counter++;
-                    // $sql="INSERT INTO defaulter_action_master(Subject_Id,Staff_Id,Academic_Session_Id,From_Percentage,To_Percentage,Defaulter_Action) VALUES('$SubjectId','$StaffId','$AcademicSessionId','$FromPercentage[$i]','$ToPercentage[$i]','$DefaulterAction[$i]')";
-                    // if($con->query($sql) === TRUE )
-                    // {
-                    //     echo "<script> alert('success') </script>";
-                    // }
-                    // else
-                    // {
-                    //     echo "<br>error: ".$sql."<br>".$con->error;
-                    // }
+                    $counter++;
+                    $sql="INSERT INTO defaulter_action_master(Subject_Id,Staff_Id,Academic_Session_Id,From_Percentage,To_Percentage,Defaulter_Action) VALUES('$SubjectId','$StaffId','$AcademicSessionId','$FromPercentage[$i]','$ToPercentage[$i]','$DefaulterAction[$i]')";
+                    if($con->query($sql) === TRUE )
+                    {
+                        //echo "<script> alert('success') </script>";
+                        echo "<script> location.href='Index.php'; </script>";
+                    }
+                    else
+                    {
+                        echo "<br>error: ".$sql."<br>".$con->error;
+                    }
             }
         }
-?>           
-
+?>
+        <input type="button" value="Back To List" onclick="window.location.href='../Dashboard/Index.php'"
+                class="btn btn-primary" />
+                </center>
+            </div>
+    </form>
+</div>
 
      <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

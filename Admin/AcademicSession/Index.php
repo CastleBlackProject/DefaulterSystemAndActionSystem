@@ -152,7 +152,4 @@ window.location.href = '../../Login.php';
 </script>
 
 </body>
-
-
-
 </html>

@@ -1,3 +1,18 @@
+<?php
+    $StaffId = $_COOKIE["StaffId"];
+    $SubjectId = $_COOKIE["SubjectId"];
+    $AcademicSessionId = $_COOKIE["AcademicSessionId"];
+    
+    $servername="localhost";
+    $username="root";
+    $password="";
+    $db="vceterp";
+    $con = new mysqli($servername,$username,$password,$db);
+    if(!$con)
+    {
+        die('could not connect'.mysql_error());
+    }
+?>
 <!doctype html>
 <html lang="en">
 
@@ -74,11 +89,10 @@
     }
 
     ?>
-
     <div class="container-fluid">
         <div>
             <div class="my-4" style="color:#0041b3">
-                <h4>Dashboard</h4>
+                <h4>Action System</h4>
             </div>
             <div class="my-5">
 
@@ -118,57 +132,66 @@
                     ?>
 
                 </div>
-
                 <hr />
+                <input type="button" value="Create" onclick="window.location.href='Create.php'"
+                    class="btn btn-primary" />
+                <!-- <div class="p-4">
+                     <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col" hidden>Branch ID</th>
+                                <th scope="col">Branch Name</th>
+                                <th scope="col">Branch Code</th>
+                                <th scope="col">Branch Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                <?php                    
+                        </tbody>
+                    </table> 
+                </div> -->
+                <?php
+            $servername="localhost";
+            $username="root";
+            $password="";
+            $db="vceterp";
+            $con = new mysqli($servername,$username,$password,$db);
+            if(!$con)
+            {
+                die('could not connect'.mysql_error());
+            }
+            else
+            {
+                #echo "<h1>database connected</h1>";
+            }  
+            
+            echo '<div class="p-4">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col" hidden>Defaulter_Action_Id</th>
+                    <th scope="col">From Percentage</th>
+                    <th scope="col">To Percentage</th>
+                    <th scope="col">Action to be taken</th>
+                    <th></th>
+                  </tr> 
+                </thead>';
+                $sql = "SELECT * FROM defaulter_action_master";
+                $result = $con->query($sql);
+                //if ($result->num_rows > 0)
 
-                    $sql = "SELECT * FROM staff_branch_link NATURAL JOIN subject_staff_link NATURAL JOIN branch_master NATURAL JOIN subject_master WHERE Staff_Id = " .$StaffId. " AND staff_branch_status = 'Active'";
-                    $result = $con->query($sql);
+                while($row = mysqli_fetch_array($result))
+                {
+                    echo "<tr>";
+                    echo "<td hidden>" . $row['Defaulter_Action_Id'] . "</td>";
+                    echo "<td>" . $row['From_Percentage'] . "</td>";
+                    echo "<td>" . $row['To_Percentage'] . "</td>";
+                    echo "<td>" . $row['Defaulter_Action'] . "</td>";
+                    echo "<td><button type='button' class='btn btn-success' onclick='edit(this)'>Edit</button></td>";
+                    echo "</tr>";
+                }
 
-                    while($row = mysqli_fetch_array($result))
-                    {
-                        $SemesterId = $row["Semester_Id"];
-                        $Semester = "Semester " .$SemesterId;
-                        $Year = "";
-                        
-                        if($SemesterId == 1 || SemesterId == 2)
-                        {
-                            $Year = "FE";
-                        }
-                        else if($SemesterId == 3 || $SemesterId == 4)
-                        {
-                            $Year = "SE";
-                        }
-                        else if($SemesterId == 5 || $SemesterId == 6)
-                        {
-                            $Year = "TE";
-                        }
-                        else if($SemesterId == 7 || $SemesterId == 8)
-                        {
-                            $Year = "BE";
-                        }
-
-                        echo '<div class="form-row p-4 m-1" style="background-color: whitesmoke;">'.
-                                '<input type="text" value="'.$row['Subject_Id'].'" hidden />'.
-                                '<div class="form-group col-md-3">'.
-                                    '<h3 style="color: #1c158a">'.$row["Branch_Name"].'</h3>'.
-                                    '<h4 style="color: #35117d" class="mt-3">'.$Year.'-' .$Semester.'</h4>'.
-                                '</div>'.
-                                '<div class="form-group col-md-7">'.
-                                    '<h4 style="color: #35117d" class="mt-3">'.$row["Subject_Name"].'</h4>'.
-                                '</div>'.
-                                '<div class="form-group col-md-2">'.
-                                    '<button type="button" onclick="takeAttendance(this)" class="btn btn-outline-success m-2 px-4 py-2">Take Attendance</button>'.
-                                    '<button type="button" onclick="checkAttendance(this)" class="btn btn-outline-success m-2 px-4 py-2">Check Attendance</button>'.
-                                    '<button type="button" onclick="showLectureDetails(this)" class="btn btn-outline-success m-2 px-4 py-2">Lecture Details</button>'.
-                                    '<button type="button" onclick="createDefaulterAction(this)" class="btn btn-outline-warning m-2 px-4 py-2">Add Defaulter Action</button>'.
-                                    '<button type="button" onclick="viewDefaulterAction(this)" class="btn btn-outline-warning m-2 px-4 py-2">view Defaulter Action</button>'.
-                                '</div>'.
-                            '</div>';
-                    }
-                ?>
-
+              ?>
             </div>
         </div>
 
@@ -183,10 +206,8 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
             integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
             crossorigin="anonymous"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
         <script>
-
             function setCookie(cname, cvalue, exdays) {
                 var d = new Date();
                 d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -209,74 +230,22 @@
                 return "";
             }
 
-            function takeAttendance(btn) {
+            function edit(btn){
+                setCookie("DefaulterActionId",DefaulterActionId,1);
+                var DefaulterActionId = btn.parentNode.parentNode.childNodes[0].innerHTML;
 
-                var row = btn.parentNode.parentNode;
-                var StaffId = document.getElementById("Staff_Id").value;
-                var SubjectId = row.childNodes[0].value;
-                var AcademicSessionId = document.getElementById("select_Academic_Session_Id").value;
-
-                setCookie("StaffId",StaffId,1);
-                setCookie("SubjectId",SubjectId,1);
-                setCookie("AcademicSessionId",AcademicSessionId,1);
-
-                window.location.href="../Lecture/TakeAttendance.php";
-            }            
-
-            function checkAttendance(btn) {
-
-                var row = btn.parentNode.parentNode;
-                var StaffId = document.getElementById("Staff_Id").value;
-                var SubjectId = row.childNodes[0].value;
-                var AcademicSessionId = document.getElementById("select_Academic_Session_Id").value;
-
-                setCookie("StaffId",StaffId,1);
-                setCookie("SubjectId",SubjectId,1);
-                setCookie("AcademicSessionId",AcademicSessionId,1);
-
-                window.location.href="../Lecture/CheckAttendance.php";
-            }
-
-            function showLectureDetails(btn){
-
-                var row = btn.parentNode.parentNode;
-                var StaffId = document.getElementById("Staff_Id").value;
-                var SubjectId = row.childNodes[0].value;
-                var AcademicSessionId = document.getElementById("select_Academic_Session_Id").value;
-
-                setCookie("StaffId",StaffId,1);
-                setCookie("SubjectId",SubjectId,1);
-                setCookie("AcademicSessionId",AcademicSessionId,1);
-
-                window.location.href="../Lecture/Index.php";
-            }
-            function createDefaulterAction(btn){
-                var row = btn.parentNode.parentNode;
-                var StaffId = document.getElementById("Staff_Id").value;
-                var SubjectId = row.childNodes[0].value;
-                var AcademicSessionId = document.getElementById("select_Academic_Session_Id").value;
-
-                setCookie("StaffId",StaffId,1);
-                setCookie("SubjectId",SubjectId,1);
-                setCookie("AcademicSessionId",AcademicSessionId,1);
-
-                window.location.href="../Action/Create.php";
-            }
-            function viewDefaulterAction(btn){
-                var row = btn.parentNode.parentNode;
-                var StaffId = document.getElementById("Staff_Id").value;
-                var SubjectId = row.childNodes[0].value;
-                var AcademicSessionId = document.getElementById("select_Academic_Session_Id").value;
-
-                setCookie("StaffId",StaffId,1);
-                setCookie("SubjectId",SubjectId,1);
-                setCookie("AcademicSessionId",AcademicSessionId,1);
-
-                window.location.href="../Action/index.php";
+                window.location.href='Edit.php?DefaulterActionId=' + DefaulterActionId;
             }
 
         </script>
 
-</body>
+<!-- <script>
 
+function logout(){
+window.location.href = '../../Login.php';
+}
+
+</script> -->
+
+</body>
 </html>
