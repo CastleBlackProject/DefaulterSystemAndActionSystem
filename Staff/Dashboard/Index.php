@@ -249,7 +249,7 @@
 
             function takeAttendance(btn) {
 
-                var row = btn.parentNode.parentNode;
+                var row = btn.parentNode.parentNode.parentNode;
                 var StaffId = document.getElementById("Staff_Id").value;
                 var SubjectId = row.childNodes[0].value;
                 var AcademicSessionId = document.getElementById("select_Academic_Session_Id").value;
@@ -263,7 +263,7 @@
 
             function checkAttendance(btn) {
 
-                var row = btn.parentNode.parentNode;
+                var row = btn.parentNode.parentNode.parentNode;
                 var StaffId = document.getElementById("Staff_Id").value;
                 var SubjectId = row.childNodes[0].value;
                 var AcademicSessionId = document.getElementById("select_Academic_Session_Id").value;
@@ -277,7 +277,7 @@
 
             function showLectureDetails(btn){
 
-                var row = btn.parentNode.parentNode;
+                var row = btn.parentNode.parentNode.parentNode;
                 var StaffId = document.getElementById("Staff_Id").value;
                 var SubjectId = row.childNodes[0].value;
                 var AcademicSessionId = document.getElementById("select_Academic_Session_Id").value;
@@ -290,7 +290,7 @@
             }
 
             function viewDefaulterAction(btn){
-                var row = btn.parentNode.parentNode;
+                var row = btn.parentNode.parentNode.parentNode;
                 var StaffId = document.getElementById("Staff_Id").value;
                 var SubjectId = row.childNodes[0].value;
                 var AcademicSessionId = document.getElementById("select_Academic_Session_Id").value;
