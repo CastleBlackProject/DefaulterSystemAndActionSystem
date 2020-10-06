@@ -25,21 +25,27 @@
   </head>
   <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <center>
         <img src="Images/vcetlogoicon.png"></img>&emsp;
-        <a class="navbar-brand" href="https://vcet.edu.in/">VCET</a>
+        <a class="navbar-brand" href="https://vcet.edu.in/">VCET  &nbsp;&nbsp;&nbsp;&nbsp; Vidyavardhini's College Of Engineering & Technology</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-               
+                <li class="nav-item ">
+                    <!-- <center>
+                    <a class="navbar-brand" href="https://vcet.edu.in/" role="button">
+        
+                    </a>
+                    </center> -->
+                </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                
+            <form class="form-inline my-2 my-lg-0">  
             </form>
         </div>
+        </center>
     </nav>
     
 
