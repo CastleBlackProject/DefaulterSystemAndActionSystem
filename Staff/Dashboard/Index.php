@@ -11,6 +11,35 @@
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
     <title>Dashboard</title>
+
+    <style>
+    
+        .panel{
+            border-style: solid;
+            border-color: #070e54;
+            border-width: 10px;
+            border-radius: 100px;
+            background-color: #afb3e3;
+        }
+
+        .subject{
+            display: inline-block;            
+            border: solid;
+            border-width: 5px;
+            border-radius: 40px;
+            color: #35117d
+        }
+
+        .Branch{
+
+            color: #1c158a
+        }
+
+        .Year-Semester{
+            color: #35117d
+        }
+
+    </style>
 </head>
 
 <body>
@@ -78,7 +107,7 @@
     <div class="container-fluid">
         <div>
             <div class="my-4" style="color:#0041b3">
-                <h4>Dashboard</h4>
+                <h2>Dashboard</h2>
             </div>
             <div class="my-5">
 
@@ -94,7 +123,7 @@
                                 $con = new mysqli($servername,$username,$password,$db);
                                 if(!$con)
                                 {
-                                    die('could not connect'.mysql_error());
+                                    //die('could not connect'.mysql_error());
                                 }
                                 else
                                 {
@@ -132,7 +161,7 @@
                         $Semester = "Semester " .$SemesterId;
                         $Year = "";
                         
-                        if($SemesterId == 1 || SemesterId == 2)
+                        if($SemesterId == 1 || $SemesterId == 2)
                         {
                             $Year = "FE";
                         }
@@ -149,21 +178,20 @@
                             $Year = "BE";
                         }
 
-                        echo '<div class="form-row p-4 m-1" style="background-color: whitesmoke;">'.
+                        echo '<div class="form-row p-4 m-1 panel">'.
                                 '<input type="text" value="'.$row['Subject_Id'].'" hidden />'.
+                                '<div class="form-group col-md-4 p-4">'.
+                                    '<div class="Branch"><h1>'.$row["Branch_Name"].'</h1></div>'.
+                                    '<div class="Year-Semester"><h4 class="mt-3">'.$Year.'-' .$Semester.'</h4></div>'.
+                                '</div>'.
+                                '<div class="form-group col-md-5">'.
+                                    '<div class="subject py-4 px-5"><h4 class="mt-3">'.$row["Subject_Name"].'</h4></div>'.
+                                '</div>'.
                                 '<div class="form-group col-md-3">'.
-                                    '<h3 style="color: #1c158a">'.$row["Branch_Name"].'</h3>'.
-                                    '<h4 style="color: #35117d" class="mt-3">'.$Year.'-' .$Semester.'</h4>'.
-                                '</div>'.
-                                '<div class="form-group col-md-7">'.
-                                    '<h4 style="color: #35117d" class="mt-3">'.$row["Subject_Name"].'</h4>'.
-                                '</div>'.
-                                '<div class="form-group col-md-2">'.
-                                    '<button type="button" onclick="takeAttendance(this)" class="btn btn-outline-success m-2 px-4 py-2">Take Attendance</button>'.
-                                    '<button type="button" onclick="checkAttendance(this)" class="btn btn-outline-success m-2 px-4 py-2">Check Attendance</button>'.
-                                    '<button type="button" onclick="showLectureDetails(this)" class="btn btn-outline-success m-2 px-4 py-2">Lecture Details</button>'.
-                                    '<button type="button" onclick="createDefaulterAction(this)" class="btn btn-outline-warning m-2 px-4 py-2">Add Defaulter Action</button>'.
-                                    '<button type="button" onclick="viewDefaulterAction(this)" class="btn btn-outline-warning m-2 px-4 py-2">view Defaulter Action</button>'.
+                                    '<button type="button" onclick="takeAttendance(this)" class="btn btn-primary m-2 px-4 py-2">Take Attendance</button>'.
+                                    '<button type="button" onclick="checkAttendance(this)" class="btn btn-primary m-2 px-4 py-2">Check Attendance</button>'.
+                                    '<button type="button" onclick="showLectureDetails(this)" class="btn btn-primary m-2 px-4 py-2">Lecture Details</button>'.
+                                    '<button type="button" onclick="viewDefaulterAction(this)" class="btn btn-primary m-2 px-4 py-2">View Defaulter Action</button>'.
                                 '</div>'.
                             '</div>';
                     }
@@ -250,18 +278,7 @@
 
                 window.location.href="../Lecture/Index.php";
             }
-            function createDefaulterAction(btn){
-                var row = btn.parentNode.parentNode;
-                var StaffId = document.getElementById("Staff_Id").value;
-                var SubjectId = row.childNodes[0].value;
-                var AcademicSessionId = document.getElementById("select_Academic_Session_Id").value;
 
-                setCookie("StaffId",StaffId,1);
-                setCookie("SubjectId",SubjectId,1);
-                setCookie("AcademicSessionId",AcademicSessionId,1);
-
-                window.location.href="../Action/Create.php";
-            }
             function viewDefaulterAction(btn){
                 var row = btn.parentNode.parentNode;
                 var StaffId = document.getElementById("Staff_Id").value;
