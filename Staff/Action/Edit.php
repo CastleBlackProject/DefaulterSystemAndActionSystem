@@ -130,9 +130,9 @@
                     if($con->query($sql) === TRUE )
                     {
                         while($row = mysqli_fetch_array($result)){
-                        $SessionName =  $row['Academic_Session_Name'];
-                        $SessionName =  $row['Academic_Session_Name'];        
-                        $SessionStatus =  $row['Academic_Session_Status'];
+                            $SessionName =  $row['Academic_Session_Name'];
+                            $SessionName =  $row['Academic_Session_Name'];        
+                            $SessionStatus =  $row['Academic_Session_Status'];
                         }
                     }
                     else
