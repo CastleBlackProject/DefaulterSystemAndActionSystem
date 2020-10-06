@@ -17,26 +17,32 @@
         .panel{
             border-style: solid;
             border-color: #070e54;
-            border-width: 10px;
-            border-radius: 100px;
-            background-color: #afb3e3;
+            border-width: 7px;
+            border-radius: 10px;
+            /* background-color: #afb3e3; */
         }
 
         .subject{
             display: inline-block;            
             border: solid;
             border-width: 5px;
-            border-radius: 40px;
-            color: #35117d
+            height : 200px;
+            border-radius: 10px;
+            text-align: center;
+            /* border-radius: 40px; */
+            color: #070e54;
+        }
+        .bttns{
+            width: 250px;
         }
 
         .Branch{
 
-            color: #1c158a
+            color: #070e54;
         }
 
         .Year-Semester{
-            color: #35117d
+            color: #070e54;
         }
 
     </style>
@@ -180,18 +186,22 @@
 
                         echo '<div class="form-row p-4 m-1 panel">'.
                                 '<input type="text" value="'.$row['Subject_Id'].'" hidden />'.
-                                '<div class="form-group col-md-4 p-4">'.
-                                    '<div class="Branch"><h1>'.$row["Branch_Name"].'</h1></div>'.
-                                    '<div class="Year-Semester"><h4 class="mt-3">'.$Year.'-' .$Semester.'</h4></div>'.
+                                '<div class="form-group col-md-3 p-4">'.
+                                    '<div class="Branch"><h2>'.$row["Branch_Name"].'</h2></div>'.
                                 '</div>'.
-                                '<div class="form-group col-md-5">'.
-                                    '<div class="subject py-4 px-5"><h4 class="mt-3">'.$row["Subject_Name"].'</h4></div>'.
+                                '<div class="form-group col-md-3 p-4">'.
+                                    '<div class="Year-Semester"><h2 class="mt-3">'.$Year.'-' .$Semester.'</h2></div>'.
                                 '</div>'.
                                 '<div class="form-group col-md-3">'.
-                                    '<button type="button" onclick="takeAttendance(this)" class="btn btn-primary m-2 px-4 py-2">Take Attendance</button>'.
-                                    '<button type="button" onclick="checkAttendance(this)" class="btn btn-primary m-2 px-4 py-2">Check Attendance</button>'.
-                                    '<button type="button" onclick="showLectureDetails(this)" class="btn btn-primary m-2 px-4 py-2">Lecture Details</button>'.
-                                    '<button type="button" onclick="viewDefaulterAction(this)" class="btn btn-primary m-2 px-4 py-2">View Defaulter Action</button>'.
+                                    '<div class="subject py-4 px-5"><h4 class="mt-3">'.$row["Subject_Name"].'</h4></div>'.
+                                '</div>'.
+                                '<div class="form-group col-md-3 ">'.
+                                '<center>'.
+                                    '<button type="button" onclick="takeAttendance(this)" class="bttns btn btn-primary m-2 px-4 py-2">Take Attendance</button>'.
+                                    '<button type="button" onclick="checkAttendance(this)" class="bttns btn btn-primary m-2 px-4 py-2">Check Attendance</button>'.
+                                    '<button type="button" onclick="showLectureDetails(this)" class="bttns btn btn-primary m-2 px-4 py-2">Lecture Details</button>'.
+                                    '<button type="button" onclick="viewDefaulterAction(this)" class="bttns btn btn-primary m-2 px-4 py-2">View Defaulter Action</button>'.
+                                '</center>'.
                                 '</div>'.
                             '</div>';
                     }
