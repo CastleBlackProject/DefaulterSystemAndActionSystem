@@ -241,8 +241,9 @@ $today = date("Y-m-d");
                     <form>
                         <div class="form-row">
                             <div class="form-group col-md-12">
+                                <label>Lecture Type</label>
                                 <select id="select_AttendanceType" class="form-control">
-                                    <option value="1">Manually</option>
+                                    <option value="1">Classroom</option>
                                     <option value="2">Google Meet</option>
                                 </select>
                                 <!-- <button type="button" id="btn_AttendanceType1" class="btn btn-primary">Manually</button>
@@ -251,6 +252,7 @@ $today = date("Y-m-d");
                         </div>
                         <div class="form-row">
                             <div id="container_takeAttendance" class="form-group col-md-12">
+                                <label>Enter Roll No.</label>
                                 <textarea id="txt_Attendance" class="form-control"></textarea>
                             </div>
                         </div>
@@ -315,7 +317,7 @@ $today = date("Y-m-d");
                     var html2 = '<button type="button" id="btn_Absent" class="btn btn-danger">Absent</button>' +
                                 '<button type="button" id="btn_Present" class="btn btn-success">Present</button>';
                 } else if (AttendanceType == 2) {
-                    var html1 = '<textarea id="txt_Attendance" class="form-control" rows="18"></textarea>';
+                    var html1 = '<textarea id="txt_Attendance" class="form-control" rows="12"></textarea>';
                     var html2 = '<button type="button" id="btn_MeetAttendance" class="btn btn-primary px-3 py-1">Go</button>';
                 }
                 $("#container_takeAttendance").append(html1);
