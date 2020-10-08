@@ -256,15 +256,9 @@ $today = date("Y-m-d");
                         </div>
                     </form>
                 </div>
-<<<<<<< HEAD
                 <div id="footer_buttons" class="modal-footer">                    
                     <button type="button" class="btn btn-danger">Absent</button>
                     <button type="button" class="btn btn-success">Present</button>
-=======
-                <div id="footer_buttons" class="modal-footer">
-                    <button type="button" class="btn btn-success">Present</button>
-                    <button type="button" class="btn btn-primary">Absent</button>
->>>>>>> 7aeb7ae4008630f6751a30ac8f2d289f4394f703
                 </div>
             </div>
         </div>
