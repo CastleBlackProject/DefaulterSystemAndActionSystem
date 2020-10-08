@@ -241,12 +241,12 @@ $today = date("Y-m-d");
                     <form>
                         <div class="form-row">
                             <div class="form-group col-md-12">
-                                <!-- <select id="select_AttendanceType" class="form-control">
+                                <select id="select_AttendanceType" class="form-control">
                                     <option value="1">Manually</option>
                                     <option value="2">Google Meet</option>
-                                </select> -->
-                                <button type="button" id="btn_AttendanceType1" class="btn btn-primary">Manually</button>
-                                <button type="button" id="btn_AttendanceType2" class="btn btn-primary">Google Meet</button>
+                                </select>
+                                <!-- <button type="button" id="btn_AttendanceType1" class="btn btn-primary">Manually</button>
+                                <button type="button" id="btn_AttendanceType2" class="btn btn-primary">Google Meet</button> -->
                             </div>
                         </div>
                         <div class="form-row">
@@ -287,40 +287,40 @@ $today = date("Y-m-d");
                 window.location.href = '../Dashboard/Index.php';
             }
 
-            $("#btn__AttendanceType1").click(function() {
-                $("#container_takeAttendance").empty();
-                $("#footer_buttons").empty();
-                var html1 = '<textarea id="txt_Attendance" class="form-control"></textarea>';
-                var html2 = '<button type="button" id="btn_Absent" class="btn btn-danger">Absent</button>' +
-                            '<button type="button" id="btn_Present" class="btn btn-success">Present</button>';
-                $("#container_takeAttendance").append(html1);
-                $("#footer_buttons").append(html2);
-            });
-
-            $("#btn_AttendanceType2").click(function() {
-                $("#container_takeAttendance").empty();
-                $("#footer_buttons").empty();
-                var html1 = '<textarea id="txt_Attendance" class="form-control" rows="18"></textarea>';
-                var html2 = '<button type="button" id="btn_MeetAttendance" class="btn btn-primary px-3 py-1">Go</button>';
-                $("#container_takeAttendance").append(html1);
-                $("#footer_buttons").append(html2);                
-            });
-
-            // $("#select_AttendanceType").change(function() {
+            // $("#btn__AttendanceType1").click(function() {
             //     $("#container_takeAttendance").empty();
             //     $("#footer_buttons").empty();
-            //     var AttendanceType = document.getElementById("select_AttendanceType").value;
-            //     if (AttendanceType == 1) {
-            //         var html1 = '<textarea id="txt_Attendance" class="form-control"></textarea>';
-            //         var html2 = '<button type="button" id="btn_Absent" class="btn btn-danger">Absent</button>' +
-            //                     '<button type="button" id="btn_Present" class="btn btn-success">Present</button>';
-            //     } else if (AttendanceType == 2) {
-            //         var html1 = '<textarea id="txt_Attendance" class="form-control" rows="18"></textarea>';
-            //         var html2 = '<button type="button" id="btn_MeetAttendance" class="btn btn-primary px-3 py-1">Go</button>';
-            //     }
+            //     var html1 = '<textarea id="txt_Attendance" class="form-control"></textarea>';
+            //     var html2 = '<button type="button" id="btn_Absent" class="btn btn-danger">Absent</button>' +
+            //                 '<button type="button" id="btn_Present" class="btn btn-success">Present</button>';
             //     $("#container_takeAttendance").append(html1);
             //     $("#footer_buttons").append(html2);
             // });
+
+            // $("#btn_AttendanceType2").click(function() {
+            //     $("#container_takeAttendance").empty();
+            //     $("#footer_buttons").empty();
+            //     var html1 = '<textarea id="txt_Attendance" class="form-control" rows="18"></textarea>';
+            //     var html2 = '<button type="button" id="btn_MeetAttendance" class="btn btn-primary px-3 py-1">Go</button>';
+            //     $("#container_takeAttendance").append(html1);
+            //     $("#footer_buttons").append(html2);                
+            // });
+
+            $("#select_AttendanceType").change(function() {
+                $("#container_takeAttendance").empty();
+                $("#footer_buttons").empty();
+                var AttendanceType = document.getElementById("select_AttendanceType").value;
+                if (AttendanceType == 1) {
+                    var html1 = '<textarea id="txt_Attendance" class="form-control"></textarea>';
+                    var html2 = '<button type="button" id="btn_Absent" class="btn btn-danger">Absent</button>' +
+                                '<button type="button" id="btn_Present" class="btn btn-success">Present</button>';
+                } else if (AttendanceType == 2) {
+                    var html1 = '<textarea id="txt_Attendance" class="form-control" rows="18"></textarea>';
+                    var html2 = '<button type="button" id="btn_MeetAttendance" class="btn btn-primary px-3 py-1">Go</button>';
+                }
+                $("#container_takeAttendance").append(html1);
+                $("#footer_buttons").append(html2);
+            });
 
         </script>
 
