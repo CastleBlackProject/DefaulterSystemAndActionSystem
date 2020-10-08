@@ -246,8 +246,6 @@ $today = date("Y-m-d");
                                     <option value="1">Classroom</option>
                                     <option value="2">Google Meet</option>
                                 </select>
-                                <!-- <button type="button" id="btn_AttendanceType1" class="btn btn-primary">Manually</button>
-                                <button type="button" id="btn_AttendanceType2" class="btn btn-primary">Google Meet</button> -->
                             </div>
                         </div>
                         <div class="form-row">
@@ -258,11 +256,11 @@ $today = date("Y-m-d");
                         </div>
                     </form>
                 </div>
-                <div id="footer_buttons" class="modal-footer">                    
-                    <button type="button" class="btn btn-danger">Absent</button>
-                    <button type="button" class="btn btn-success">Present</button>
+                <div id="footer_buttons" class="modal-footer">
+                    <button type="button" onclick="takeRawData(0)" id="btn_Absent" class="btn btn-danger">Absent</button>
+                    <button type="button" onclick="takeRawData(1)" id="btn_Present" class="btn btn-success">Present</button>
                 </div>
-                <button type="button" id="btn_closeModal" class="btn btn-secondary" data-dismiss="modal" hidden>Close</button>                    
+                <button type="button" id="btn_closeModal" class="btn btn-secondary" data-dismiss="modal" hidden>Close</button>
             </div>
         </div>
 
@@ -280,37 +278,24 @@ $today = date("Y-m-d");
             function checkAllStudents() {
                 var checkbox = document.getElementsByClassName("chkbox_Attendance");
 
-                for (var i = 0; i < checkbox.length; i++) {
-                    if ($(this).prop("checked") == true) {
-                        checkbox[i].checked = false;
-                    } else {
-                        checkbox[i].checked = true;
-                    }
+                if ($(this).prop("checked") == true) {
+                    $(checkbox).prop('checked', false);
+                } else {
+                    $(checkbox).prop('checked', true);
                 }
+
+                // for (var i = 0; i < checkbox.length; i++) {
+                //     if ($(this).prop("checked") == true) {
+                //         checkbox[i].checked = false;
+                //     } else {
+                //         checkbox[i].checked = true;
+                //     }
+                // }
             }
 
             function backToList() {
                 window.location.href = '../Dashboard/Index.php';
             }
-
-            // $("#btn__AttendanceType1").click(function() {
-            //     $("#container_takeAttendance").empty();
-            //     $("#footer_buttons").empty();
-            //     var html1 = '<textarea id="txt_Attendance" class="form-control"></textarea>';
-            //     var html2 = '<button type="button" id="btn_Absent" class="btn btn-danger">Absent</button>' +
-            //                 '<button type="button" id="btn_Present" class="btn btn-success">Present</button>';
-            //     $("#container_takeAttendance").append(html1);
-            //     $("#footer_buttons").append(html2);
-            // });
-
-            // $("#btn_AttendanceType2").click(function() {
-            //     $("#container_takeAttendance").empty();
-            //     $("#footer_buttons").empty();
-            //     var html1 = '<textarea id="txt_Attendance" class="form-control" rows="18"></textarea>';
-            //     var html2 = '<button type="button" id="btn_MeetAttendance" class="btn btn-primary px-3 py-1">Go</button>';
-            //     $("#container_takeAttendance").append(html1);
-            //     $("#footer_buttons").append(html2);                
-            // });
 
             $("#select_AttendanceType").change(function() {
                 $("#container_takeAttendance").empty();
@@ -318,8 +303,8 @@ $today = date("Y-m-d");
                 var AttendanceType = document.getElementById("select_AttendanceType").value;
                 if (AttendanceType == 1) {
                     var html1 = '<textarea id="txt_Attendance" class="form-control"></textarea>';
-                    var html2 = '<button type="button" id="btn_Absent" class="btn btn-danger">Absent</button>' +
-                                '<button type="button" id="btn_Present" class="btn btn-success">Present</button>';
+                    var html2 = '<button type="button" onclick="takeRawData(0)" id="btn_Absent" class="btn btn-danger">Absent</button>' +
+                        '<button type="button" onclick="takeRawData(1)" id="btn_Present" class="btn btn-success">Present</button>';
                 } else if (AttendanceType == 2) {
                     var html1 = '<textarea id="txt_Attendance" class="form-control" rows="12"></textarea>';
                     var html2 = '<button type="button" id="btn_MeetAttendance" onclick="takeRawData()" class="btn btn-primary px-3 py-1">Go</button>';
@@ -327,7 +312,6 @@ $today = date("Y-m-d");
                 $("#container_takeAttendance").append(html1);
                 $("#footer_buttons").append(html2);
             });
-
         </script>
 
 </body>

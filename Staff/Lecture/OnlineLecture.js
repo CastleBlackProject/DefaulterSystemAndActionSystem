@@ -25,7 +25,7 @@ function processData(RawData) {
             var finalraw = arr_RawData[i].split("\n"); // AM/PM, TE-IT-47, First Name
             var arr_RollNo = finalraw[1].split("-");
             //console.log(arr_RollNo[2]);
-            
+
 
             if (i == 2) {
                 var firstname = arr_RawData[0];
@@ -45,11 +45,11 @@ function processData(RawData) {
                 if (t <= 9 && t >= 0) {
                     break;
                 }
-                else{
+                else {
                     lastname += lastnameraw[k];
                 }
             }
-            
+
             var fullname = firstname + " " + lastname;
 
             outputData(arr_RollNo[2], fullname);
@@ -66,6 +66,8 @@ function processData(RawData) {
 function outputData(RollNo, Name) {
 
     console.log(Name + "-" + RollNo);
+
+    var name = Name.split(" ");
 
     var tbody = document.getElementById("tbody_Students");
     var countRows = $('#table_Students tbody').find('tr').length;
