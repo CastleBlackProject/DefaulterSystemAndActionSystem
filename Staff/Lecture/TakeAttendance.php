@@ -117,7 +117,7 @@ $today = date("Y-m-d");
                         </div>
                         <div class="form-group col-md-3 p-4">
                             <button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#exampleModalCenter">
-                                Via Google Meet
+                                Enter Roll Number
                             </button>
                         </div>
                     </div>
@@ -241,10 +241,12 @@ $today = date("Y-m-d");
                     <form>
                         <div class="form-row">
                             <div class="form-group col-md-12">
-                                <select id="select_AttendanceType" class="form-control">
+                                <!-- <select id="select_AttendanceType" class="form-control">
                                     <option value="1">Manually</option>
                                     <option value="2">Google Meet</option>
-                                </select>
+                                </select> -->
+                                <button type="button" id="select_AttendanceType" value="1" class="btn btn-primary">Manually</button>
+                                <button type="button" id="select_AttendanceType" value="2" class="btn btn-primary">Google meet</button>
                             </div>
                         </div>
                         <div class="form-row">
@@ -255,7 +257,7 @@ $today = date("Y-m-d");
                     </form>
                 </div>
                 <div id="footer_buttons" class="modal-footer">
-                    <button type="button" class="btn btn-secondary">Present</button>
+                    <button type="button" class="btn btn-success">Present</button>
                     <button type="button" class="btn btn-primary">Absent</button>
                 </div>
             </div>
