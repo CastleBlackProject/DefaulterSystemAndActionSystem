@@ -49,15 +49,15 @@
             <div class="nav-item mx-2 viewbx">
                  <a role="button"><img src="../Images/vcetlogoicon.png" onclick="openviewbox()"></a>
             </div>
-            <!-- <form class="form-inline my-2 my-lg-0">
+            <form class="form-inline my-2 my-lg-0">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="logout()">Log Out</button>
-            </form> -->
+            </form>
         </div>
     </nav>
-    <svg id="viewbox" width="200" height="200" viewBox="500 0 200 200"> 
+    <!-- <svg id="viewbox" width="200" height="200" viewBox="500 0 200 200"> 
         <circle cx="50" cy="50" r="45" stroke="#000"
             stroke-width="3" fill="none"/> 
-    </svg> 
+    </svg>  -->
     <div class="flex-container">
         <div><a href="AcademicSession/Index.php">Academic Session</a></div>
         <div><a href="Branch/Index.php">Branch</a></div>
@@ -73,14 +73,14 @@
           /* background-color: DodgerBlue; */
           
         }
-        #viewbox{
+        /* #viewbox{
             display: none;
             z-index: 100;
             background-color: #fdfdfd;  
             position: fixed;
             top: ;
             right: ;
-        }
+        } */
         
         .flex-container > div {
           background-color: #404346;
@@ -114,16 +114,16 @@
             function logout(){
                 window.location.href = '../Login.php';
             }
-            function openviewbox()
-            {
-                let viewbox = document.getElementById('viewbox');
-                if(viewbox.style.display === 'none'){
-                    viewbox.style.display = 'block';
-                }
-                else{
-                        viewbox.style.display = 'none';
-                    }
-            }
+            // function openviewbox()
+            // {
+            //     let viewbox = document.getElementById('viewbox');
+            //     if(viewbox.style.display === 'none'){
+            //         viewbox.style.display = 'block';
+            //     }
+            //     else{
+            //             viewbox.style.display = 'none';
+            //         }
+            // }
         </script>
 
     </body>
