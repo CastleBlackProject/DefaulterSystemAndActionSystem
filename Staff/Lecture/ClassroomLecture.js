@@ -1,7 +1,8 @@
+alert("ClassRoom");
 
 var isPresent = false;
 
-function takeRawData(Attendance) {
+function takeRawData1(Attendance) {
 
     if (Attendance == 1) {
         isPresent = true;
@@ -20,20 +21,20 @@ function takeRawData(Attendance) {
     }
 
     var RawData = $("#txt_Attendance").val();
-    processData(RawData);
+    processData1(RawData);
 }
 
-function processData(RawData) {
+function processData1(RawData) {
 
     var RollNos = RawData.split(',');
 
     for (var i = 0; i < RollNos.length; i++) {
         var RollNo = RollNos[i];
-        outputData(RollNo);
+        outputData1(RollNo);
     }
 }
 
-function outputData(RollNo) {
+function outputData1(RollNo) {
     var tbody = document.getElementById("tbody_Students");
     var countRows = $('#table_Students tbody').find('tr').length;    
 

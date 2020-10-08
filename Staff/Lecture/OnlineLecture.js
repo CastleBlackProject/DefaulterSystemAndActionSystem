@@ -3,14 +3,17 @@
 //     console.log(RawData);
 // });
 
+alert("Online");
+
+
 var unmarkedRollNo = [];
 
-function takeRawData() {
+function takeRawData2() {
     var RawData = $("#txt_Attendance").val();
-    processData(RawData);
+    processData2(RawData);
 }
 
-function processData(RawData) {
+function processData2(RawData) {
 
     var arr_RawData = RawData.split(' ');
 
@@ -52,7 +55,7 @@ function processData(RawData) {
 
             var fullname = firstname + " " + lastname;
 
-            outputData(arr_RollNo[2], fullname);
+            outputData2(arr_RollNo[2], fullname);
         }
     }
 
@@ -63,7 +66,7 @@ function processData(RawData) {
     }
 }
 
-function outputData(RollNo, Name) {
+function outputData2(RollNo, Name) {
 
     console.log(Name + "-" + RollNo);
 
