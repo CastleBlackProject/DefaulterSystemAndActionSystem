@@ -66,31 +66,29 @@
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button"><img src="../Images/vcetlogoicon.png"></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" id="loginname">
-                                                                                                        <?php
+                    <?php
 
-                                                                                $servername="localhost";
-                                                                                $username="root";
-                                                                                $password="";
-                                                                                $db="vceterp";
-                                                                                $con = new mysqli($servername,$username,$password,$db);
-                                                                                if(!$con)
-                                                                                {
-                                                                                    //die('could not connect'.mysql_error());
-                                                                                }
-                                                                                else
-                                                                                {
-                                                                                    //echo "<h1>database connected</h1>";
-                                                                                }
-
-                                                                                $sql = "SELECT * FROM staff_master WHERE Staff_Id = ".$StaffId;
-                                                                                $result = $con->query($sql);
-                                                                                while($row = $result->fetch_array())
-                                                                                {
-                                                                                    
-                                                                                    $StaffName = $row['First_Name'] ." ". $row['Middle_Name']." ".$row['Last_Name'];
-                                                                                    echo $StaffName;
-                                                                                }
-                                                                                ?>
+                        $servername="localhost";
+                        $username="root";
+                        $password="";
+                        $db="vceterp";
+                        $con = new mysqli($servername,$username,$password,$db);
+                        if(!$con)
+                        {
+                            //die('could not connect'.mysql_error());
+                        }
+                        else
+                        {
+                           //echo "<h1>database connected</h1>";
+                        }
+                        $sql = "SELECT * FROM staff_master WHERE Staff_Id = ".$StaffId;
+                        $result = $con->query($sql);
+                        while($row = $result->fetch_array())
+                        {                        
+                            $StaffName = $row['First_Name'] ." ". $row['Middle_Name']." ".$row['Last_Name'];
+                            echo $StaffName;
+                        }
+                    ?>
                         </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item"><button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="logout()">Log Out</button></a>
