@@ -1,4 +1,4 @@
-alert("ClassRoom");
+//alert("ClassRoom");
 
 var isPresent = false;
 
