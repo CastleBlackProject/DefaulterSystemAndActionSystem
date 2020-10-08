@@ -128,7 +128,7 @@ $today = date("Y-m-d");
             <hr />
 
             <div id="container_fieldset">
-                <table class="table table-bordered table-hover">
+                <table id="table_Students" class="table table-bordered table-hover">
                     <thead>
                         <tr>
                             <th hidden>Student ID</th>
@@ -137,7 +137,7 @@ $today = date("Y-m-d");
                             <th><input type="checkbox" id="chkboc_checkAll" onclick="checkAllStudents()" /> <label class="ml-1">Check All</label></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tbody_Students">
                         <?php
                         while ($row = mysqli_fetch_array($result)) {
                             $StudentName = "";
@@ -262,6 +262,7 @@ $today = date("Y-m-d");
                     <button type="button" class="btn btn-danger">Absent</button>
                     <button type="button" class="btn btn-success">Present</button>
                 </div>
+                <button type="button" id="btn_closeModal" class="btn btn-secondary" data-dismiss="modal" hidden>Close</button>                    
             </div>
         </div>
 
@@ -321,7 +322,7 @@ $today = date("Y-m-d");
                                 '<button type="button" id="btn_Present" class="btn btn-success">Present</button>';
                 } else if (AttendanceType == 2) {
                     var html1 = '<textarea id="txt_Attendance" class="form-control" rows="12"></textarea>';
-                    var html2 = '<button type="button" id="btn_MeetAttendance" class="btn btn-primary px-3 py-1">Go</button>';
+                    var html2 = '<button type="button" id="btn_MeetAttendance" onclick="takeRawData()" class="btn btn-primary px-3 py-1">Go</button>';
                 }
                 $("#container_takeAttendance").append(html1);
                 $("#footer_buttons").append(html2);
