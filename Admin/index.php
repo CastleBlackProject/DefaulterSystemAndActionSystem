@@ -1,3 +1,18 @@
+<?php
+
+    if(!isset($_COOKIE["StaffId"])) 
+    {        
+        echo "Cookie named '" . $cookie_name . "' is not set!";
+    } 
+    else 
+    {
+        $StaffId = $_COOKIE["StaffId"];
+        //echo $StaffId;
+        echo "<script>console.log(".$StaffId.")</script>";
+    }
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -50,7 +65,33 @@
                 <li class="nav-item dropdown mx-2">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button"><img src="../Images/vcetlogoicon.png"></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" >Login Name</a>
+                        <a class="dropdown-item" id="loginname">
+                                                                                                        <?php
+
+                                                                                $servername="localhost";
+                                                                                $username="root";
+                                                                                $password="";
+                                                                                $db="vceterp";
+                                                                                $con = new mysqli($servername,$username,$password,$db);
+                                                                                if(!$con)
+                                                                                {
+                                                                                    //die('could not connect'.mysql_error());
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    //echo "<h1>database connected</h1>";
+                                                                                }
+
+                                                                                $sql = "SELECT * FROM staff_master WHERE Staff_Id = ".$StaffId;
+                                                                                $result = $con->query($sql);
+                                                                                while($row = $result->fetch_array())
+                                                                                {
+                                                                                    
+                                                                                    $StaffName = $row['First_Name'] ." ". $row['Middle_Name']." ".$row['Last_Name'];
+                                                                                    echo $StaffName;
+                                                                                }
+                                                                                ?>
+                        </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item"><button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="logout()">Log Out</button></a>
                     </div>
@@ -98,9 +139,7 @@
         }
         </style>
           
-
-
-    <!-- Optional JavaScript -->
+        <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -115,6 +154,28 @@
 
 
         <script>
+
+            function setCookie(cname, cvalue, exdays) {
+                var d = new Date();
+                d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+                var expires = "expires=" + d.toUTCString();
+                document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+            }
+
+            function getCookie(cname) {
+                var name = cname + "=";
+                var ca = document.cookie.split(';');
+                for (var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                        c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                        return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }    
 
             function logout(){
                 window.location.href = '../Login.php';
