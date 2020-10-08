@@ -33,7 +33,7 @@
                     <a class="nav-link" href="../Branch/Index.php" id="nav_Branch" role="button">Branch </a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="../Staff/Index.php" id="nav_Staff" role="button">Staff </a>
+                    <a class="nav-link disabled" href="../Staff/Index.php" id="nav_Staff" role="button">Staff </a>
                 </li>
                 <li class="nav-item mx-2">
                     <a class="nav-link" href="../Students/Index.php" id="nav_Students" role="button">Students</a>

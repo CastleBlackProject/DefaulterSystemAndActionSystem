@@ -27,7 +27,7 @@
                     <a class="nav-link" href="../Index.php" id="nav_Dashboard" role="button">Dashboard</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="../AcademicSession/Index.php" id="nav_AcademicSession" role="button">Academic Session </a>
+                    <a class="nav-link disabled" href="../AcademicSession/Index.php" id="nav_AcademicSession" role="button">Academic Session </a>
                 </li>
                 <li class="nav-item mx-2">
                     <a class="nav-link" href="../Branch/Index.php" id="nav_Branch" role="button">Branch </a>

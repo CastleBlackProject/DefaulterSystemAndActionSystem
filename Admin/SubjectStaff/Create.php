@@ -43,7 +43,7 @@
                     <a class="nav-link" href="../Subject/Index.php" id="nav_Subject" role="button">Subject </a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="../SubjectStaff/Create.php" id="nav_Staff" role="button">Assign Subject</a>
+                    <a class="nav-link disabled" href="../SubjectStaff/Create.php" id="nav_Staff" role="button">Assign Subject</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">

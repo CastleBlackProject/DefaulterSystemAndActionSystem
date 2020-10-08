@@ -25,7 +25,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="Index.php" id="nav_Dashboard" role="button">Dashboard</a>
+                    <a class="nav-link disabled" href="Index.php" id="nav_Dashboard" role="button">Dashboard</a>
                 </li>
                 <li class="nav-item mx-2">
                     <a class="nav-link" href="AcademicSession/Index.php" id="nav_AcademicSession" role="button">Academic Session </a>

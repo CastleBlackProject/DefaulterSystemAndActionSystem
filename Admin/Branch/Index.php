@@ -30,7 +30,7 @@
                     <a class="nav-link" href="../AcademicSession/Index.php" id="nav_AcademicSession" role="button">Academic Session </a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="../Branch/Index.php" id="nav_Branch" role="button">Branch </a>
+                    <a class="nav-link disabled" href="../Branch/Index.php" id="nav_Branch" role="button">Branch </a>
                 </li>
                 <li class="nav-item mx-2">
                     <a class="nav-link" href="../Staff/Index.php" id="nav_Staff" role="button">Staff </a>
