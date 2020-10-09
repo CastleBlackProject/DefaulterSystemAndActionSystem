@@ -246,6 +246,8 @@
             $sql3="INSERT INTO student_branch_year_link(Student_Id,Branch_Id,Semester_Id,Year_Id,Academic_Session_Id,Roll_Number) VALUES('$Student_Id','$BranchId','$semesterid','$YearId','$acdsesid','$rollno') ";
             //$con->query($sql3);
             $sql1="INSERT INTO student_branch_link(Student_Id,Branch_Id,Student_Branch_Status) VALUES('$Student_Id','$BranchId','$StudentBranchStatus')";
+
+            $sql5 = "INSERT INTO student_login(Student_Id,Student_College_Id,Student_Password) VALUES('$Student_Id','$studentcollegeid','$studentcollegeid')";
             //$con->query($sql1);
             // if($con->query($sql1) === TRUE && $con->query($sql2) === TRUE ){
             //     echo "inserted into stud branch link and stud branch year link ";
@@ -253,13 +255,14 @@
             //     //echo $Stud_Id;
             // }&& $con->query($sql3)===TRUE 
             
-            if($con->query($sql3) === TRUE && $con->query($sql1) === TRUE){
+            if($con->query($sql3) === TRUE && $con->query($sql1) === TRUE && $con->query($sql5) === TRUE){
                 //echo $YearId;
                 echo "<script> location.href='Index.php'; </script>";
             }else{
               echo "<br>error: ".$sql."<br>".$con->error;
           }
             }
+        
            ?>
             <input type="button" value="Back To List" onclick="window.location.href='Index.php'"
                 class="btn btn-primary" />

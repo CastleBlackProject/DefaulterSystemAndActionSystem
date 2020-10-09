@@ -153,7 +153,15 @@
                     <label for="txt_Staff_College_Id">College Id Number</label>
                     <input type="text" id="txt_Staff_College_Id" name="txt_Staff_College_Id" class="form-control">
                     </input>
-                </div>             
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="txt_Staff_College_Id">Is Admin?</label>
+                    <select id="select_IsAdmin" name="select_IsAdmin" class="form-control">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                    </input>
+                </div> 
             </div>
             <div class="my-4">
                 <center>
@@ -174,7 +182,8 @@
                     $StaffStatus =  $_POST['select_StaffStatus'];
                     $BranchId = $_POST['select_Branch'];
                     $StaffBranchStatus= "Active";
-                    $staffcollegeid = $_POST['txt_Staff_College_Id'];            
+                    $staffcollegeid = $_POST['txt_Staff_College_Id'];
+                    $IsAdmin = $_POST['select_IsAdmin'];
                     $sql1="INSERT INTO staff_master(Staff_College_Id,First_Name,Middle_Name,Last_Name,Date_Of_Birth,Gender,Contact,Email_Id,Address,Staff_Status) VALUES('$staffcollegeid','$FirstName','$MiddleName','$LastName','$DateOfBirth','$Gender','$Contact','$Email','$Address','$StaffStatus')";
                     
                     if($con->query($sql1) === TRUE ){
@@ -185,8 +194,8 @@
                         $StaffId=$row['id'];
 
                         $sql3="INSERT INTO staff_branch_link(Staff_Id,Branch_Id,Staff_Branch_Status) VALUES('$StaffId','$BranchId','$StaffBranchStatus')";
-                    
-                        if($con->query($sql3) === TRUE){
+                        $sql4="INSERT INTO staff_admin_login(Staff_Id,Staff_College_Id,Staff_Password,Is_Admin VALUES('$StaffId','$staffcollegeid','$staffcollegeid','$IsAdmin')";
+                        if($con->query($sql3) === TRUE && $con->query($sql4) === TRUE){
                             echo "<script> location.href='Index.php'; </script>";
                         }
                         else{
