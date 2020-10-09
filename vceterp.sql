@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 30, 2020 at 12:07 PM
+-- Generation Time: Oct 09, 2020 at 08:17 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.8
 
@@ -57,18 +57,6 @@ CREATE TABLE `attendance_master` (
   `Is_Present` tinytext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `attendance_master`
---
-
-INSERT INTO `attendance_master` (`Attendance_Id`, `Lecture_Id`, `Student_Id`, `Is_Present`) VALUES
-(1, 1, 1, '1'),
-(2, 1, 2, '1'),
-(3, 1, 3, '1'),
-(4, 2, 1, '1'),
-(5, 2, 2, '1'),
-(6, 2, 3, '0');
-
 -- --------------------------------------------------------
 
 --
@@ -97,6 +85,22 @@ INSERT INTO `branch_master` (`Branch_Id`, `Branch_Name`, `Branch_Code`, `Branch_
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `defaulter_action_master`
+--
+
+CREATE TABLE `defaulter_action_master` (
+  `Defaulter_Action_Id` bigint(20) NOT NULL,
+  `Subject_Id` bigint(20) NOT NULL,
+  `Staff_Id` bigint(20) NOT NULL,
+  `Academic_Session_Id` bigint(20) NOT NULL,
+  `From_Percentage` float NOT NULL,
+  `To_Percentage` float NOT NULL,
+  `Defaulter_Action` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `lecture_master`
 --
 
@@ -108,14 +112,6 @@ CREATE TABLE `lecture_master` (
   `Lecture_Number` int(11) NOT NULL,
   `Lecture_Date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `lecture_master`
---
-
-INSERT INTO `lecture_master` (`Lecture_Id`, `Academic_Session_Id`, `Subject_Id`, `Staff_Id`, `Lecture_Number`, `Lecture_Date`) VALUES
-(1, 1, 28, 2, 1, '2020-09-30'),
-(2, 1, 25, 1, 1, '2020-09-17');
 
 -- --------------------------------------------------------
 
@@ -180,16 +176,6 @@ CREATE TABLE `staff_branch_link` (
   `Staff_Branch_Status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `staff_branch_link`
---
-
-INSERT INTO `staff_branch_link` (`Staff_Branch_Id`, `Staff_Id`, `Branch_Id`, `Staff_Branch_Status`) VALUES
-(1, 1, 5, 'Active'),
-(2, 2, 5, 'Active'),
-(3, 3, 1, 'Active'),
-(4, 4, 2, 'Active');
-
 -- --------------------------------------------------------
 
 --
@@ -210,16 +196,6 @@ CREATE TABLE `staff_master` (
   `Staff_Status` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `staff_master`
---
-
-INSERT INTO `staff_master` (`Staff_Id`, `Staff_College_Id`, `First_Name`, `Middle_Name`, `Last_Name`, `Date_Of_Birth`, `Gender`, `Contact`, `Email_Id`, `Address`, `Staff_Status`) VALUES
-(1, '182377222', 'rahul', 'rajesh', 'mahajan', '1974-07-11', 'Male', '1233211233', 'rahulmahajan@gmail.com', 'shankar lane kandivali west', 'Active'),
-(2, '123321444', 'shailendra', 'anand', 'gupta', '1976-09-06', 'Male', '3455433455', 'shailendargupta@gmail.com', 'goregaon highway oberoi ', 'Active'),
-(3, '678876687', 'richa', 'jatin', 'chadda', '1989-03-09', 'Female', '5677655677', 'richachadda@gmail.com', 'charkop kandivali west', 'Active'),
-(4, '789987456', 'rakesh', 'nayan', 'rathi', '1986-10-10', 'Male', '7899877899', 'rakeshrrathi@gmail.com', 'andheri west midc', 'Active');
-
 -- --------------------------------------------------------
 
 --
@@ -232,19 +208,6 @@ CREATE TABLE `student_branch_link` (
   `Branch_Id` bigint(5) NOT NULL,
   `Student_Branch_Status` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `student_branch_link`
---
-
-INSERT INTO `student_branch_link` (`Student_Branch_Id`, `Student_Id`, `Branch_Id`, `Student_Branch_Status`) VALUES
-(1, 1, 5, 'Active'),
-(2, 2, 5, 'Active'),
-(3, 3, 5, 'Active'),
-(4, 4, 1, 'Active'),
-(5, 5, 1, 'Active'),
-(6, 6, 4, 'Active'),
-(7, 7, 2, 'Active');
 
 -- --------------------------------------------------------
 
@@ -262,18 +225,18 @@ CREATE TABLE `student_branch_year_link` (
   `Roll_Number` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `student_branch_year_link`
+-- Table structure for table `student_login`
 --
 
-INSERT INTO `student_branch_year_link` (`Student_Branch_Year_Id`, `Academic_Session_Id`, `Student_Id`, `Branch_Id`, `Semester_Id`, `Year_Id`, `Roll_Number`) VALUES
-(1, 1, 1, 5, 1, 1, 1),
-(2, 1, 2, 5, 1, 1, 2),
-(3, 1, 3, 5, 1, 1, 3),
-(4, 1, 4, 1, 1, 1, 1),
-(5, 1, 5, 1, 1, 1, 2),
-(6, 1, 6, 4, 1, 1, 1),
-(7, 1, 7, 2, 1, 1, 1);
+CREATE TABLE `student_login` (
+  `Student_Login_Id` bigint(20) NOT NULL,
+  `Student_Id` bigint(20) NOT NULL,
+  `Student_College_Id` varchar(100) NOT NULL,
+  `Student_Password` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -294,19 +257,6 @@ CREATE TABLE `student_master` (
   `Address` varchar(100) NOT NULL,
   `Student_Status` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `student_master`
---
-
-INSERT INTO `student_master` (`Student_Id`, `Student_College_Id`, `First_Name`, `Middle_Name`, `Last_Name`, `Date_Of_Birth`, `Gender`, `Contact`, `Email_Id`, `Address`, `Student_Status`) VALUES
-(1, '182374101', 'isheet', 'harish', 'shetty', '2000-10-19', 'Male', '9653341482', 'isheetshetty@gmail.com', 'B-62 Dattani apt parekh nagar kandivali west mumbai 400-067', 'Active'),
-(2, '182324101', 'dhru', 'narendra', 'prajapati', '2000-06-18', 'Male', '9326225071', 'dhruprajapati18@gmail.com', 'borivali east highway', 'Active'),
-(3, '182084101', 'yash', 'hitesh', 'jobalia', '2000-01-02', 'Male', '9769264884', 'jobaliayash@gmail.com', 'mira road station ', 'Active'),
-(4, '182477101', 'tanay', 'ketan', 'udeshi', '2000-11-23', 'Male', '9820997705', 'tanayudeshi@gmail.com', 'kandivali charkop', 'Active'),
-(5, '182424101', 'manal', 'kishor', 'vartak', '2000-08-01', 'Male', '1234567890', 'vartakmanal@gmail.com', 'Vasai WEST OPP station road', 'Active'),
-(6, '182526101', 'Aniket', 'ramesh', 'rathod', '2000-05-09', 'Male', '0987654321', 'aniketrathod@gmail.com', 'virar thumbakeshwar ', 'Active'),
-(7, '182344101', 'hrithik ', 'shivaji', 'wayal', '2000-09-22', 'Male', '1234554321', 'wayalhrithik@gmail.com', 'charkop kandivali', 'Active');
 
 -- --------------------------------------------------------
 
@@ -379,18 +329,6 @@ CREATE TABLE `subject_staff_link` (
   `Subject_Staff_Status` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `subject_staff_link`
---
-
-INSERT INTO `subject_staff_link` (`Subject_Staff_Id`, `Subject_Id`, `Staff_Id`, `Academic_Session_Id`, `Subject_Staff_Status`) VALUES
-(1, 25, 1, 1, 'Active'),
-(2, 26, 1, 1, 'Active'),
-(3, 27, 1, 1, 'Active'),
-(4, 28, 2, 1, 'Active'),
-(5, 29, 2, 1, 'Active'),
-(6, 30, 2, 1, 'Active');
-
 -- --------------------------------------------------------
 
 --
@@ -438,6 +376,12 @@ ALTER TABLE `branch_master`
   ADD KEY `Branch_Id` (`Branch_Id`);
 
 --
+-- Indexes for table `defaulter_action_master`
+--
+ALTER TABLE `defaulter_action_master`
+  ADD PRIMARY KEY (`Defaulter_Action_Id`);
+
+--
 -- Indexes for table `lecture_master`
 --
 ALTER TABLE `lecture_master`
@@ -483,6 +427,12 @@ ALTER TABLE `student_branch_year_link`
   ADD PRIMARY KEY (`Student_Branch_Year_Id`);
 
 --
+-- Indexes for table `student_login`
+--
+ALTER TABLE `student_login`
+  ADD PRIMARY KEY (`Student_Login_Id`);
+
+--
 -- Indexes for table `student_master`
 --
 ALTER TABLE `student_master`
@@ -523,7 +473,7 @@ ALTER TABLE `academic_session_master`
 -- AUTO_INCREMENT for table `attendance_master`
 --
 ALTER TABLE `attendance_master`
-  MODIFY `Attendance_Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `Attendance_Id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `branch_master`
@@ -532,10 +482,16 @@ ALTER TABLE `branch_master`
   MODIFY `Branch_Id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `defaulter_action_master`
+--
+ALTER TABLE `defaulter_action_master`
+  MODIFY `Defaulter_Action_Id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `lecture_master`
 --
 ALTER TABLE `lecture_master`
-  MODIFY `Lecture_Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Lecture_Id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `staff_admin_login`
@@ -547,31 +503,37 @@ ALTER TABLE `staff_admin_login`
 -- AUTO_INCREMENT for table `staff_branch_link`
 --
 ALTER TABLE `staff_branch_link`
-  MODIFY `Staff_Branch_Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Staff_Branch_Id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `staff_master`
 --
 ALTER TABLE `staff_master`
-  MODIFY `Staff_Id` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Staff_Id` bigint(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `student_branch_link`
 --
 ALTER TABLE `student_branch_link`
-  MODIFY `Student_Branch_Id` bigint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Student_Branch_Id` bigint(5) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `student_branch_year_link`
 --
 ALTER TABLE `student_branch_year_link`
-  MODIFY `Student_Branch_Year_Id` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Student_Branch_Year_Id` bigint(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `student_login`
+--
+ALTER TABLE `student_login`
+  MODIFY `Student_Login_Id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `student_master`
 --
 ALTER TABLE `student_master`
-  MODIFY `Student_Id` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Student_Id` bigint(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `subject_master`
@@ -583,7 +545,7 @@ ALTER TABLE `subject_master`
 -- AUTO_INCREMENT for table `subject_staff_link`
 --
 ALTER TABLE `subject_staff_link`
-  MODIFY `Subject_Staff_Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `Subject_Staff_Id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
