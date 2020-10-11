@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 11, 2020 at 07:08 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.9
+-- Generation Time: Oct 11, 2020 at 08:05 PM
+-- Server version: 10.4.13-MariaDB
+-- PHP Version: 7.4.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -210,7 +210,32 @@ INSERT INTO `student_branch_link` (`Student_Branch_Id`, `Student_Id`, `Branch_Id
 (22, 22, 5, 'Active'),
 (23, 23, 5, 'Active'),
 (24, 24, 5, 'Active'),
-(25, 25, 5, 'Active');
+(25, 25, 5, 'Active'),
+(26, 26, 5, 'Active'),
+(27, 27, 5, 'Active'),
+(28, 28, 5, 'Active'),
+(29, 29, 5, 'Active'),
+(30, 30, 5, 'Active'),
+(31, 31, 5, 'Active'),
+(32, 32, 5, 'Active'),
+(33, 33, 5, 'Active'),
+(34, 34, 5, 'Active'),
+(35, 35, 5, 'Active'),
+(36, 36, 5, 'Active'),
+(37, 37, 5, 'Active'),
+(38, 38, 5, 'Active'),
+(39, 39, 5, 'Active'),
+(40, 40, 5, 'Active'),
+(41, 41, 5, 'Active'),
+(42, 42, 5, 'Active'),
+(43, 43, 5, 'Active'),
+(44, 44, 5, 'Active'),
+(45, 45, 5, 'Active'),
+(46, 46, 5, 'Active'),
+(47, 47, 5, 'Active'),
+(48, 48, 5, 'Active'),
+(49, 49, 5, 'Active'),
+(50, 50, 5, 'Active');
 
 -- --------------------------------------------------------
 
@@ -257,7 +282,32 @@ INSERT INTO `student_branch_year_link` (`Student_Branch_Year_Id`, `Academic_Sess
 (22, 1, 22, 5, 5, 3, 22),
 (23, 1, 23, 5, 5, 3, 23),
 (24, 1, 24, 5, 5, 3, 24),
-(25, 1, 25, 5, 5, 3, 25);
+(25, 1, 25, 5, 5, 3, 25),
+(26, 1, 26, 5, 5, 3, 26),
+(27, 1, 27, 5, 5, 3, 27),
+(28, 1, 28, 5, 5, 3, 28),
+(29, 1, 29, 5, 5, 3, 29),
+(30, 1, 30, 5, 5, 3, 30),
+(31, 1, 31, 5, 5, 3, 31),
+(32, 1, 32, 5, 5, 3, 32),
+(33, 1, 33, 5, 5, 3, 33),
+(34, 1, 34, 5, 5, 3, 34),
+(35, 1, 35, 5, 5, 3, 35),
+(36, 1, 36, 5, 5, 3, 36),
+(37, 1, 37, 5, 5, 3, 37),
+(38, 1, 38, 5, 5, 3, 38),
+(39, 1, 39, 5, 5, 3, 39),
+(40, 1, 40, 5, 5, 3, 40),
+(41, 1, 41, 5, 5, 3, 41),
+(42, 1, 42, 5, 5, 3, 42),
+(43, 1, 43, 5, 5, 3, 43),
+(44, 1, 44, 5, 5, 3, 44),
+(45, 1, 45, 5, 5, 3, 45),
+(46, 1, 46, 5, 5, 3, 46),
+(47, 1, 47, 5, 5, 3, 47),
+(48, 1, 48, 5, 5, 3, 48),
+(49, 1, 49, 5, 5, 3, 49),
+(50, 1, 50, 5, 5, 3, 50);
 
 -- --------------------------------------------------------
 
@@ -301,7 +351,32 @@ INSERT INTO `student_login` (`Student_Login_Id`, `Student_Id`, `Student_College_
 (22, 22, '182084101', '182084101'),
 (23, 23, '182094105', '182094105'),
 (24, 24, '182104202', '182104202'),
-(25, 25, '182114101', '182114101');
+(25, 25, '182114101', '182114101'),
+(26, 26, '182124101', '182124101'),
+(27, 27, '182134105', '182134105'),
+(28, 28, '182144102', '182144102'),
+(29, 29, '182154101', '182154101'),
+(30, 30, '182164102', '182164102'),
+(31, 31, '182174101', '182174101'),
+(32, 32, '182184102', '182184102'),
+(33, 33, '182194101', '182194101'),
+(34, 34, '182214101', '182214101'),
+(35, 35, '182224101', '182224101'),
+(36, 36, '182234201', '182234201'),
+(37, 37, '182244102', '182244102'),
+(38, 38, '182254105', '182254105'),
+(39, 39, '182264101', '182264101'),
+(40, 40, '182284101', '182284101'),
+(41, 41, '182294208', '182294208'),
+(42, 42, '182314106', '182314106'),
+(43, 43, '182324101', '182324101'),
+(44, 44, '182344201', '182344201'),
+(45, 45, '182354101', '182354101'),
+(46, 46, '182364101', '182364101'),
+(47, 47, '182374101', '182374101'),
+(48, 48, '182384101', '182384101'),
+(49, 49, '182394201', '182394201'),
+(50, 50, '182404105', '182404105');
 
 -- --------------------------------------------------------
 
@@ -352,7 +427,32 @@ INSERT INTO `student_master` (`Student_Id`, `Student_College_Id`, `First_Name`, 
 (22, '182084101', 'Yash', '', 'Jobalia', '2000-01-02', 'Male', '9769264884', 'jobaliayash@gmail.com', '', 'Active'),
 (23, '182094105', 'Romin', '', 'Katre', '0000-00-00', 'Male', '8459737585', 'romin.katre32.rk@gmail.com', '', 'Active'),
 (24, '182104202', 'Ankita', '', 'Kawade', '0000-00-00', 'Female', '9372645974', 'ankitakawade2311@gmail.com', '', 'Active'),
-(25, '182114101', 'Shrutik', 'Rakesh', 'Kharkar', '0000-00-00', 'Male', '8433232766', 'shrutikharkar3@gmail.com', '', 'Active');
+(25, '182114101', 'Shrutik', 'Rakesh', 'Kharkar', '0000-00-00', 'Male', '8433232766', 'shrutikharkar3@gmail.com', '', 'Active'),
+(26, '182124101', 'Dhruv', '', 'Kathor', '0000-00-00', 'Male', '8208835808', 'dhruvkhator19@gmail.com', '', 'Active'),
+(27, '182134105', 'Harsh', '', 'Kore', '0000-00-00', 'Male', '9075336647', 'harsh.kore922@gmail.com', '', 'Active'),
+(28, '182144102', 'Paras', 'Mahesh', 'Lad', '0000-00-00', 'Male', '9284389650', 'paaraas93@gmail.com', '', 'Active'),
+(29, '182154101', 'Soham', '', 'Madhvani', '0000-00-00', 'Male', '9664314465', 'sohammadhvani@gmail.com', '', 'Active'),
+(30, '182164102', 'Karan', '', 'Mane', '0000-00-00', 'Male', '9004239013', 'karankisanmane09@gmail.com', '', 'Active'),
+(31, '182174101', 'Krishna', '', 'Maniyar', '0000-00-00', 'Male', '8888354740', 'maniyarkrishna5@gmail.com', '', 'Active'),
+(32, '182184102', 'Atul', '', 'Manwar', '0000-00-00', 'Male', '8097972725', 'bmatul139@gmail.com', '', 'Active'),
+(33, '182194101', 'Shubham', '', 'Maurya', '0000-00-00', 'Male', '9326896133', 'smmaurya29012001@gmail.com', '', 'Active'),
+(34, '182214101', 'Neel', '', 'Mehta', '0000-00-00', 'Male', '9998686763', 'neelmehat9409@gmail.com', '', 'Active'),
+(35, '182224101', 'Abhineet', '', 'Menon', '0000-00-00', 'Male', '8552825199', 'menonabhineet@gmail.com', '', 'Active'),
+(36, '182234201', 'Aakanksha', '', 'Mohite', '0000-00-00', 'Female', '9967947139', 'aakanksharmohite@gmail.com', '', 'Active'),
+(37, '182244102', 'Hridayesh', '', 'More', '0000-00-00', 'Male', '7738756301', 'hridayeshmore16@gmail.com', '', 'Active'),
+(38, '182254105', 'Chirag', '', 'Narkar', '0000-00-00', 'Male', '9768114836', 'chiragnarkar2507@gmail.com', '', 'Active'),
+(39, '182264101', 'Harsh', '', 'Pandya', '0000-00-00', 'Male', '9833524520', 'harshkalppandya777@gmail.com', '', 'Active'),
+(40, '182284101', 'Parag', '', 'Patankar', '0000-00-00', 'Male', '7758075860', 'paragpatankar7@gmail.com', '', 'Active'),
+(41, '182294208', 'Riya', '', 'Patil', '0000-00-00', 'Female', '9561659076', 'riyamaheshpatil0701@gmail.com', '', 'Active'),
+(42, '182314106', 'Pranay', '', 'Patre', '0000-00-00', 'Male', '9767654726', 'pranaypatre15@gmail.com', '', 'Active'),
+(43, '182324101', 'Dhru', '', 'Prajapati', '0000-00-00', 'Male', '9326225071', 'dhruprajapati18@gmail.com', '', 'Active'),
+(44, '182344201', 'Jidnyasa', '', 'Raut', '0000-00-00', 'Female', '7507884947', 'jidnyasaraut18@gmail.com', '', 'Active'),
+(45, '182354101', 'Aniket', '', 'Shah', '0000-00-00', 'Male', '7977871863', 'aniketshah2407@gmail.com', '', 'Active'),
+(46, '182364101', 'Rushank', '', 'Sheta', '0000-00-00', 'Male', '9820225709', 'rushanksheta00@gmail.com', '', 'Active'),
+(47, '182374101', 'Isheet', '', 'Shetty', '2000-10-19', 'Male', '9653341482', 'isheetshetty@gmail.com', '', 'Active'),
+(48, '182384101', 'Pritam', '', 'Shinde', '0000-00-00', 'Male', '8007500809', 'prit.ps4606@gmail.com', '', 'Active'),
+(49, '182394201', 'Sweety', '', 'Singh', '0000-00-00', 'Female', '8104454394', 'sweetysingh@gmail.com', '', 'Active'),
+(50, '182404105', 'Prathamesh', '', 'Suryavanshi', '0000-00-00', 'Male', '9821934954', 'prathameshsuryavanshi9@gmail.com', '', 'Active');
 
 -- --------------------------------------------------------
 
@@ -582,25 +682,25 @@ ALTER TABLE `staff_master`
 -- AUTO_INCREMENT for table `student_branch_link`
 --
 ALTER TABLE `student_branch_link`
-  MODIFY `Student_Branch_Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `Student_Branch_Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `student_branch_year_link`
 --
 ALTER TABLE `student_branch_year_link`
-  MODIFY `Student_Branch_Year_Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `Student_Branch_Year_Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `student_login`
 --
 ALTER TABLE `student_login`
-  MODIFY `Student_Login_Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `Student_Login_Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `student_master`
 --
 ALTER TABLE `student_master`
-  MODIFY `Student_Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `Student_Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `subject_master`
