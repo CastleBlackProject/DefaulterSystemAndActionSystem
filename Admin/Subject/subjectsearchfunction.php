@@ -25,7 +25,7 @@
               <th scope="col">Subject Status</th>
             <th></th>
               </tr> 
-            </thead>';
+            </thead><tbody>';
 
             while($row = mysqli_fetch_array($result))
             {
@@ -49,6 +49,8 @@
                                     <td><button type='button' class='btn btn-success' onclick='edit(this)'>Edit</button></td>
                                 </tr>";
             }
+
+            $DynamicElement .= "</tbody></table>";
 
             echo json_encode(array('success' => $DynamicElement));
         }

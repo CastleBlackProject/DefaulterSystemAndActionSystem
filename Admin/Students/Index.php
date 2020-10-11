@@ -67,6 +67,63 @@
             <div class="my-5">
 
                 <input type="button" value="Create" onclick="window.location.href='Create.php'" class="btn btn-primary" />
+
+                <div class="form-row mt-4">
+                    <div class="form-group col-md-3">
+                        <label for="select_BranchId">Branch</label>
+                        <select id="select_BranchId" name="select_BranchId" class="form-control">
+                            <option value="-1">--ALL--</option>
+
+                            <?php
+                            $servername = "localhost";
+                            $username = "root";
+                            $password = "";
+                            $db = "vceterp";
+                            $con = new mysqli($servername, $username, $password, $db);
+                            //  if(!$con)
+                            //  {
+                            //      die('could not connect'.mysql_error());
+                            //  }
+                            //  else
+                            //  {
+                            //     echo "<script>alert(<h1>database connected</h1>);</script>";
+                            //  }  
+                            $sql = "SELECT * FROM branch_master";
+                            $result = $con->query($sql);
+                            while ($row = $result->fetch_array()) {
+                                echo "<option value ='" . $row['Branch_Id'] . "'>" . $row['Branch_Name'] . "</option>";
+                            }
+                            ?>
+
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <!-- <label for="select_BranchId">Semester</label>
+                        <select id="select_Semester" name="select_Semester" class="form-control">
+                            <option value='-1'>--ALL--</option>
+                            <option value='1'>Semester 1</option>
+                            <option value='2'>Semester 2</option>
+                            <option value='3'>Semester 3</option>
+                            <option value='4'>Semester 4</option>
+                            <option value='5'>Semester 5</option>
+                            <option value='6'>Semester 6</option>
+                            <option value='7'>Semester 7</option>
+                            <option value='8'>Semester 8</option>
+                        </select> -->
+                        <label for="select_BranchId">Year</label>
+                        <select id="select_Semester" name="select_Semester" class="form-control">
+                            <option value='-1'>--ALL--</option>
+                            <option value='1'>FE</option>
+                            <option value='2'>SE</option>
+                            <option value='3'>TE</option>
+                            <option value='4'>BE</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label class="mt-3 mb-4"></label>
+                        <button type="button" id="btn_Search" class="btn btn-success mt-4">Search</button>
+                    </div>
+                </div>
                 <div class="p-4">
                     <table class="table table-hover">
                         <thead>
@@ -82,7 +139,6 @@
                             </tr>
                         </thead>
                         <tbody>
-
 
                             <?php
                             $servername = "localhost";
