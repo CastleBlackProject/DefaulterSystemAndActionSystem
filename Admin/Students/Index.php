@@ -72,10 +72,13 @@
                         <thead>
                             <tr>
                                 <th scope="col" hidden>Student ID</th>
+                                <th scope="col">College ID</th>
+                                <th scope="col">Roll Number</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Branch</th>
                                 <th scope="col">Year</th>
-                                <th scope="col">Semester</th>
+                                <th scope="col">Branch</th>
+                                <th scope="col" hidden>Semester</th>
+                                <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -104,6 +107,7 @@
                                 $sql1 = "SELECT * FROM student_master NATURAL JOIN student_branch_year_link NATURAL JOIN branch_master NATURAL JOIN academic_session_master WHERE Student_Id = " . $StudentId;
                                 $result1 = $con->query($sql1);
                                 while ($row1 = mysqli_fetch_array($result1)) {
+                                    $CollegeId = $row1['Student_College_Id'];
                                     $BranchName = $row1['Branch_Name'];
                                     if ($row1['Year_Id'] == 1) {
                                         $Year = "FE";
@@ -115,14 +119,17 @@
                                         $Year = "BE";
                                     }
                                     $Semester = $row1['Semester_Id'];
+                                    $RollNo = $row1['Roll_Number'];
                                 }
 
                                 echo "<tr>";
                                 echo "<td hidden>" . $row['Student_Id'] . "</td>";
+                                echo "<td>" . $CollegeId . "</td>";
+                                echo "<td>" . $RollNo . "</td>";
                                 echo "<td>" . $row['First_Name'] . " " . $row['Middle_Name'] . " " . $row['Last_Name'] . "</td>";
-                                echo "<td>" . $BranchName . "</td>";
                                 echo "<td>" . $Year . "</td>";
-                                echo "<td>" . $Semester . "</td>";
+                                echo "<td>" . $BranchName . "</td>";
+                                echo "<td hidden>" . $Semester . "</td>";
                                 echo "<td><button type='button' class='btn btn-success' onclick='edit(this)'>Edit</button></td>";
                                 echo "</tr>";
                             }

@@ -77,8 +77,7 @@
                 </div>
                 <div class="form-group col-md-4">
                     <label for="txt_MiddleName">Middle Name</label>
-                    <input type="text" id="txt_MiddleName" name="txt_MiddleName" class="form-control"
-                        required="required" />
+                    <input type="text" id="txt_MiddleName" name="txt_MiddleName" class="form-control" />
                 </div>
                 <div class="form-group col-md-4">
                     <label for="txt_LastName">Last Name</label>
@@ -89,8 +88,7 @@
             <div class="form-row">               
             <div class="form-group col-md-3">
                     <label for="txt_DateOfBirth">Date Of Birth</label>
-                    <input type="date" id="txt_DateOfBirth" name="txt_DateOfBirth" class="form-control"
-                        required="required" />
+                    <input type="date" id="txt_DateOfBirth" name="txt_DateOfBirth" class="form-control" />
                 </div> 
                 <div class="form-group col-md-3">
                     <label for="select_Gender">Gender</label>
@@ -99,31 +97,28 @@
                         <option value="Female">Female</option>
                     </select>
                 </div>
-                <div class="form-group col-md-3">
+                <!-- <div class="form-group col-md-3">
                     <label for="select_StaffStatus">Staff Status</label>
                     <select id="select_StaffStatus" name="select_StaffStatus" class="form-control">
                         <option value="Active">Active</option>
                         <option value="De-Active">De-Active</option>
                     </select>
-                </div>                
+                </div>                 -->
             </div>
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="txt_Contact">Contact</label>
-                    <input type="text" id="txt_Contact" name="txt_Contact" class="form-control"
-                        required="required" />
+                    <input type="text" id="txt_Contact" name="txt_Contact" class="form-control" />
                 </div>
                 <div class="form-group col-md-4">
                     <label for="txt_Email">Email ID</label>
-                    <input type="email" id="txt_Email" name="txt_Email" class="form-control"
-                        required="required" />
+                    <input type="email" id="txt_Email" name="txt_Email" class="form-control" />
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-12">
                     <label for="txt_Address">Address</label>
-                    <input type="text" id="txt_Address" name="txt_Address" class="form-control"
-                        required="required" />
+                    <input type="text" id="txt_Address" name="txt_Address" class="form-control" />
                 </div>
             </div>
             <hr color="grey">
@@ -179,7 +174,8 @@
                     $Contact =  $_POST['txt_Contact'];
                     $Email =  $_POST['txt_Email'];
                     $Address =  $_POST['txt_Address'];
-                    $StaffStatus =  $_POST['select_StaffStatus'];
+                    // $StaffStatus =  $_POST['select_StaffStatus'];
+                    $StaffStatus =  "Active";
                     $BranchId = $_POST['select_Branch'];
                     $StaffBranchStatus= "Active";
                     $staffcollegeid = $_POST['txt_Staff_College_Id'];
@@ -194,7 +190,7 @@
                         $StaffId=$row['id'];
 
                         $sql3="INSERT INTO staff_branch_link(Staff_Id,Branch_Id,Staff_Branch_Status) VALUES('$StaffId','$BranchId','$StaffBranchStatus')";
-                        $sql4="INSERT INTO staff_admin_login(Staff_Id,Staff_College_Id,Staff_Password,Is_Admin VALUES('$StaffId','$staffcollegeid','$staffcollegeid','$IsAdmin')";
+                        $sql4="INSERT INTO staff_admin_login(Staff_Id,Staff_College_Id,Staff_Password,Is_Admin) VALUES('$StaffId','$staffcollegeid','$staffcollegeid','$IsAdmin')";
                         if($con->query($sql3) === TRUE){
                             if($con->query($sql4) === TRUE){
                                 echo "<script> location.href='Index.php'; </script>";
