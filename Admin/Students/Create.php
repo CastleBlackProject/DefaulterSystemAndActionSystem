@@ -112,7 +112,9 @@
                     <input type="text" id="txt_Contact" name="txt_Contact" class="form-control"/>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="txt_Email">Email ID</label>/>
+                    <label for="txt_Email">Email ID</label>
+                    <input type="email" id="txt_Email" name="txt_Email" class="form-control"
+                        required="required" />
                 </div>
             </div>
             <div class="form-row">
