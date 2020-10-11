@@ -152,8 +152,8 @@
                 <div class="form-group col-md-3">
                     <label for="txt_Staff_College_Id">Is Admin?</label>
                     <select id="select_IsAdmin" name="select_IsAdmin" class="form-control">
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
                     </select>
                     </input>
                 </div> 
