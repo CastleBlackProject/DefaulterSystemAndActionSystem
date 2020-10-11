@@ -33,6 +33,12 @@ $timezone = "Asia/Colombo";
 date_default_timezone_set($timezone);
 $today = date("Y-m-d");
 
+$sql_StudentsCount = "SELECT COUNT(*) FROM student_master NATURAL JOIN subject_master NATURAL JOIN student_branch_year_link WHERE Subject_Id = " . $SubjectId . " AND Academic_Session_Id = " . $AcademicSessionId;
+$result_StudentsCount = $con->query($sql_StudentsCount);
+while ($row_StudentsCount = mysqli_fetch_array($result_StudentsCount)) {
+    $StudentsCount = $row_StudentsCount['COUNT(*)'];
+}
+
 ?>
 
 
@@ -122,10 +128,14 @@ $today = date("Y-m-d");
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <hr />
+
+            <div style="float:right;">
+                <span id="StudentsAttended" class="label label-success" style="color: #0e5411;">0</span>
+                <span id="StudentsCount" class="label label-success" style="color: #0e5411;">/<?php echo $StudentsCount ?> Students Present</span>
+            </div>
 
             <div id="container_fieldset">
                 <table id="table_Students" class="table table-bordered table-hover">
@@ -134,7 +144,7 @@ $today = date("Y-m-d");
                             <th hidden>Student ID</th>
                             <th>Roll No.</th>
                             <th>Student's Name</th>
-                            <th><input type="checkbox" id="chkboc_checkAll" onclick="checkAllStudents()" /> <label class="ml-1">Check All</label></th>
+                            <th><input type="checkbox" id="chkbox_checkAll" onclick="checkAllStudents()" /> <label class="ml-1">Check All</label></th>
                         </tr>
                     </thead>
                     <tbody id="tbody_Students">
@@ -279,9 +289,10 @@ $today = date("Y-m-d");
                 var checkbox = document.getElementsByClassName("chkbox_Attendance");
 
                 if ($(this).prop("checked") == true) {
-                    $(checkbox).prop('checked', false);
+                    $(checkbox).prop('checked', false);                    
                 } else {
                     $(checkbox).prop('checked', true);
+                    document.getElementById("StudentsAttended").innerHTML = <?php echo $StudentsCount ?>;
                 }
 
                 // for (var i = 0; i < checkbox.length; i++) {
@@ -312,6 +323,20 @@ $today = date("Y-m-d");
                 $("#container_takeAttendance").append(html1);
                 $("#footer_buttons").append(html2);
             });
+
+            $(".chkbox_Attendance").change(function(){
+                var StudentsAttendedCount = parseInt(document.getElementById("StudentsAttended").innerHTML);
+                
+                if ($(this).prop("checked") == true) {
+                    StudentsAttendedCount = StudentsAttendedCount + 1;
+                    document.getElementById("StudentsAttended").innerHTML = StudentsAttendedCount;
+                } else {
+                    StudentsAttendedCount = StudentsAttendedCount - 1;
+                    document.getElementById("StudentsAttended").innerHTML = StudentsAttendedCount;
+                }
+
+            });
+
         </script>
 
 </body>

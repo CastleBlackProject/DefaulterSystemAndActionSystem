@@ -46,12 +46,26 @@ function outputData1(RollNo) {
         if (table_RollNo == RollNo) {
             if (isPresent) {
                 $(chkbox).prop('checked', true);
+                // var StudentsAttendedCount = parseInt(document.getElementById("StudentsAttended").innerHTML);
+                // console.log(StudentsAttendedCount);
+                // StudentsAttendedCount = StudentsAttendedCount + 1;
+                // document.getElementById("StudentsAttended").innerHTML = StudentsAttendedCount;
             }
             else {
                 $(chkbox).prop('checked', false);
-                $("#chkboc_checkAll").prop('checked', false);
+                $("#chkbox_checkAll").prop('checked', false);
             }
             document.getElementById("btn_closeModal").click();
         }
     }
 }
+
+// var StudentsAttendedCount = parseInt(document.getElementById("StudentsAttended").innerHTML);
+                
+//                 if ($(this).prop("checked") == true) {
+//                     StudentsAttendedCount = StudentsAttendedCount + 1;
+//                     document.getElementById("StudentsAttended").innerHTML = StudentsAttendedCount;
+//                 } else {
+//                     StudentsAttendedCount = StudentsAttendedCount - 1;
+//                     document.getElementById("StudentsAttended").innerHTML = StudentsAttendedCount;
+//                 }
