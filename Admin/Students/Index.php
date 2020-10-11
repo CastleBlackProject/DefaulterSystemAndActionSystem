@@ -73,11 +73,11 @@
                             <tr>
                                 <th scope="col" hidden>Student ID</th>
                                 <th scope="col">College ID</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Branch</th>
-                                <th scope="col">Year</th>
-                                <th scope="col">Semester</th>
                                 <th scope="col">Roll Number</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Year</th>
+                                <th scope="col">Branch</th>
+                                <th scope="col" hidden>Semester</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
@@ -125,11 +125,11 @@
                                 echo "<tr>";
                                 echo "<td hidden>" . $row['Student_Id'] . "</td>";
                                 echo "<td>" . $CollegeId . "</td>";
-                                echo "<td>" . $row['First_Name'] . " " . $row['Middle_Name'] . " " . $row['Last_Name'] . "</td>";
-                                echo "<td>" . $BranchName . "</td>";
-                                echo "<td>" . $Year . "</td>";
-                                echo "<td>" . $Semester . "</td>";
                                 echo "<td>" . $RollNo . "</td>";
+                                echo "<td>" . $row['First_Name'] . " " . $row['Middle_Name'] . " " . $row['Last_Name'] . "</td>";
+                                echo "<td>" . $Year . "</td>";
+                                echo "<td>" . $BranchName . "</td>";
+                                echo "<td hidden>" . $Semester . "</td>";
                                 echo "<td><button type='button' class='btn btn-success' onclick='edit(this)'>Edit</button></td>";
                                 echo "</tr>";
                             }
