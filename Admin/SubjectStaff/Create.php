@@ -64,7 +64,7 @@
         <form method="POST" action="">
             <div>
                 <div class="my-4" style="color:#0041b3">
-                    <h4>Subject Staff</h4>
+                    <h4>Assign Subject</h4>
                 </div>
 
                 <hr />
