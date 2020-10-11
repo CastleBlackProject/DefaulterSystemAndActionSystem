@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 11, 2020 at 08:05 PM
+-- Generation Time: Oct 11, 2020 at 09:27 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.8
 
@@ -235,7 +235,31 @@ INSERT INTO `student_branch_link` (`Student_Branch_Id`, `Student_Id`, `Branch_Id
 (47, 47, 5, 'Active'),
 (48, 48, 5, 'Active'),
 (49, 49, 5, 'Active'),
-(50, 50, 5, 'Active');
+(50, 50, 5, 'Active'),
+(51, 51, 5, 'Active'),
+(52, 52, 5, 'Active'),
+(53, 53, 5, 'Active'),
+(54, 54, 5, 'Active'),
+(55, 55, 5, 'Active'),
+(56, 56, 5, 'Active'),
+(57, 57, 5, 'Active'),
+(58, 58, 5, 'Active'),
+(59, 59, 5, 'Active'),
+(60, 60, 5, 'Active'),
+(61, 61, 5, 'Active'),
+(62, 62, 5, 'Active'),
+(63, 63, 5, 'Active'),
+(64, 64, 5, 'Active'),
+(65, 65, 5, 'Active'),
+(66, 66, 5, 'Active'),
+(67, 67, 5, 'Active'),
+(68, 68, 5, 'Active'),
+(69, 69, 5, 'Active'),
+(70, 70, 5, 'Active'),
+(71, 71, 5, 'Active'),
+(72, 72, 5, 'Active'),
+(73, 73, 5, 'Active'),
+(74, 74, 5, 'Active');
 
 -- --------------------------------------------------------
 
@@ -307,7 +331,31 @@ INSERT INTO `student_branch_year_link` (`Student_Branch_Year_Id`, `Academic_Sess
 (47, 1, 47, 5, 5, 3, 47),
 (48, 1, 48, 5, 5, 3, 48),
 (49, 1, 49, 5, 5, 3, 49),
-(50, 1, 50, 5, 5, 3, 50);
+(50, 1, 50, 5, 5, 3, 50),
+(51, 1, 51, 5, 5, 3, 51),
+(52, 1, 52, 5, 5, 3, 52),
+(53, 1, 53, 5, 5, 3, 53),
+(54, 1, 54, 5, 5, 3, 54),
+(55, 1, 55, 5, 5, 3, 55),
+(56, 1, 56, 5, 5, 3, 56),
+(57, 1, 57, 5, 5, 3, 57),
+(58, 1, 58, 5, 5, 3, 58),
+(59, 1, 59, 5, 5, 3, 59),
+(60, 1, 60, 5, 5, 3, 60),
+(61, 1, 61, 5, 5, 3, 61),
+(62, 1, 62, 5, 5, 3, 62),
+(63, 1, 63, 5, 5, 3, 63),
+(64, 1, 64, 5, 5, 3, 64),
+(65, 1, 65, 5, 5, 3, 65),
+(66, 1, 66, 5, 5, 3, 66),
+(67, 1, 67, 5, 5, 3, 67),
+(68, 1, 68, 5, 5, 3, 68),
+(69, 1, 69, 5, 5, 3, 69),
+(70, 1, 70, 5, 5, 3, 70),
+(71, 1, 71, 5, 5, 3, 71),
+(72, 1, 72, 5, 5, 3, 72),
+(73, 1, 73, 5, 5, 3, 73),
+(74, 1, 74, 5, 5, 3, 74);
 
 -- --------------------------------------------------------
 
@@ -376,7 +424,31 @@ INSERT INTO `student_login` (`Student_Login_Id`, `Student_Id`, `Student_College_
 (47, 47, '182374101', '182374101'),
 (48, 48, '182384101', '182384101'),
 (49, 49, '182394201', '182394201'),
-(50, 50, '182404105', '182404105');
+(50, 50, '182404105', '182404105'),
+(51, 51, '182414201', '182414201'),
+(52, 52, '182424101', '182424101'),
+(53, 53, '182434101', '182434101'),
+(54, 54, '182444101', '182444101'),
+(55, 55, '182454201', '182454201'),
+(56, 56, '182474201', '182474201'),
+(57, 57, '182484201', '182484201'),
+(58, 58, 'S193894202', 'S193894202'),
+(59, 59, 'S19390410', 'S19390410'),
+(60, 60, '193914201', '193914201'),
+(61, 61, 'S193924105', 'S193924105'),
+(62, 62, 'S193934205', 'S193934205'),
+(63, 63, 'S193944106', 'S193944106'),
+(64, 64, 'S193954210', 'S193954210'),
+(65, 65, '193964101', '193964101'),
+(66, 66, '174101243', '174101243'),
+(67, 67, '	174101192', '	174101192'),
+(68, 68, '174102186', '174102186'),
+(69, 69, '174101190', '174101190'),
+(70, 70, '164101247', '164101247'),
+(71, 71, '1741001187', '1741001187'),
+(72, 72, '174202241', '174202241'),
+(73, 73, '154105174', '154105174'),
+(74, 74, '164101195', '164101195');
 
 -- --------------------------------------------------------
 
@@ -452,7 +524,31 @@ INSERT INTO `student_master` (`Student_Id`, `Student_College_Id`, `First_Name`, 
 (47, '182374101', 'Isheet', '', 'Shetty', '2000-10-19', 'Male', '9653341482', 'isheetshetty@gmail.com', '', 'Active'),
 (48, '182384101', 'Pritam', '', 'Shinde', '0000-00-00', 'Male', '8007500809', 'prit.ps4606@gmail.com', '', 'Active'),
 (49, '182394201', 'Sweety', '', 'Singh', '0000-00-00', 'Female', '8104454394', 'sweetysingh@gmail.com', '', 'Active'),
-(50, '182404105', 'Prathamesh', '', 'Suryavanshi', '0000-00-00', 'Male', '9821934954', 'prathameshsuryavanshi9@gmail.com', '', 'Active');
+(50, '182404105', 'Prathamesh', '', 'Suryavanshi', '0000-00-00', 'Male', '9821934954', 'prathameshsuryavanshi9@gmail.com', '', 'Active'),
+(51, '182414201', 'Anvita ', '', 'Suvarna', '0000-00-00', 'Female', '9769826687', 'anvitasuvarna13@gmail.com', '', 'Active'),
+(52, '182424101', 'Shubhamkar ', '', 'Thavi', '0000-00-00', 'Male', '9167221812', 'thavi007@gmail.com', '', 'Active'),
+(53, '182434101', 'Dharmesh ', '', 'Thorgavankar	', '0000-00-00', 'Male', '9168816057', 'dharmeshthorgavankar@gmail.com', '', 'Active'),
+(54, '182444101', 'Chintan ', '', 'Trivedi', '0000-00-00', 'Male', '7021223174', 'chintantrivedi786@gmail.com', '', 'Active'),
+(55, '182454201', 'Yukta ', '', 'Upadhye', '0000-00-00', 'Female', '9975857548', 'yuktaupadhey1@gmail.com', '', 'Active'),
+(56, '182474201', 'Ashwini ', '', 'Walavakar', '0000-00-00', 'Female', '9619310434', 'itsashu5656@gmail.com', '', 'Active'),
+(57, '182484201', 'Jyoti ', '', 'Yadav', '0000-00-00', 'Female', '7709691784', 'nainay1805@gmail.com', '', 'Active'),
+(58, 'S193894202', 'Tejal ', '', 'Ille', '0000-00-00', 'Female', '9967263870', 'tejalille18@gmail.com', '', 'Active'),
+(59, 'S19390410', 'Chinmay', '', 'Ingale', '0000-00-00', 'Male', '9082427001', 'chinmay274@gmail.com', '', 'Active'),
+(60, '193914201', 'Granthali ', '', 'Jadhav', '0000-00-00', 'Female', '8600957261', 'jadhavgranthali@gmail.com', '', 'Active'),
+(61, 'S193924105', 'Ranveer', '', 'kothavale	', '0000-00-00', 'Male', '9167618127', 'ranveerkothavale09@gmail.com', '', 'Active'),
+(62, 'S193934205', 'Mansi ', '', 'Malap', '0000-00-00', 'Female', '9028605933', 'malapmansi9@gmail.com', '', 'Active'),
+(63, 'S193944106', 'Akshay 	', '', 'More	', '0000-00-00', 'Male', '7276800872', 'moreakshay725@gmail.com', '', 'Active'),
+(64, 'S193954210', 'Shivani ', '', 'Shirke	', '0000-00-00', 'Female', '9284410572', 'shivanishirke789@gmail.com', '', 'Active'),
+(65, '193964101', 'Hardik  ', '', 'Yewale', '0000-00-00', 'Male', '9987871771', 'yewalehardik@gmail.com', '', 'Active'),
+(66, '174101243', 'Ram ', '', 'Vaghani	', '0000-00-00', 'Male', '8080699912', 'ram.vaghani18@gmail.com', '', 'Active'),
+(67, '174101192', 'Ankit 	', '', 'Dube', '0000-00-00', 'Male', '8830228121', 'ankitdubey1218@gmail.com', '', 'Active'),
+(68, '174102186', 'Dhruvesh ', '', 'Chauhan	', '0000-00-00', 'Male', '8879915943', 'dhruveshccc2200@gmail.com', '', 'Active'),
+(69, '174101190', 'Vedant ', '', 'Desai	', '0000-00-00', 'Male', '9527092930', 'vedantdesai2810@gmail.com', '', 'Active'),
+(70, '164101247', 'Deepak ', '', 'yadav	', '0000-00-00', 'Male', '9619252507', 'dee1010yadav@gmail.com', '', 'Active'),
+(71, '1741001187', 'Sauravkumar 	', '', 'Choudhary', '0000-00-00', 'Male', '', 'choudharysaurav69@gmail.com', '', 'Active'),
+(72, '174202241', 'Shreya ', '', 'Tawre ', '0000-00-00', 'Male', '9373611085', 'shreyatawre123@gmail.com', '', 'Active'),
+(73, '154105174', 'Pruthvi', '', ' Hajare	', '0000-00-00', 'Female', '8805433102', 'pruthvihajare29@gmail.com', '', 'Active'),
+(74, '164101195', 'Omkar ', '', 'Chavan	', '0000-00-00', 'Male', '9403205472', 'omchavan1998@gmail.com', '', 'Active');
 
 -- --------------------------------------------------------
 
@@ -682,25 +778,25 @@ ALTER TABLE `staff_master`
 -- AUTO_INCREMENT for table `student_branch_link`
 --
 ALTER TABLE `student_branch_link`
-  MODIFY `Student_Branch_Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `Student_Branch_Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT for table `student_branch_year_link`
 --
 ALTER TABLE `student_branch_year_link`
-  MODIFY `Student_Branch_Year_Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `Student_Branch_Year_Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT for table `student_login`
 --
 ALTER TABLE `student_login`
-  MODIFY `Student_Login_Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `Student_Login_Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT for table `student_master`
 --
 ALTER TABLE `student_master`
-  MODIFY `Student_Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `Student_Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT for table `subject_master`
