@@ -195,8 +195,13 @@
 
                         $sql3="INSERT INTO staff_branch_link(Staff_Id,Branch_Id,Staff_Branch_Status) VALUES('$StaffId','$BranchId','$StaffBranchStatus')";
                         $sql4="INSERT INTO staff_admin_login(Staff_Id,Staff_College_Id,Staff_Password,Is_Admin VALUES('$StaffId','$staffcollegeid','$staffcollegeid','$IsAdmin')";
-                        if($con->query($sql3) === TRUE && $con->query($sql4) === TRUE){
-                            echo "<script> location.href='Index.php'; </script>";
+                        if($con->query($sql3) === TRUE){
+                            if($con->query($sql4) === TRUE){
+                                echo "<script> location.href='Index.php'; </script>";
+                            }
+                            else{
+                                echo "<br>error: ".$sql4."<br>".$con->error;
+                            }
                         }
                         else{
                             echo "<br>error: ".$sql3."<br>".$con->error;

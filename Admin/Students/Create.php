@@ -78,8 +78,7 @@
                 </div>
                 <div class="form-group col-md-4">
                     <label for="txt_MiddleName">Middle Name</label>
-                    <input type="text" id="txt_MiddleName" name="txt_MiddleName" class="form-control"
-                        required="required" />
+                    <input type="text" id="txt_MiddleName" name="txt_MiddleName" class="form-control"/>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="txt_LastName">Last Name</label>
@@ -90,8 +89,7 @@
             <div class="form-row">               
             <div class="form-group col-md-3">
                     <label for="txt_DateOfBirth">Date Of Birth</label>
-                    <input type="date" id="txt_DateOfBirth" name="txt_DateOfBirth" class="form-control"
-                        required="required" />
+                    <input type="date" id="txt_DateOfBirth" name="txt_DateOfBirth" class="form-control"/>
                 </div> 
                 <div class="form-group col-md-3">
                     <label for="select_Gender">Gender</label>
@@ -100,31 +98,27 @@
                         <option value="Female">Female</option>
                     </select>
                 </div>
-                <div class="form-group col-md-3">
+                <!-- <div class="form-group col-md-3">
                     <label for="select_StudentStatus">Student Status</label>
                     <select id="select_StudentStatus" name="select_StudentStatus" class="form-control">
                         <option value="Active">Active</option>
                         <option value="De-Active">De-Active</option>
                     </select>
-                </div>                
+                </div> -->
             </div>
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="txt_Contact">Contact</label>
-                    <input type="text" id="txt_Contact" name="txt_Contact" class="form-control"
-                        required="required" />
+                    <input type="text" id="txt_Contact" name="txt_Contact" class="form-control"/>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="txt_Email">Email ID</label>
-                    <input type="email" id="txt_Email" name="txt_Email" class="form-control"
-                        required="required" />
+                    <label for="txt_Email">Email ID</label>/>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-12">
                     <label for="txt_Address">Address</label>
-                    <input type="text" id="txt_Address" name="txt_Address" class="form-control"
-                        required="required" />
+                    <input type="text" id="txt_Address" name="txt_Address" class="form-control"/>
                 </div>
             </div>
             <hr color="grey">
@@ -132,7 +126,7 @@
                 <h5>Academic Details </h5>
             </div>
             <div class="form-row">
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-3">
                         <label for="select_Academic_Session_Id">Academic Session</label>
                         <select id="select_Academic_Session_Id" name="select_Academic_Session_Id" class="form-control">
                     <?php
@@ -150,7 +144,7 @@
                     ?>
                         </select>
                 </div>
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-3">
                         <label for="select_Branch">Branch</label>
                         <select id="select_Branch" name="select_Branch" class="form-control">
                     <?php
@@ -163,10 +157,8 @@
                         }  
                     ?>
                         </select>
-                </div> 
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-4">
+                </div>
+                <div class="form-group col-md-3">
                         <label for="select_Year">Year</label>
                         <select id="select_Year" name="select_Year" class="form-control">
                             <option value='0'>--Select--</option>
@@ -176,7 +168,7 @@
                             <option value='4'>BE</option>
                         </select>
                 </div>
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-3">
                     <label for="select_Semester">Semester</label>
                     <select id="select_Semester" name="select_Semester" class="form-control">
                         <option value='0'>--Select--</option>
@@ -189,15 +181,15 @@
                         <option value='7'>Semester 7</option>
                         <option value='8'>Semester 8</option>
                     </select>
-                </div>
+                </div> 
             </div>
             <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label for="txt_Student_College_Id">College Id Number</label>
+                <div class="form-group col-md-3">
+                    <label for="txt_Student_College_Id">College ID Number</label>
                     <input type="text" id="txt_Student_College_Id" name="txt_Student_College_Id" class="form-control">
                     </input>
                 </div>
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-3">
                     <label for="select_Roll_Number">Roll Number</label>
                     <input type="number" min="1" max="120" id="select_Roll_Number" name="select_Roll_Number" class="form-control">
                     </input>
@@ -219,7 +211,8 @@
                 $Contact =  $_POST['txt_Contact'];
                 $Email =  $_POST['txt_Email'];
                 $Address =  $_POST['txt_Address'];
-                $StudentStatus =  $_POST['select_StudentStatus'];
+                // $StudentStatus =  $_POST['select_StudentStatus'];
+                $StudentStatus =  "Active";
                 $BranchId = $_POST['select_Branch'];
                 $YearId = $_POST['select_Year'];
                 $StudentBranchStatus= "Active";
