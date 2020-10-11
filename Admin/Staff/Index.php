@@ -68,7 +68,7 @@
                 <input type="button" value="Create" onclick="window.location.href='Create.php'" class="btn btn-primary" />
                 <div class="p-4">
                     <table class="table table-hover">
-                        <thead>
+                        <thead class="thead-dark">
                             <tr>
                                 <th scope="col" hidden>Branch ID</th>
                                 <th scope="col">Branch Name</th>

@@ -126,7 +126,7 @@
                 </div>
                 <div class="p-4">
                     <table class="table table-hover">
-                        <thead>
+                    <thead class="thead-dark">
                             <tr>
                                 <th scope="col" hidden>Student ID</th>
                                 <th scope="col">College ID</th>
