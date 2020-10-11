@@ -14,7 +14,7 @@
             #$arr = array();
 
             # where Branch_Id=".$BranchId.", Semester_Id=".$SemesterId;
-            $sql = "SELECT * FROM subject_master WHERE Branch_Id=".$BranchId." AND Semester_Id=".$SemesterId;
+            $sql = "SELECT * FROM subject_master WHERE Branch_Id=".$BranchId." AND Semester_Id=".$SemesterId." AND subject_status='Active'";
             $result = $con->query($sql);
 
             $sql1 = "SELECT * FROM staff_master NATURAL JOIN staff_branch_link where staff_branch_link.Branch_Id=".$BranchId;            

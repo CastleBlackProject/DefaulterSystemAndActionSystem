@@ -70,8 +70,8 @@
                     <table class="table table-hover">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col" hidden>Branch ID</th>
-                                <th scope="col">Branch Name</th>
+                                <th scope="col" hidden>Staff ID</th>
+                                <th scope="col">Name</th>
                                 <th scope="col">Branch Code</th>
                                 <th scope="col">Branch Status</th>
                             </tr>
