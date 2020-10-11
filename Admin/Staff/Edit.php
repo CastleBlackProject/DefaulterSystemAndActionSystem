@@ -77,8 +77,7 @@
                 </div>
                 <div class="form-group col-md-4">
                     <label for="txt_MiddleName">Middle Name</label>
-                    <input type="text" id="txt_MiddleName" name="txt_MiddleName" class="form-control"
-                        required="required" />
+                    <input type="text" id="txt_MiddleName" name="txt_MiddleName" class="form-control" />
                 </div>
                 <div class="form-group col-md-4">
                     <label for="txt_LastName">Last Name</label>
@@ -89,8 +88,7 @@
             <div class="form-row">               
             <div class="form-group col-md-3">
                     <label for="txt_DateOfBirth">Date Of Birth</label>
-                    <input type="date" id="txt_DateOfBirth" name="txt_DateOfBirth" class="form-control"
-                        required="required" />
+                    <input type="date" id="txt_DateOfBirth" name="txt_DateOfBirth" class="form-control" />
                 </div> 
                 <div class="form-group col-md-3">
                     <label for="select_Gender">Gender</label>
@@ -110,20 +108,17 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="txt_Contact">Contact</label>
-                    <input type="text" id="txt_Contact" name="txt_Contact" class="form-control"
-                        required="required" />
+                    <input type="text" id="txt_Contact" name="txt_Contact" class="form-control" />
                 </div>
                 <div class="form-group col-md-4">
                     <label for="txt_Email">Email ID</label>
-                    <input type="email" id="txt_Email" name="txt_Email" class="form-control"
-                        required="required" />
+                    <input type="email" id="txt_Email" name="txt_Email" class="form-control" />
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-12">
                     <label for="txt_Address">Address</label>
-                    <input type="text" id="txt_Address" name="txt_Address" class="form-control"
-                        required="required" />
+                    <input type="text" id="txt_Address" name="txt_Address" class="form-control" />
                 </div>
             </div>
             <hr color="grey">

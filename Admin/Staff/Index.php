@@ -66,8 +66,8 @@
             <div class="my-5">
 
                 <input type="button" value="Create" onclick="window.location.href='Create.php'" class="btn btn-primary" />
-                <!-- <div class="p-4">
-                     <table class="table table-hover">
+                <div class="p-4">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th scope="col" hidden>Branch ID</th>
@@ -78,49 +78,37 @@
                         </thead>
                         <tbody>
 
+                            <?php
+                            $servername = "localhost";
+                            $username = "root";
+                            $password = "";
+                            $db = "vceterp";
+                            $con = new mysqli($servername, $username, $password, $db);
+                            if (!$con) {
+                                //die('could not connect'.mysql_error());
+                            } else {
+                                #echo "<h1>database connected</h1>";
+                            }
+
+                            $sql = "SELECT * FROM staff_master";
+                            $result = $con->query($sql);
+                            //if ($result->num_rows > 0)
+
+                            while ($row = mysqli_fetch_array($result)) {
+                                echo "<tr>";
+                                echo "<td hidden>" . $row['Staff_Id'] . "</td>";
+                                echo "<td>" . $row['First_Name'] . " " . $row['Middle_Name'] . " " . $row['Last_Name'] . "</td>";
+                                echo "<td>" . $row['Date_Of_Birth'] . "</td>";
+                                echo "<td>" . $row['Staff_Status'] . "</td>";
+                                echo "<td><button type='button' class='btn btn-success' onclick='edit(this)'>Edit</button></td>";
+                                echo "<td><button type='button' class='btn btn-warning' onclick='staffchangebranch(this)'>Change Branch</button></td>";
+                                echo "</tr>";
+                            }
+
+                            ?>
                         </tbody>
-                    </table> 
-                </div> -->
-                <?php
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $db = "vceterp";
-                $con = new mysqli($servername, $username, $password, $db);
-                if (!$con) {
-                    //die('could not connect'.mysql_error());
-                } else {
-                    #echo "<h1>database connected</h1>";
-                }
-
-                echo '<div class="p-4">
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col" hidden>Staff ID</th>
-                    <th scope="col">Staff Name</th>
-                    <th scope="col">Date Of Birth</th>
-                    <th scope="col">Staff Status</th>
-                    <th></th>
-                    <th></th>
-                  </tr> 
-                </thead>';
-                $sql = "SELECT * FROM staff_master";
-                $result = $con->query($sql);
-                //if ($result->num_rows > 0)
-
-                while ($row = mysqli_fetch_array($result)) {
-                    echo "<tr>";
-                    echo "<td hidden>" . $row['Staff_Id'] . "</td>";
-                    echo "<td>" . $row['First_Name'] . " " . $row['Middle_Name'] . " " . $row['Last_Name'] . "</td>";
-                    echo "<td>" . $row['Date_Of_Birth'] . "</td>";
-                    echo "<td>" . $row['Staff_Status'] . "</td>";
-                    echo "<td><button type='button' class='btn btn-success' onclick='edit(this)'>Edit</button></td>";
-                    echo "<td><button type='button' class='btn btn-warning' onclick='staffchangebranch(this)'>Change Branch</button></td>";
-                    echo "</tr>";
-                }
-
-                ?>
+                    </table>
+                </div>
             </div>
         </div>
 
