@@ -22,6 +22,7 @@ function takeRawData1(Attendance) {
 
     var RawData = $("#txt_Attendance").val();
     processData1(RawData);
+    document.getElementById("btn_closeModal").click();
 }
 
 function processData1(RawData) {
@@ -34,14 +35,17 @@ function processData1(RawData) {
     }
 }
 
-function outputData1(RollNo) {
+function outputData1(rollNo) {
+
+    var RollNo = parseInt(rollNo);
+
     var tbody = document.getElementById("tbody_Students");
     var countRows = $('#table_Students tbody').find('tr').length;    
 
     for (var i = 1; i <= countRows; i++) {
         var row = tbody.childNodes[i];
         var chkbox = row.childNodes[3].childNodes[0]
-        var table_RollNo = row.childNodes[3].childNodes[0].value;
+        var table_RollNo = parseInt(row.childNodes[3].childNodes[0].value);
 
         if (table_RollNo == RollNo) {
             if (isPresent) {

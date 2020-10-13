@@ -3,6 +3,7 @@ var unmarkedRollNo = [];
 function takeRawData2() {
     var RawData = $("#txt_Attendance").val();
     processData2(RawData);
+    document.getElementById("btn_closeModal").click();
 }
 
 function processData2(RawData) {
@@ -41,8 +42,9 @@ function processData2(RawData) {
     }
 }
 
-function outputData2(RollNo, Name) {
+function outputData2(rollNo, Name) {
 
+    var RollNo = parseInt(rollNo);
     //console.log(Name + "-" + RollNo);    
 
     var tbody = document.getElementById("tbody_Students");
@@ -53,7 +55,7 @@ function outputData2(RollNo, Name) {
     for (var i = 1; i <= countRows; i++) {
         var row = tbody.childNodes[i];
         var chkbox = row.childNodes[3].childNodes[0]
-        var table_RollNo = row.childNodes[3].childNodes[0].value;
+        var table_RollNo = parseInt(row.childNodes[3].childNodes[0].value);
 
         if (table_RollNo == RollNo) {
 
@@ -112,9 +114,8 @@ function outputData2(RollNo, Name) {
             }
             
             if(isPresent){
-                $(chkbox).prop('checked', true);
-            document.getElementById("btn_closeModal").click();
-            isMarked = true;
+                $(chkbox).prop('checked', true);            
+                isMarked = true;
             }
         }
     }
