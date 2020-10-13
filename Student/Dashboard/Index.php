@@ -11,40 +11,6 @@
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
     <title>Dashboard</title>
-    <style>
-    
-    .panel{
-        border-style: solid;
-        border-color: #070e54;
-        border-width: 7px;
-        border-radius: 10px;
-        /* background-color: #afb3e3; */
-    }
-
-    .subject{
-        display: inline-block;            
-        border: solid;
-        border-width: 5px;
-        height : 200px;
-        border-radius: 10px;
-        text-align: center;
-        /* border-radius: 40px; */
-        color: #070e54;
-    }
-    .bttns{
-        width: 250px;
-    }
-
-    .Branch{
-
-        color: #070e54;
-    }
-
-    .Year-Semester{
-        color: #070e54;
-    }
-
-</style>
 </head>
 
 <body>
@@ -179,19 +145,17 @@
                             $Year = "BE";
                         }
 
-                        echo '<div class="form-row p-4 m-1 panel" style="background-color: whitesmoke;">'.
+                        echo '<div class="form-row p-4 m-1" style="background-color: whitesmoke;">'.
                                 '<input type="text" value="'.$row['Subject_Id'].'" hidden />'.
-                                '<div class="form-group col-md-3 p-4">'.
-                                    '<div class="Branch"><h2>'.$row["Branch_Name"].'</h2></div>'.
-                                '</div>'.
-                                '<div class="form-group col-md-3 p-4">'.
-                                    '<div class="Year-Semester"><h2 class="mt-3">'.$Year.'-' .$Semester.'</h2></div>'.
-                                '</div>'.
                                 '<div class="form-group col-md-3">'.
-                                    '<div class="subject py-4 px-5"><h4 class="mt-3">'.$row["Subject_Name"].'</h4></div>'.
+                                    '<h3 style="color: #1c158a">'.$row["Branch_Name"].'</h3>'.
+                                    '<h4 style="color: #35117d" class="mt-3">'.$Year.'-' .$Semester.'</h4>'.
                                 '</div>'.
-                                '<div class="form-group col-md-3 ">'.
-                                    '<button type="button" onclick="showLectureWiseAttendance(this)" class="bttns btn btn-primary m-2 px-4 py-2">Lecture Wise Attendance</button>'.                                    
+                                '<div class="form-group col-md-7">'.
+                                    '<h4 style="color: #35117d" class="mt-3">'.$row["Subject_Name"].'</h4>'.
+                                '</div>'.
+                                '<div class="form-group col-md-2">'.
+                                    '<button type="button" onclick="showLectureWiseAttendance(this)" class="btn btn-outline-success m-2 px-4 py-2">Lecture Wise Attendance</button>'.                                    
                                 '</div>'.
                             '</div>';
 
