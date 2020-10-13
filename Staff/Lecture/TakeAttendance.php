@@ -132,10 +132,10 @@ while ($row_StudentsCount = mysqli_fetch_array($result_StudentsCount)) {
 
             <hr />
 
-            <div style="float:right;">
+            <!-- <div style="float:right;">
                 <span id="StudentsAttended" class="label label-success" style="color: #0e5411;">0</span>
                 <span id="StudentsCount" class="label label-success" style="color: #0e5411;">/<?php echo $StudentsCount ?> Students Present</span>
-            </div>
+            </div> -->
 
             <div id="container_fieldset">
                 <table id="table_Students" class="table table-bordered table-hover">
@@ -324,18 +324,18 @@ while ($row_StudentsCount = mysqli_fetch_array($result_StudentsCount)) {
                 $("#footer_buttons").append(html2);
             });
 
-            $(".chkbox_Attendance").change(function(){
-                var StudentsAttendedCount = parseInt(document.getElementById("StudentsAttended").innerHTML);
+            // $(".chkbox_Attendance").change(function(){
+            //     var StudentsAttendedCount = parseInt(document.getElementById("StudentsAttended").innerHTML);
                 
-                if ($(this).prop("checked") == true) {
-                    StudentsAttendedCount = StudentsAttendedCount + 1;
-                    document.getElementById("StudentsAttended").innerHTML = StudentsAttendedCount;
-                } else {
-                    StudentsAttendedCount = StudentsAttendedCount - 1;
-                    document.getElementById("StudentsAttended").innerHTML = StudentsAttendedCount;
-                }
+            //     if ($(this).prop("checked") == true) {
+            //         StudentsAttendedCount = StudentsAttendedCount + 1;
+            //         document.getElementById("StudentsAttended").innerHTML = StudentsAttendedCount;
+            //     } else {
+            //         StudentsAttendedCount = StudentsAttendedCount - 1;
+            //         document.getElementById("StudentsAttended").innerHTML = StudentsAttendedCount;
+            //     }
 
-            });
+            // });
 
         </script>
 
