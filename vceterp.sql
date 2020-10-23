@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 11, 2020 at 09:27 PM
+-- Generation Time: Oct 23, 2020 at 09:13 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.8
 
@@ -52,6 +52,160 @@ CREATE TABLE `attendance_master` (
   `Student_Id` bigint(20) NOT NULL,
   `Is_Present` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `attendance_master`
+--
+
+INSERT INTO `attendance_master` (`Attendance_Id`, `Lecture_Id`, `Student_Id`, `Is_Present`) VALUES
+(1, 1, 1, 0),
+(2, 1, 2, 0),
+(3, 1, 3, 1),
+(4, 1, 4, 1),
+(5, 1, 5, 1),
+(6, 1, 6, 1),
+(7, 1, 7, 0),
+(8, 1, 8, 1),
+(9, 1, 9, 1),
+(10, 1, 10, 1),
+(11, 1, 11, 1),
+(12, 1, 12, 1),
+(13, 1, 13, 0),
+(14, 1, 14, 1),
+(15, 1, 15, 1),
+(16, 1, 16, 1),
+(17, 1, 17, 1),
+(18, 1, 18, 1),
+(19, 1, 19, 1),
+(20, 1, 20, 1),
+(21, 1, 21, 1),
+(22, 1, 22, 1),
+(23, 1, 23, 0),
+(24, 1, 24, 1),
+(25, 1, 25, 1),
+(26, 1, 26, 1),
+(27, 1, 27, 1),
+(28, 1, 28, 1),
+(29, 1, 29, 1),
+(30, 1, 30, 1),
+(31, 1, 31, 1),
+(32, 1, 32, 1),
+(33, 1, 33, 1),
+(34, 1, 34, 1),
+(35, 1, 35, 1),
+(36, 1, 36, 1),
+(37, 1, 37, 1),
+(38, 1, 38, 1),
+(39, 1, 39, 1),
+(40, 1, 40, 1),
+(41, 1, 41, 1),
+(42, 1, 42, 1),
+(43, 1, 43, 1),
+(44, 1, 44, 0),
+(45, 1, 45, 0),
+(46, 1, 46, 1),
+(47, 1, 47, 1),
+(48, 1, 48, 1),
+(49, 1, 49, 1),
+(50, 1, 50, 1),
+(51, 1, 51, 1),
+(52, 1, 52, 1),
+(53, 1, 53, 1),
+(54, 1, 54, 1),
+(55, 1, 55, 1),
+(56, 1, 56, 1),
+(57, 1, 57, 1),
+(58, 1, 58, 1),
+(59, 1, 59, 1),
+(60, 1, 60, 1),
+(61, 1, 61, 1),
+(62, 1, 62, 0),
+(63, 1, 63, 1),
+(64, 1, 64, 1),
+(65, 1, 65, 1),
+(66, 1, 66, 1),
+(67, 1, 67, 0),
+(68, 1, 68, 1),
+(69, 1, 69, 0),
+(70, 1, 70, 1),
+(71, 1, 71, 0),
+(72, 1, 72, 1),
+(73, 1, 73, 0),
+(74, 1, 74, 1),
+(75, 2, 1, 1),
+(76, 2, 2, 1),
+(77, 2, 3, 1),
+(78, 2, 4, 1),
+(79, 2, 5, 1),
+(80, 2, 6, 1),
+(81, 2, 7, 1),
+(82, 2, 8, 1),
+(83, 2, 9, 1),
+(84, 2, 10, 1),
+(85, 2, 11, 1),
+(86, 2, 12, 1),
+(87, 2, 13, 0),
+(88, 2, 14, 1),
+(89, 2, 15, 1),
+(90, 2, 16, 1),
+(91, 2, 17, 1),
+(92, 2, 18, 1),
+(93, 2, 19, 1),
+(94, 2, 20, 1),
+(95, 2, 21, 1),
+(96, 2, 22, 1),
+(97, 2, 23, 1),
+(98, 2, 24, 1),
+(99, 2, 25, 1),
+(100, 2, 26, 0),
+(101, 2, 27, 1),
+(102, 2, 28, 1),
+(103, 2, 29, 1),
+(104, 2, 30, 1),
+(105, 2, 31, 1),
+(106, 2, 32, 1),
+(107, 2, 33, 1),
+(108, 2, 34, 1),
+(109, 2, 35, 1),
+(110, 2, 36, 1),
+(111, 2, 37, 1),
+(112, 2, 38, 1),
+(113, 2, 39, 1),
+(114, 2, 40, 1),
+(115, 2, 41, 1),
+(116, 2, 42, 1),
+(117, 2, 43, 1),
+(118, 2, 44, 1),
+(119, 2, 45, 1),
+(120, 2, 46, 1),
+(121, 2, 47, 1),
+(122, 2, 48, 1),
+(123, 2, 49, 1),
+(124, 2, 50, 1),
+(125, 2, 51, 1),
+(126, 2, 52, 1),
+(127, 2, 53, 1),
+(128, 2, 54, 0),
+(129, 2, 55, 1),
+(130, 2, 56, 0),
+(131, 2, 57, 0),
+(132, 2, 58, 1),
+(133, 2, 59, 1),
+(134, 2, 60, 0),
+(135, 2, 61, 0),
+(136, 2, 62, 1),
+(137, 2, 63, 0),
+(138, 2, 64, 1),
+(139, 2, 65, 1),
+(140, 2, 66, 1),
+(141, 2, 67, 0),
+(142, 2, 68, 0),
+(143, 2, 69, 0),
+(144, 2, 70, 0),
+(145, 2, 71, 0),
+(146, 2, 72, 1),
+(147, 2, 73, 0),
+(148, 2, 74, 1);
 
 -- --------------------------------------------------------
 
@@ -109,6 +263,14 @@ CREATE TABLE `lecture_master` (
   `Lecture_Date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `lecture_master`
+--
+
+INSERT INTO `lecture_master` (`Lecture_Id`, `Academic_Session_Id`, `Subject_Id`, `Staff_Id`, `Lecture_Number`, `Lecture_Date`) VALUES
+(1, 1, 38, 4, 1, '2020-10-09'),
+(2, 1, 38, 4, 2, '2020-10-12');
+
 -- --------------------------------------------------------
 
 --
@@ -135,6 +297,20 @@ CREATE TABLE `staff_admin_login` (
   `Is_Admin` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `staff_admin_login`
+--
+
+INSERT INTO `staff_admin_login` (`Staff_Admin_Login_Id`, `Staff_Id`, `Staff_College_Id`, `Staff_Password`, `Is_Admin`) VALUES
+(1, 1, '1', 'test1', 1),
+(2, 2, '2', 'test2', 0),
+(3, 3, '3', 'test3', 0),
+(4, 4, '4', 'test4', 1),
+(5, 5, '5', 'test5', 0),
+(6, 6, '6', 'test6', 0),
+(7, 7, '7', 'test7', 0),
+(8, 9, '8', 'test8', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -147,6 +323,20 @@ CREATE TABLE `staff_branch_link` (
   `Branch_Id` bigint(20) NOT NULL,
   `Staff_Branch_Status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `staff_branch_link`
+--
+
+INSERT INTO `staff_branch_link` (`Staff_Branch_Id`, `Staff_Id`, `Branch_Id`, `Staff_Branch_Status`) VALUES
+(1, 1, 5, 'Active'),
+(2, 2, 5, 'Active'),
+(3, 3, 5, 'Active'),
+(4, 4, 5, 'Active'),
+(5, 5, 5, 'Active'),
+(6, 6, 5, 'Active'),
+(7, 7, 5, 'Active'),
+(8, 9, 5, 'Active');
 
 -- --------------------------------------------------------
 
@@ -167,6 +357,20 @@ CREATE TABLE `staff_master` (
   `Address` varchar(300) NOT NULL,
   `Staff_Status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `staff_master`
+--
+
+INSERT INTO `staff_master` (`Staff_Id`, `Staff_College_Id`, `First_Name`, `Middle_Name`, `Last_Name`, `Date_Of_Birth`, `Gender`, `Contact`, `Email_Id`, `Address`, `Staff_Status`) VALUES
+(1, '1', 'Ashish', '', 'Vanmali', '1980-01-14', 'Male', '', 'ashish.vanmali@vcet.edu.in', '', 'Active'),
+(2, '2', 'Madhavi', '', 'Waghmari', '1975-04-01', 'Female', '', 'madhavi.waghmare@vcet.edu.in', '', 'Active'),
+(3, '3', 'Archana', '', 'Ekbote', '1976-07-09', 'Female', '', 'archana.ekbote@vcet.edu.in', '', 'Active'),
+(4, '4', 'Yogesh', '', 'Pingle', '1977-07-04', 'Male', '', 'yogesh.pingle@vcet.edu.in', '', 'Active'),
+(5, '5', 'Mariyam', 'k', 'Jawadwala', '0000-00-00', 'Female', '', 'mariyam.jawadwala@vcet.edu.in', '', 'Active'),
+(6, '6', 'Swati', '', 'Saigaonkar', '1983-06-21', 'Female', '', 'swati.saigaonkar@vcet.edu.in', '', 'Active'),
+(7, '7', 'Bharati', '', 'Gondhalekar', '1975-08-15', 'Female', '', 'bharati.gondhalekar@vcet.edu.in', '', 'Active'),
+(9, '8', 'Kamini', '', 'More', '0000-00-00', 'Female', '', 'kamini.more@vcet.edu.in', '', 'Active');
 
 -- --------------------------------------------------------
 
@@ -545,7 +749,7 @@ INSERT INTO `student_master` (`Student_Id`, `Student_College_Id`, `First_Name`, 
 (68, '174102186', 'Dhruvesh ', '', 'Chauhan	', '0000-00-00', 'Male', '8879915943', 'dhruveshccc2200@gmail.com', '', 'Active'),
 (69, '174101190', 'Vedant ', '', 'Desai	', '0000-00-00', 'Male', '9527092930', 'vedantdesai2810@gmail.com', '', 'Active'),
 (70, '164101247', 'Deepak ', '', 'yadav	', '0000-00-00', 'Male', '9619252507', 'dee1010yadav@gmail.com', '', 'Active'),
-(71, '1741001187', 'Sauravkumar 	', '', 'Choudhary', '0000-00-00', 'Male', '', 'choudharysaurav69@gmail.com', '', 'Active'),
+(71, '1741001187', 'Sauravkumar 	', '', 'Choudhary', '0000-00-00', 'Male', '7756892987', 'choudharysaurav69@gmail.com', '', 'Active'),
 (72, '174202241', 'Shreya ', '', 'Tawre ', '0000-00-00', 'Male', '9373611085', 'shreyatawre123@gmail.com', '', 'Active'),
 (73, '154105174', 'Pruthvi', '', ' Hajare	', '0000-00-00', 'Female', '8805433102', 'pruthvihajare29@gmail.com', '', 'Active'),
 (74, '164101195', 'Omkar ', '', 'Chavan	', '0000-00-00', 'Male', '9403205472', 'omchavan1998@gmail.com', '', 'Active');
@@ -605,7 +809,21 @@ INSERT INTO `subject_master` (`Subject_Id`, `Subject_Name`, `Subject_Code`, `Sub
 (33, 'Applied Mathematics-I', '1163', 'Active', 6, 1),
 (34, 'Engineering Mechanics', '1164', 'Active', 6, 1),
 (35, 'Basic Electrical Engineering', '1165', 'Active', 6, 1),
-(36, 'Environmental Studies', '1166', 'Active', 6, 1);
+(36, 'Environmental Studies', '1166', 'Active', 6, 1),
+(37, 'Microcontroller And Embedded Programming', 'ITC501', 'Active', 5, 5),
+(38, 'Internet Programming', 'ITC502', 'Active', 5, 5),
+(39, 'Advanced Data Management Technology', 'ITC503', 'Active', 5, 5),
+(40, 'Cryptography & Network Security', 'ITC504', 'Active', 5, 5),
+(41, 'Internet Programming Lab', 'ITL501', 'Active', 5, 5),
+(42, 'Security Lab', 'ITL502', 'Active', 5, 5),
+(43, 'OLAP Lab', 'ITL503', 'Active', 5, 5),
+(44, 'IOT (MiniProject) Lab', 'ITL504', 'Active', 5, 5),
+(45, 'Business Communication and Ethics', 'ITL505', 'Active', 5, 5),
+(46, 'Advance Data Structures & Analysis of Algorithms', 'ITDL05011', 'Active', 5, 5),
+(47, 'Image Processing ', 'ITDL05012', 'De-Active', 5, 5),
+(48, 'E-Commerce & E-Business', 'ITDL05013', 'Active', 5, 5),
+(49, 'IT Enabled Services', 'ITDL05014', 'De-Active', 5, 5),
+(50, 'Computer Graphics & Virtual Reality ', 'ITDL05015', 'De-Active', 5, 5);
 
 -- --------------------------------------------------------
 
@@ -620,6 +838,23 @@ CREATE TABLE `subject_staff_link` (
   `Academic_Session_Id` bigint(20) NOT NULL,
   `Subject_Staff_Status` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `subject_staff_link`
+--
+
+INSERT INTO `subject_staff_link` (`Subject_Staff_Id`, `Subject_Id`, `Staff_Id`, `Academic_Session_Id`, `Subject_Staff_Status`) VALUES
+(1, 37, 2, 1, 'Active'),
+(2, 38, 4, 1, 'Active'),
+(3, 39, 5, 1, 'Active'),
+(4, 40, 3, 1, 'Active'),
+(5, 41, 4, 1, 'Active'),
+(6, 42, 3, 1, 'Active'),
+(7, 43, 5, 1, 'Active'),
+(8, 44, 4, 1, 'Active'),
+(9, 45, 9, 1, 'Active'),
+(10, 46, 6, 1, 'Active'),
+(11, 48, 7, 1, 'Active');
 
 -- --------------------------------------------------------
 
@@ -736,7 +971,7 @@ ALTER TABLE `academic_session_master`
 -- AUTO_INCREMENT for table `attendance_master`
 --
 ALTER TABLE `attendance_master`
-  MODIFY `Attendance_Id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `Attendance_Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
 
 --
 -- AUTO_INCREMENT for table `branch_master`
@@ -754,25 +989,25 @@ ALTER TABLE `defaulter_action_master`
 -- AUTO_INCREMENT for table `lecture_master`
 --
 ALTER TABLE `lecture_master`
-  MODIFY `Lecture_Id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `Lecture_Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `staff_admin_login`
 --
 ALTER TABLE `staff_admin_login`
-  MODIFY `Staff_Admin_Login_Id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `Staff_Admin_Login_Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `staff_branch_link`
 --
 ALTER TABLE `staff_branch_link`
-  MODIFY `Staff_Branch_Id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `Staff_Branch_Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `staff_master`
 --
 ALTER TABLE `staff_master`
-  MODIFY `Staff_Id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `Staff_Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `student_branch_link`
@@ -802,13 +1037,13 @@ ALTER TABLE `student_master`
 -- AUTO_INCREMENT for table `subject_master`
 --
 ALTER TABLE `subject_master`
-  MODIFY `Subject_Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `Subject_Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `subject_staff_link`
 --
 ALTER TABLE `subject_staff_link`
-  MODIFY `Subject_Staff_Id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `Subject_Staff_Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
