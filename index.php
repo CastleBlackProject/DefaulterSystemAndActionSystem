@@ -69,7 +69,7 @@
         <div id="accordian">
             <h2> Defaulter System</h2>
             <div id="panels">
-                <h3>Intro trial change</h3>
+                <h3>Intro</h3>
                 <p>This is a mini project made for keeping track of attendance of students in colleges for different subjects and for teachers to ease the process of maintaining attendance records for students</p>
                 <h3>Use</h3>
                 <p>Students can use this to check and maintain their attendance records for different subjects. Teachers can use this to maintain the huge attendance data digitally easily accessible to all the students thereby reducing their workload burden </p>
