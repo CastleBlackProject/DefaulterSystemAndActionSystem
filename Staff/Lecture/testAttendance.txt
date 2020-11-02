@@ -636,3 +636,173 @@ TE-IT-01
 Neel Mehta10:06 AM
 TE-IT-34
 shweta gupta
+
+
+
+
+
+
+2 november 20 20
+
+
+Adnan Ansari9:35 AM
+TE-IT-04
+Suchit Borge9:35 AM
+TE-IT-09
+Neel Mehta9:36 AM
+Neel mehta 34
+Vikas Dabhi9:36 AM
+TE-IT-12
+chirag darji9:36 AM
+TE-IT-14
+CHIRAG NARKAR9:36 AM
+TE-IT-38
+TEJAL ILLE9:36 AM
+TE-IT-58
+Prathamesh Suryavanshi9:36 AM
+TE-IT-50
+Akshay More9:36 AM
+TE-IT-63
+Riya Patil9:36 AM
+TE-IT-41
+Deepak Yadav9:36 AM
+TE-IT-70
+Aakanksha Mohite9:36 AM
+TE-IT-36
+Soham Madhvani9:36 AM
+TE-IT-29
+Shrutik Kharkar9:36 AM
+TE-IT-25
+Dharmesh Thorgavankar9:36 AM
+TE-IT-53
+Neel Mehta9:36 AM
+TE-IT-34
+Yash Jobalia9:36 AM
+TE-IT-22
+Himanshu Bhalala9:36 AM
+TE-IT-07
+Omkar Chavan9:36 AM
+TE-IT-74
+Abhishek Dhule9:36 AM
+TE-IT-16
+Nishmi A9:36 AM
+TE-IT-03
+Krishna Maniyar9:36 AM
+TE-IT-31
+Shubham Maurya9:36 AM
+TE-IT-33
+aakanksha jadhav9:36 AM
+TE-IT-21
+Chinmay Ingale9:36 AM
+TE-IT-59
+Ankit Dubey9:36 AM
+TE-IT-67
+Ashwini W9:36 AM
+TE-IT-56
+ATUL MANWAR9:36 AM
+TE-IT-32
+Yash Gharat9:36 AM
+TE-IT-19
+Ranveer Kothavale9:36 AM
+Ranveer kothavale-61
+samruddhi gamare9:36 AM
+TE-IT-18
+yukta upadhye9:36 AM
+TE-IT-55
+Shreya Tawre9:36 AM
+TE-IT-72
+Dhruv Khator9:36 AM
+TE-IT-26
+Dhru Prajapati9:36 AM
+TE-IT-43
+Ankita Kawade9:36 AM
+TE-IT-24
+Pranay Patre9:36 AM
+TE-IT-42
+Granthali Jadhav9:36 AM
+TE-IT 60
+Anvita Suvarna9:36 AM
+TE-IT-51
+You9:36 AM
+TE-IT-47
+Karan Mane9:36 AM
+TE-IT-30
+Shweta Gupta9:36 AM
+TE-IT-20
+Harsh Pandya9:37 AM
+TE-IT-39
+prashant bhatkal9:37 AM
+TE-IT-08
+Ankitkumar Chaudhary9:37 AM
+TE-IT-10
+ATUL MANWAR9:37 AM
+TE-IT-32
+PARAG PATANKAR9:37 AM
+TE-IT-40
+Hridayesh More9:37 AM
+TE-IT-37
+Rushank Sheta9:37 AM
+Rushank Sheta - 46
+PRUTHVI HAJARE9:37 AM
+TE-IT-73
+Anjali Chaurasiya9:37 AM
+TE-IT-11
+Rushank Sheta9:37 AM
+TE-IT-46
+Mansi Malap9:37 AM
+TE-IT-62
+Mrunmayee Apte9:38 AM
+TE-IT-05
+Vedant Desai9:38 AM
+TE-IT-69
+shivani shirke9:39 AM
+TE-IT-64
+Mayank Agrawal9:39 AM
+TE-IT-02
+SWEETY SINGH9:39 AM
+TE-IT-49
+Paras Lad9:40 AM
+TE-IT-28
+Aniket Shah9:40 AM
+TE- IT - 45
+Nirmit Lakhani9:40 AM
+TE-IT-01
+Hardik Yewale9:41 AM
+TE-IT-65
+Jayesh Deorukhkar9:43 AM
+Jayesh Deorukhkar 15
+TE-IT-15
+Ruchi Bari9:43 AM
+TE-IT-06
+Vanashree Gaikwad9:45 AM
+TE-IT-17
+Ram Vaghani9:45 AM
+TE-IT-66
+Abhineet Menon9:45 AM
+TE-IT-35
+Romin Katre9:46 AM
+TE-IT-23
+Naina Yadav9:53 AM
+TE-IT-57
+Hardik danngiya9:55 AM
+TE-IT-13
+Ram Vaghani9:58 AM
+TE-IT-66
+Harsh Kore9:59 AM
+TE-IT-27
+Shubhamkar Thavi9:59 AM
+TE-IT-52
+Jayesh Deorukhkar10:03 AM
+Exam TimeTable kab aayega ????
+???????
+Jayesh Deorukhkar10:16 AM
+JSON aur MongoDB ka relation kya hai
+Jayesh Deorukhkar10:19 AM
+sir query mongodb ka hi hua na phir
+toh aap bole exam mai mongodb nai aayega
+MongoDB is a database tool
+Jayesh Deorukhkar10:21 AM
+save file with .json format
+Jidnyasa Raut10:27 AM
+Jidnyasa Raut 44
+TE-IT-44
