@@ -1,3 +1,7 @@
+<?php
+require '../../connection.php';
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -75,11 +79,11 @@
                             <option value="-1">--ALL--</option>
 
                             <?php
-                            $servername = "localhost";
-                            $username = "root";
-                            $password = "";
-                            $db = "vceterp";
-                            $con = new mysqli($servername, $username, $password, $db);
+                            // $servername = "localhost";
+                            // $username = "root";
+                            // $password = "";
+                            // $db = "vceterp";
+                            // $con = new mysqli($servername, $username, $password, $db);
                             //  if(!$con)
                             //  {
                             //      die('could not connect'.mysql_error());
@@ -126,7 +130,7 @@
                 </div>
                 <div class="p-4">
                     <table class="table table-hover">
-                    <thead class="thead-dark">
+                        <thead class="thead-dark">
                             <tr>
                                 <th scope="col" hidden>Student ID</th>
                                 <th scope="col">College ID</th>

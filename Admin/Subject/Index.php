@@ -1,3 +1,7 @@
+<?php
+require '../../connection.php';
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -131,16 +135,16 @@
                         <tbody>
 
                             <?php
-                            $servername = "localhost";
-                            $username = "root";
-                            $password = "";
-                            $db = "vceterp";
-                            $con = new mysqli($servername, $username, $password, $db);
-                            if (!$con) {
-                                die('could not connect' . mysql_error());
-                            } else {
-                                #echo "<h1>database connected</h1>";
-                            }
+                            // $servername = "localhost";
+                            // $username = "root";
+                            // $password = "";
+                            // $db = "vceterp";
+                            // $con = new mysqli($servername, $username, $password, $db);
+                            // if (!$con) {
+                            //     die('could not connect' . mysql_error());
+                            // } else {
+                            //     #echo "<h1>database connected</h1>";
+                            // }
 
                             $sql = "SELECT * FROM subject_master";
                             $result = $con->query($sql);

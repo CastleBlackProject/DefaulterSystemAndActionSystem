@@ -1,29 +1,28 @@
 <?php
 
-    if(isset($_GET['BranchId'])){
+require '../../connection.php';
 
-        $BranchId = $_GET['BranchId'];
+if (isset($_GET['BranchId'])) {
 
-        $servername="localhost";
-        $username="root";
-        $password="";
-        $db="vceterp";
-        $con = new mysqli($servername,$username,$password,$db);
+    $BranchId = $_GET['BranchId'];
 
-        $sql1 = "SELECT * FROM staff_master NATURAL JOIN staff_branch_link where staff_branch_link.Branch_Id=".$BranchId;
+    // $servername="localhost";
+    // $username="root";
+    // $password="";
+    // $db="vceterp";
+    // $con = new mysqli($servername,$username,$password,$db);
 
-        $DynamicElement = "";
+    $sql1 = "SELECT * FROM staff_master NATURAL JOIN staff_branch_link where staff_branch_link.Branch_Id=" . $BranchId;
 
-        $result1 = $con->query($sql1);
-        
-        while($row1 = $result1->fetch_array())
-        {
-            $StaffName = $row1['First_Name'] ." ". $row1['Middle_Name']." ".$row1['Last_Name'];  
+    $DynamicElement = "";
 
-            $DynamicElement .= "<option value ='".$row1['Staff_Id']."'>".$StaffName."</option>";
-        }
+    $result1 = $con->query($sql1);
 
-        echo json_encode(array('success' => $DynamicElement));
+    while ($row1 = $result1->fetch_array()) {
+        $StaffName = $row1['First_Name'] . " " . $row1['Middle_Name'] . " " . $row1['Last_Name'];
+
+        $DynamicElement .= "<option value ='" . $row1['Staff_Id'] . "'>" . $StaffName . "</option>";
     }
 
-?>
+    echo json_encode(array('success' => $DynamicElement));
+}

@@ -1,15 +1,17 @@
 <?php
 
+require '../../connection.php';
+
 if (isset($_GET['SemesterId']) && $_GET['BranchId']) {
 
     $SemesterId = $_GET['SemesterId'];
     $BranchId = $_GET['BranchId'];
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $db = "vceterp";
-    $con = new mysqli($servername, $username, $password, $db);
+    // $servername = "localhost";
+    // $username = "root";
+    // $password = "";
+    // $db = "vceterp";
+    // $con = new mysqli($servername, $username, $password, $db);
 
     $sql = "SELECT * FROM subject_master WHERE Branch_Id=" . $BranchId . " AND Semester_Id=" . $SemesterId;
     $result = $con->query($sql);

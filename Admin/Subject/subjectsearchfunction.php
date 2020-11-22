@@ -1,61 +1,59 @@
 <?php
 
-        if(isset($_GET['SemesterId']) && $_GET['BranchId']){
+require '../../connection.php';
 
-            $SemesterId = $_GET['SemesterId'];
-            $BranchId = $_GET['BranchId'];
+if (isset($_GET['SemesterId']) && $_GET['BranchId']) {
 
-            $servername="localhost";
-            $username="root";
-            $password="";
-            $db="vceterp";
-            $con = new mysqli($servername,$username,$password,$db);
+    $SemesterId = $_GET['SemesterId'];
+    $BranchId = $_GET['BranchId'];
 
-            $sql = "SELECT * FROM subject_master WHERE Branch_Id=".$BranchId." AND Semester_Id=".$SemesterId;
-            $result = $con->query($sql);
+    // $servername="localhost";
+    // $username="root";
+    // $password="";
+    // $db="vceterp";
+    // $con = new mysqli($servername,$username,$password,$db);
 
-            $DynamicElement = '<table class="table table-hover">
-            <thead>
-              <tr>
-              <th scope="col" hidden>Subject ID</th>
-              <th scope="col">Branch</th>
-              <th scope="col">Semester</th>
-              <th scope="col">Subject Name</th>
-              <th scope="col">Subject Code</th>
-              <th scope="col">Subject Status</th>
-            <th></th>
-              </tr> 
-            </thead><tbody>';
+    $sql = "SELECT * FROM subject_master WHERE Branch_Id=" . $BranchId . " AND Semester_Id=" . $SemesterId;
+    $result = $con->query($sql);
 
-            while($row = mysqli_fetch_array($result))
-            {
-                $BranchId = $row['Branch_Id']; 
-                $sql1 = "SELECT Branch_Name FROM branch_master WHERE Branch_Id = " . $BranchId;
-                $result1 = $con->query($sql1);
+    $DynamicElement = '<table class="table table-hover">
+    <thead>
+        <tr>
+        <th scope="col" hidden>Subject ID</th>
+        <th scope="col">Branch</th>
+        <th scope="col">Semester</th>
+        <th scope="col">Subject Name</th>
+        <th scope="col">Subject Code</th>
+        <th scope="col">Subject Status</th>
+    <th></th>
+        </tr> 
+    </thead><tbody>';
 
-                $BranchName = "";
+    while ($row = mysqli_fetch_array($result)) {
+        $BranchId = $row['Branch_Id'];
+        $sql1 = "SELECT Branch_Name FROM branch_master WHERE Branch_Id = " . $BranchId;
+        $result1 = $con->query($sql1);
 
-                while($row1 = mysqli_fetch_array($result1)){
-                    $BranchName = $row1['Branch_Name'];
-                }
-                
-                $DynamicElement .= "<tr>
-                                    <td hidden>" .$row['Subject_Id']. "</td>
-                                    <td>" .$BranchName. "</td>
-                                    <td>" .$row['Semester_Id']. "</td>
-                                    <td>" .$row['Subject_Name']. "</td>
-                                    <td>" .$row['Subject_Code']. "</td>
-                                    <td>" .$row['Subject_Status']. "</td>
-                                    <td><button type='button' class='btn btn-success' onclick='edit(this)'>Edit</button></td>
-                                </tr>";
-            }
+        $BranchName = "";
 
-            $DynamicElement .= "</tbody></table>";
-
-            echo json_encode(array('success' => $DynamicElement));
-        }
-        else{
-            echo json_encode(array('success' => "error"));
+        while ($row1 = mysqli_fetch_array($result1)) {
+            $BranchName = $row1['Branch_Name'];
         }
 
-    ?>
+        $DynamicElement .= "<tr>
+                            <td hidden>" . $row['Subject_Id'] . "</td>
+                            <td>" . $BranchName . "</td>
+                            <td>" . $row['Semester_Id'] . "</td>
+                            <td>" . $row['Subject_Name'] . "</td>
+                            <td>" . $row['Subject_Code'] . "</td>
+                            <td>" . $row['Subject_Status'] . "</td>
+                            <td><button type='button' class='btn btn-success' onclick='edit(this)'>Edit</button></td>
+                        </tr>";
+    }
+
+    $DynamicElement .= "</tbody></table>";
+
+    echo json_encode(array('success' => $DynamicElement));
+} else {
+    echo json_encode(array('success' => "error"));
+}

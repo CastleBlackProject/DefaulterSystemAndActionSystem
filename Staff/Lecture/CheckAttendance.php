@@ -1,22 +1,26 @@
+<?php
+require '../../connection.php';
+?>
+
 <?php 
 
     $StaffId = $_COOKIE["StaffId"];
     $SubjectId = $_COOKIE["SubjectId"];
     $AcademicSessionId = $_COOKIE["AcademicSessionId"];
 
-    $servername="localhost";
-    $username="root";
-    $password="";
-    $db="vceterp";
-    $con = new mysqli($servername,$username,$password,$db);
-    if(!$con)
-    {
-        die('could not connect'.mysql_error());
-    }
-    else
-    {
-        //echo "<h1>database connected</h1>";
-    }
+    // $servername="localhost";
+    // $username="root";
+    // $password="";
+    // $db="vceterp";
+    // $con = new mysqli($servername,$username,$password,$db);
+    // if(!$con)
+    // {
+    //     die('could not connect'.mysql_error());
+    // }
+    // else
+    // {
+    //     //echo "<h1>database connected</h1>";
+    // }
 
     $sql1 = "SELECT * FROM student_master NATURAL JOIN subject_master NATURAL JOIN student_branch_year_link WHERE Subject_Id = ".$SubjectId." AND Academic_Session_Id = ".$AcademicSessionId;
     $result1 = $con->query($sql1);

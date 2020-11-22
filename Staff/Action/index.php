@@ -1,17 +1,20 @@
 <?php
-    $StaffId = $_COOKIE["StaffId"];
-    $SubjectId = $_COOKIE["SubjectId"];
-    $AcademicSessionId = $_COOKIE["AcademicSessionId"];
-    
-    $servername="localhost";
-    $username="root";
-    $password="";
-    $db="vceterp";
-    $con = new mysqli($servername,$username,$password,$db);
-    if(!$con)
-    {
-        die('could not connect'.mysql_error());
-    }
+require '../../connection.php';
+?>
+
+<?php
+$StaffId = $_COOKIE["StaffId"];
+$SubjectId = $_COOKIE["SubjectId"];
+$AcademicSessionId = $_COOKIE["AcademicSessionId"];
+
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $db = "vceterp";
+// $con = new mysqli($servername, $username, $password, $db);
+// if (!$con) {
+//     die('could not connect' . mysql_error());
+// }
 ?>
 <!doctype html>
 <html lang="en">
@@ -22,8 +25,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
     <title>Dashboard</title>
 </head>
@@ -32,8 +34,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <img src="../../Images/vcetlogoicon.png"></img>&emsp;
         <a class="navbar-brand" href="https://vcet.edu.in/">VCET</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -43,8 +44,7 @@
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li> -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Institute Management
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -56,8 +56,7 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Branch Management
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -77,12 +76,9 @@
 
     <?php
 
-    if(!isset($_COOKIE["StaffId"])) 
-    {        
+    if (!isset($_COOKIE["StaffId"])) {
         echo "Cookie named '" . $cookie_name . "' is not set!";
-    } 
-    else 
-    {
+    } else {
         $StaffId = $_COOKIE["StaffId"];
         //echo $StaffId;
         //echo "<script>console.log(".$StaffId.")</script>";
@@ -101,40 +97,35 @@
                         <label for="select_Academic_Session_Id">Academic Session</label>
                         <select id="select_Academic_Session_Id" name="select_Academic_Session_Id" class="form-control">
                             <?php
-                                $servername="localhost";
-                                $username="root";
-                                $password="";
-                                $db="vceterp";
-                                $con = new mysqli($servername,$username,$password,$db);
-                                if(!$con)
-                                {
-                                    die('could not connect'.mysql_error());
-                                }
-                                else
-                                {
-                                    //echo "<h1>database connected</h1>";
-                                }
+                            $servername = "localhost";
+                            $username = "root";
+                            $password = "";
+                            $db = "vceterp";
+                            $con = new mysqli($servername, $username, $password, $db);
+                            if (!$con) {
+                                die('could not connect' . mysql_error());
+                            } else {
+                                //echo "<h1>database connected</h1>";
+                            }
 
-                                $sql = "SELECT * FROM academic_session_master";
-                                $result = $con->query($sql);
-                                while($row = $result->fetch_array())
-                                {
-                                    echo "<option value ='".$row['Academic_Session_Id']."'>".$row['Academic_Session_Name']."</option>";
-                                }  
+                            $sql = "SELECT * FROM academic_session_master";
+                            $result = $con->query($sql);
+                            while ($row = $result->fetch_array()) {
+                                echo "<option value ='" . $row['Academic_Session_Id'] . "'>" . $row['Academic_Session_Name'] . "</option>";
+                            }
                             ?>
                         </select>
                     </div>
 
                     <?php
-                        echo '<div class="form-group col-md-3">'.
-                                '<input type="text" id="Staff_Id" name="Staff_Id" value="'.$StaffId.'" class="form-control" hidden/>'.
-                            '</div>';
+                    echo '<div class="form-group col-md-3">' .
+                        '<input type="text" id="Staff_Id" name="Staff_Id" value="' . $StaffId . '" class="form-control" hidden/>' .
+                        '</div>';
                     ?>
 
                 </div>
                 <hr />
-                <input type="button" value="Create" onclick="window.location.href='Create.php'"
-                    class="btn btn-primary" />
+                <input type="button" value="Create" onclick="window.location.href='Create.php'" class="btn btn-primary" />
                 <!-- <div class="p-4">
                      <table class="table table-hover">
                         <thead>
@@ -151,21 +142,18 @@
                     </table> 
                 </div> -->
                 <?php
-            $servername="localhost";
-            $username="root";
-            $password="";
-            $db="vceterp";
-            $con = new mysqli($servername,$username,$password,$db);
-            if(!$con)
-            {
-                die('could not connect'.mysql_error());
-            }
-            else
-            {
-                #echo "<h1>database connected</h1>";
-            }  
-            
-            echo '<div class="p-4">
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $db = "vceterp";
+                $con = new mysqli($servername, $username, $password, $db);
+                if (!$con) {
+                    die('could not connect' . mysql_error());
+                } else {
+                    #echo "<h1>database connected</h1>";
+                }
+
+                echo '<div class="p-4">
               <table class="table table-hover">
                 <thead>
                   <tr>
@@ -180,8 +168,7 @@
                 $result = $con->query($sql);
                 //if ($result->num_rows > 0)
 
-                while($row = mysqli_fetch_array($result))
-                {
+                while ($row = mysqli_fetch_array($result)) {
                     echo "<tr>";
                     echo "<td hidden>" . $row['Defaulter_Action_Id'] . "</td>";
                     echo "<td>" . $row['From_Percentage'] . "</td>";
@@ -191,21 +178,15 @@
                     echo "</tr>";
                 }
 
-              ?>
+                ?>
             </div>
         </div>
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-            crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-            crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-            crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
         <script>
             function setCookie(cname, cvalue, exdays) {
@@ -230,16 +211,15 @@
                 return "";
             }
 
-            function edit(btn){
-                setCookie("DefaulterActionId",DefaulterActionId,1);
+            function edit(btn) {
+                setCookie("DefaulterActionId", DefaulterActionId, 1);
                 var DefaulterActionId = btn.parentNode.parentNode.childNodes[0].innerHTML;
 
-                window.location.href='Edit.php?DefaulterActionId=' + DefaulterActionId;
+                window.location.href = 'Edit.php?DefaulterActionId=' + DefaulterActionId;
             }
-
         </script>
 
-<!-- <script>
+        <!-- <script>
 
 function logout(){
 window.location.href = '../../Login.php';
@@ -248,4 +228,5 @@ window.location.href = '../../Login.php';
 </script> -->
 
 </body>
+
 </html>

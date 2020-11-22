@@ -1,19 +1,23 @@
 <?php
+require '../../connection.php';
+?>
+
+<?php
 
 $StaffId = $_COOKIE["StaffId"];
 $SubjectId = $_COOKIE["SubjectId"];
 $AcademicSessionId = $_COOKIE["AcademicSessionId"];
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$db = "vceterp";
-$con = new mysqli($servername, $username, $password, $db);
-if (!$con) {
-    //die('could not connect'.mysql_error());
-} else {
-    //echo "<h1>database connected</h1>";
-}
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $db = "vceterp";
+// $con = new mysqli($servername, $username, $password, $db);
+// if (!$con) {
+//     //die('could not connect'.mysql_error());
+// } else {
+//     //echo "<h1>database connected</h1>";
+// }
 
 $sql = "SELECT * FROM student_master NATURAL JOIN subject_master NATURAL JOIN student_branch_year_link WHERE Subject_Id = " . $SubjectId . " AND Academic_Session_Id = " . $AcademicSessionId;
 $result = $con->query($sql);
@@ -289,7 +293,7 @@ while ($row_StudentsCount = mysqli_fetch_array($result_StudentsCount)) {
                 var checkbox = document.getElementsByClassName("chkbox_Attendance");
 
                 if ($(this).prop("checked") == true) {
-                    $(checkbox).prop('checked', false);                    
+                    $(checkbox).prop('checked', false);
                 } else {
                     $(checkbox).prop('checked', true);
                     document.getElementById("StudentsAttended").innerHTML = <?php echo $StudentsCount ?>;
@@ -324,9 +328,9 @@ while ($row_StudentsCount = mysqli_fetch_array($result_StudentsCount)) {
                 $("#footer_buttons").append(html2);
             });
 
-            $(".chkbox_Attendance").change(function(){
+            $(".chkbox_Attendance").change(function() {
                 var StudentsAttendedCount = parseInt(document.getElementById("StudentsAttended").innerHTML);
-                
+
                 if ($(this).prop("checked") == true) {
                     StudentsAttendedCount = StudentsAttendedCount + 1;
                     document.getElementById("StudentsAttended").innerHTML = StudentsAttendedCount;
@@ -336,7 +340,6 @@ while ($row_StudentsCount = mysqli_fetch_array($result_StudentsCount)) {
                 }
 
             });
-
         </script>
 
 </body>

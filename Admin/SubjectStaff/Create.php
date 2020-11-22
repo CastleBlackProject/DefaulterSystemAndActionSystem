@@ -1,3 +1,7 @@
+<?php
+require '../../connection.php';
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -98,11 +102,11 @@
                             <label>Branch</label>
                             <select id="select_Branch" name="select_Branch[]" class="form-control">
                             <?php
-                                $servername="localhost";
-                                $username="root";
-                                $password="";
-                                $db="vceterp";
-                                $con = new mysqli($servername,$username,$password,$db);
+                                // $servername="localhost";
+                                // $username="root";
+                                // $password="";
+                                // $db="vceterp";
+                                // $con = new mysqli($servername,$username,$password,$db);
                                 $sql = "SELECT * FROM branch_master";
                                 $result = $con->query($sql);
                                 while($row = $result->fetch_array())
