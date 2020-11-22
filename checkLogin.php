@@ -1,6 +1,6 @@
 <?php
 
-require '../../connection.php';
+require 'connection.php';
 // $servername="localhost";
 // $username="root";
 // $password="";
