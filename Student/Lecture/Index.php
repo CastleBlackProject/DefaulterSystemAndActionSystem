@@ -1,17 +1,22 @@
+<?php
+require '../../connection.php';
+?>
+
+
 <?php 
     $StudentId = $_COOKIE["StudentId"];
     $SubjectId = $_COOKIE["SubjectId"];
     $AcademicSessionId = $_COOKIE["AcademicSessionId"];
 
-    $servername="localhost";
-    $username="root";
-    $password="";
-    $db="vceterp";
-    $con = new mysqli($servername,$username,$password,$db);
-    if(!$con)
-    {
-        //die('could not connect'.mysql_error());
-    }    
+    // $servername="localhost";
+    // $username="root";
+    // $password="";
+    // $db="vceterp";
+    // $con = new mysqli($servername,$username,$password,$db);
+    // if(!$con)
+    // {
+    //     //die('could not connect'.mysql_error());
+    // }    
 ?>
 
 <!doctype html>

@@ -96,17 +96,7 @@ require '../../connection.php';
                     <button type="reset" class="btn btn-success">Reset</button>
                 </center>
             </div>
-            <?php
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $db = "vceterp";
-            $con = new mysqli($servername, $username, $password, $db);
-            if (!$con) {
-                die('could not connect' . mysql_error());
-            } else {
-                #echo "<h1>database connected</h1>";
-            }
+            <?php            
             if (isset($_POST['submit'])) {
                 $BranName = $_POST['txt_BranchName'];
                 $BranCode = $_POST['txt_BranchCode'];

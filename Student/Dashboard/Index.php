@@ -1,3 +1,8 @@
+<?php
+require '../../connection.php';
+?>
+
+
 <!doctype html>
 <html lang="en">
 

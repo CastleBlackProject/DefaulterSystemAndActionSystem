@@ -78,6 +78,8 @@ require '../../connection.php';
                                 <th scope="col">Name</th>
                                 <th scope="col">Branch Code</th>
                                 <th scope="col">Branch Status</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>

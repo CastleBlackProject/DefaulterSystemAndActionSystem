@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- jquery ui link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.structure.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.theme.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>VCET</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <img src="Images/vcetlogoicon.png"></img>&emsp;
+        <a class="navbar-brand" href="https://vcet.edu.in/">VCET</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <!-- <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li> -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Institute Management
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="Admin/Branch/Index.php">Branch Master</a>
+                        <a class="dropdown-item" href="#">Academic Session</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Assign Staff</a>
+                        <a class="dropdown-item" href="#">Assign Student</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Branch Management
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <!-- <div class="dropdown-divider"></div> -->
+                        <a class="dropdown-item" href="Admin/Staff/Index.php">Staff Master</a>
+                        <a class="dropdown-item" href="Admin/Subject/Index.php">Subject Master</a>
+                        <a class="dropdown-item" href="Admin/Students/Index.php">Student Master</a>
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div id="accordian">
+            <h2> Defaulter System</h2>
+            <div id="panels">
+                <h3>Intro</h3>
+                <p>This is a mini project made for keeping track of attendance of students in colleges for different subjects and for teachers to ease the process of maintaining attendance records for students</p>
+                <h3>Use</h3>
+                <p>Students can use this to check and maintain their attendance records for different subjects. Teachers can use this to maintain the huge attendance data digitally easily accessible to all the students thereby reducing their workload burden </p>
+                <h3>Features</h3>
+                <p>1. This project has various modules for every requirement of attendance management <br>2. There are features to create edit and display various modules such as staff info ,student info ,attendance and even subjects <br>
+                    3.This project helps u keep an entire track of various information about students , staff , subjects in each year in every sem and much more </p>
+                <h3>Database Tables Needed</h3>
+                <p>This project is modular in nature hence we have used multiple tables to keep the data organised in the database some tables used are<br>
+                    1. student_master <br>2. staff_master <br>3. subject_master<br>4.branch_master<br>5. semester_master<br>6. year_master<br>7. academic_session_master<br> </p>
+                <h3>Languages Frameworks and Libraries used</h3>
+                <p>1. HTML<br>2. CSS <br>3. Bootstrap <br>4. JavaScript<br>5. jQuery<br>6. jquery-ui<br>7. AJAX <br>8. PHP</p>
+                <h3>Made By</h3>
+                <p> Yash Jobalia &emsp;&emsp;&emsp; Isheet Shetty &emsp;&emsp;&emsp; Dhru Prajapati</p>
+            </div>
+            <div>
+                <input type="button" value="Login" onclick="window.location.href='Login.php'" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background: #34495e;
+            background-image: url('Images/vartak_college2.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        input[type="button"] {
+            border: 0;
+            background-color: #2ecc71;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            border: 2px solid #2ecc71;
+            padding: 14px 40px;
+            outline: none;
+            color: whitesmoke;
+            border-radius: 24px;
+            transition: 0.25s;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3px;
+            background-color: rgb(4, 41, 121);
+            color: white;
+        }
+    </style>
+    <!-- <footer>
+            <p>Contact Us:<br>
+            <a href="mailto:hege@example.com">vcet.edu.in</a></p>
+          </footer> -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            $("#panels").accordion({
+                collapsible: true,
+                event: "click",
+                animate: 300,
+                active: 0,
+                heightStyle: "content",
+                //autoheight : true,
+                icons: {
+                    header: "ui-icon-plus",
+                    activeHeader: "ui-icon-minus"
+                }
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+
+</html>
