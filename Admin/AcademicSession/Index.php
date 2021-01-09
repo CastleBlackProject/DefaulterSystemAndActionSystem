@@ -102,15 +102,15 @@ require '../../connection.php';
                 // }  
 
                 echo '<div class="p-4">
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col" hidden>Academic Session ID</th>
-                    <th scope="col">Academic Session Name</th>
-                    <th scope="col">Academic Session Status</th>
-                    <th></th>
-                  </tr> 
-                </thead>';
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th scope="col" hidden>Academic Session ID</th>
+                                <th scope="col">Academic Session Name</th>
+                                <th scope="col">Academic Session Status</th>
+                                <th></th>
+                            </tr> 
+                            </thead>';
                 $sql = "SELECT * FROM academic_session_master";
                 $result = $con->query($sql);
                 //if ($result->num_rows > 0)
